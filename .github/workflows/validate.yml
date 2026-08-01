@@ -1,0 +1,46 @@
+name: Validate roadmaps
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Catalog matches files, and every roadmap follows the template
+        run: |
+          python3 - <<'EOF'
+          import json, pathlib, sys
+          root = pathlib.Path(".")
+          catalog = json.loads((root / "roadmaps/index.json").read_text(encoding="utf-8"))
+          files = {p.stem for p in (root / "roadmaps").glob("*.md")}
+          slugs = {r["slug"] for r in catalog}
+          errors = []
+          for missing in sorted(slugs - files):
+              errors.append(f"catalog entry '{missing}' has no roadmaps/{missing}.md")
+          for orphan in sorted(files - slugs):
+              errors.append(f"roadmaps/{orphan}.md is not registered in index.json")
+          for slug in sorted(slugs & files):
+              text = (root / f"roadmaps/{slug}.md").read_text(encoding="utf-8")
+              for needle in ("```mermaid", "## \u2705", "- [ ]"):
+                  if needle not in text:
+                      errors.append(f"roadmaps/{slug}.md is missing required section: {needle}")
+          for e in errors:
+              print("::error::" + e)
+          sys.exit(1 if errors else 0)
+          EOF
+
+  links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: lycheeverse/lychee-action@v2
+        with:
+          args: --no-progress --max-concurrency 4 'README.md' 'roadmaps/*.md'
+          fail: false
