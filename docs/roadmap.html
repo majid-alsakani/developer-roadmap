@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-theme="light">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Interactive Developer Roadmap — خريطة تعلّم تفاعلية | Majid Al-Sakani</title>
+<meta name="description" content="Interactive, bilingual (Arabic/English) developer roadmap with progress tracking, free resources and stage-by-stage guidance. خريطة تعلّم برمجية تفاعلية بالعربية والإنجليزية." />
+<link rel="canonical" href="https://majid-alsakani.github.io/developer-roadmap/roadmap.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Interactive Developer Roadmap — خريطة تعلّم تفاعلية" />
+<meta property="og:description" content="Bilingual interactive roadmaps: Frontend, Backend, Python, DevOps, AI Agents, Full Stack, Mobile, Data." />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="stylesheet" href="./assets/roadmap.css" />
+</head>
+<body>
+<header class="top"><div class="wrap topbar">
+  <a class="brand" href="./index.html">🗺️ Roadmaps</a>
+  <span class="spacer"></span>
+  <button class="btn" id="langBtn">English</button>
+  <button class="btn" id="themeBtn">🌙</button>
+  <a class="btn" href="https://github.com/majid-alsakani/developer-roadmap" target="_blank" rel="noopener">GitHub</a>
+</div></header>
+
+<main class="wrap">
+  <a class="btn" id="backBtn" href="./index.html" style="display:inline-block;margin-top:22px;text-decoration:none">←</a>
+  <section class="hero"><h1 id="h1"></h1><p id="lead"></p></section>
+
+  <div class="progress">
+    <strong id="progLabel"></strong>
+    <span class="bar"><i id="bar"></i></span>
+    <strong id="pct">0%</strong>
+    <span style="color:var(--muted);font-size:13px" id="counts"></span>
+    <button class="btn" id="resetBtn"></button>
+  </div>
+  <div class="legend" id="legend"></div>
+
+  <div class="map" id="map"></div>
+</main>
+
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-label="topic details">
+  <div class="dhead">
+    <span class="tag" id="dTag"></span>
+    <h3 id="dTitle"></h3>
+    <div style="color:var(--muted);font-size:13px" id="dAlt"></div>
+    <button class="btn" id="dClose" style="margin-top:12px">✕</button>
+  </div>
+  <div class="dbody">
+    <p style="font-size:14px;line-height:1.7" id="dNote"></p>
+    <div class="tag" id="dMark"></div>
+    <div class="states" id="dStates"></div>
+    <h4 id="dResTitle" style="margin:22px 0 10px"></h4>
+    <div class="res" id="dRes"></div>
+  </div>
+</aside>
+
+<footer><div class="wrap">© <span id="y"></span> Majid Al-Sakani — CC BY-SA 4.0 · <a href="https://github.com/majid-alsakani/developer-roadmap">Contribute</a></div></footer>
+<script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+<script src="./assets/roadmap.js"></script>
+</body></html>
