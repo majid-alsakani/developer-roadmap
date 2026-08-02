@@ -214,3 +214,46 @@ Built and maintained by **[Majid Al-Sakani · ماجد السكني](https://git
 <sub>Keywords: developer roadmap, خارطة طريق المبرمج, frontend roadmap, backend roadmap, python roadmap, devops roadmap, AI engineer roadmap, تعلم البرمجة, مسار تعلم البرمجة بالعربي, learn programming 2026, software engineer career path</sub>
 
 </div>
+
+---
+
+## 🧭 Interactive Roadmap Engine · محرّك الخرائط التفاعلي
+
+> Inspired by the UX of roadmap.sh — rebuilt from scratch, bilingual (AR/EN), zero dependencies, no tracking.
+> مستوحى من تجربة roadmap.sh — مبني من الصفر، ثنائي اللغة، بدون أي مكتبات خارجية أو تتبّع.
+
+**▶ افتح الخرائط التفاعلية / Open the interactive maps:** <https://majid-alsakani.github.io/developer-roadmap/>
+
+| Feature | English | العربية |
+|---|---|---|
+| 🗺️ | **Node-based visual maps** with a central spine, stage titles and branching topics | خرائط بصرية على شكل عُقد بعمود مركزي ومراحل وفروع |
+| ✅ | **Progress tracking** — mark each topic as Done / Learning / Skip, saved in your browser | تتبّع التقدّم — أنجزته / أتعلّمه / تخطّيته، محفوظ في متصفحك |
+| 📊 | **Live completion bar** per roadmap | شريط إنجاز حيّ لكل خريطة |
+| 🎯 | **Topic types**: Core · Recommended · Optional (colour-coded) | تصنيف المواضيع: أساسي · موصى به · اختياري |
+| 📚 | **Detail drawer** with curated free resources per topic | لوحة تفاصيل بمصادر مجانية منتقاة لكل موضوع |
+| 🌗 | Dark / light theme + instant **AR ⇄ EN** switch with full RTL | وضع ليلي/نهاري وتبديل فوري بين العربية والإنجليزية مع دعم RTL |
+| 🔎 | Searchable hub + JSON-LD `ItemList` structured data for SEO | صفحة فهرس قابلة للبحث وبيانات منظّمة لمحركات البحث |
+| 🧩 | Data-driven: every roadmap is a JSON file in `docs/data/` — easy to extend via PR | كل خريطة ملف JSON قابل للتوسعة بسهولة عبر Pull Request |
+
+### 🗂️ Interactive maps · الخرائط التفاعلية
+
+| # | Roadmap | الخريطة | Topics |
+|---|---|---|---|
+| 1 | [Frontend Developer](https://majid-alsakani.github.io/developer-roadmap/roadmap.html?r=frontend) | مطوّر الواجهات الأمامية | 31 |
+| 2 | [Backend Developer](https://majid-alsakani.github.io/developer-roadmap/roadmap.html?r=backend) | مطوّر الواجهات الخلفية | 30 |
+| 3 | [AI / Agents Engineer](https://majid-alsakani.github.io/developer-roadmap/roadmap.html?r=ai-engineer) | مهندس الذكاء الاصطناعي والوكلاء | 26 |
+| 4 | [Python Developer](https://majid-alsakani.github.io/developer-roadmap/roadmap.html?r=python) | مطوّر بايثون | 19 |
+| 5 | [DevOps Engineer](https://majid-alsakani.github.io/developer-roadmap/roadmap.html?r=devops) | مهندس DevOps | 21 |
+| 6 | [Full Stack Developer](https://majid-alsakani.github.io/developer-roadmap/roadmap.html?r=fullstack) | مطوّر متكامل | 17 |
+| 7 | [Mobile Developer](https://majid-alsakani.github.io/developer-roadmap/roadmap.html?r=mobile) | مطوّر تطبيقات الجوال | 15 |
+| 8 | [Data Engineer](https://majid-alsakani.github.io/developer-roadmap/roadmap.html?r=data) | مهندس البيانات | 21 |
+
+**Total: 8 roadmaps · 30 stages · 180 topics · 100% bilingual**
+
+```
+docs/
+├── index.html          # searchable hub / فهرس قابل للبحث
+├── roadmap.html        # interactive renderer / العارض التفاعلي
+├── assets/             # roadmap.css · roadmap.js · hub.js
+└── data/*.json         # roadmap definitions / تعريفات الخرائط
+```
