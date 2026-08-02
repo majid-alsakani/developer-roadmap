@@ -1,0 +1,545 @@
+{
+ "slug": "professional",
+ "en": "Professional Software Engineer",
+ "ar": "المبرمج المحترف",
+ "desc_en": "The senior track: engineering mindset, clean architecture, testing, security, DevOps, AI-augmented workflow and career growth.",
+ "desc_ar": "المسار الاحترافي: عقلية الهندسة، البنية النظيفة، الاختبار، الأمان، DevOps، العمل مع الذكاء الاصطناعي، والنمو المهني.",
+ "color": "#f59e0b",
+ "icon": "🏆",
+ "groups": [
+  {
+   "en": "Engineering Mindset",
+   "ar": "عقلية المهندس",
+   "nodes": [
+    {
+     "id": "problem-solving",
+     "en": "Problem Solving & Decomposition",
+     "ar": "حل المشكلات وتفكيكها",
+     "type": "primary",
+     "note_en": "Break problems into small testable parts before writing code.",
+     "note_ar": "ابدأ بتفكيك المشكلة إلى أجزاء صغيرة قابلة للاختبار قبل كتابة أي سطر كود.",
+     "resources": [
+      {
+       "url": "https://roadmap.sh/computer-science",
+       "title": "CS Fundamentals"
+      }
+     ]
+    },
+    {
+     "id": "cs-basics",
+     "en": "CS Fundamentals",
+     "ar": "أساسيات علوم الحاسب",
+     "type": "primary",
+     "note_en": "Memory, complexity and core structures separate seniors from beginners.",
+     "note_ar": "الذاكرة، التعقيد الزمني، والبنى الأساسية هي فرق المبرمج المحترف عن المبتدئ.",
+     "resources": [
+      {
+       "url": "https://cs50.harvard.edu/x/",
+       "title": "Harvard CS50 (Free)"
+      }
+     ]
+    },
+    {
+     "id": "dsa",
+     "en": "Data Structures & Algorithms",
+     "ar": "هياكل البيانات والخوارزميات",
+     "type": "primary",
+     "note_en": "Practice short daily problems instead of rare long sessions.",
+     "note_ar": "تدرّب يوميًا على مسائل قصيرة بدل جلسات طويلة متقطعة.",
+     "resources": [
+      {
+       "url": "https://neetcode.io/roadmap",
+       "title": "NeetCode Roadmap"
+      }
+     ]
+    },
+    {
+     "id": "english-tech",
+     "en": "Technical English",
+     "ar": "الإنجليزية التقنية",
+     "type": "secondary",
+     "note_en": "Reading official docs in English saves you years.",
+     "note_ar": "قراءة التوثيق الرسمي بالإنجليزية تختصر عليك سنوات.",
+     "resources": []
+    },
+    {
+     "id": "reading-code",
+     "en": "Reading Other People's Code",
+     "ar": "قراءة كود الآخرين",
+     "type": "secondary",
+     "note_en": "Read open-source repos weekly and analyse their decisions.",
+     "note_ar": "اقرأ مستودعات مفتوحة المصدر أسبوعيًا وحلّل قراراتها.",
+     "resources": []
+    }
+   ]
+  },
+  {
+   "en": "Craft & Code Quality",
+   "ar": "جودة الكود والحِرفية",
+   "nodes": [
+    {
+     "id": "clean-code",
+     "en": "Clean Code & Naming",
+     "ar": "الكود النظيف والتسمية",
+     "type": "primary",
+     "note_en": "Clear names are free documentation.",
+     "note_ar": "الأسماء الواضحة توثيق مجاني؛ الكود يُقرأ أكثر مما يُكتب.",
+     "resources": []
+    },
+    {
+     "id": "solid",
+     "en": "SOLID & Design Principles",
+     "ar": "مبادئ SOLID والتصميم",
+     "type": "primary",
+     "note_en": "Apply them consciously; the goal is lowering cost of change.",
+     "note_ar": "طبّقها بوعي لا بشكل أعمى — الهدف تقليل كلفة التغيير.",
+     "resources": [
+      {
+       "url": "https://refactoring.guru/design-patterns",
+       "title": "Refactoring Guru"
+      }
+     ]
+    },
+    {
+     "id": "patterns",
+     "en": "Design Patterns",
+     "ar": "أنماط التصميم",
+     "type": "secondary",
+     "note_en": "Patterns are a shared language between engineers.",
+     "note_ar": "تعلّم الأنماط كلغة تواصل بين المهندسين.",
+     "resources": []
+    },
+    {
+     "id": "refactoring",
+     "en": "Refactoring",
+     "ar": "إعادة الهيكلة",
+     "type": "primary",
+     "note_en": "Improve structure without changing behaviour, guarded by tests.",
+     "note_ar": "حسّن البنية دون تغيير السلوك، وبخطوات صغيرة محمية بالاختبارات.",
+     "resources": []
+    },
+    {
+     "id": "code-review",
+     "en": "Code Review Etiquette",
+     "ar": "آداب مراجعة الكود",
+     "type": "primary",
+     "note_en": "Review the code, not the person; explain the why.",
+     "note_ar": "راجع الكود لا الشخص، واشرح السبب لا الأمر فقط.",
+     "resources": []
+    },
+    {
+     "id": "tech-debt",
+     "en": "Managing Technical Debt",
+     "ar": "إدارة الدَّين التقني",
+     "type": "secondary",
+     "note_en": "Track tech debt as visible tasks.",
+     "note_ar": "سجّل الدَّين التقني كمهام مرئية بدل تركه مخفيًا.",
+     "resources": []
+    }
+   ]
+  },
+  {
+   "en": "Testing & Reliability",
+   "ar": "الاختبار والموثوقية",
+   "nodes": [
+    {
+     "id": "unit-tests",
+     "en": "Unit Testing",
+     "ar": "اختبارات الوحدة",
+     "type": "primary",
+     "note_en": "Fast isolated tests for each meaningful behaviour.",
+     "note_ar": "اختبار سريع ومعزول لكل سلوك مهم.",
+     "resources": []
+    },
+    {
+     "id": "integration",
+     "en": "Integration & E2E",
+     "ar": "اختبارات التكامل والشاملة",
+     "type": "primary",
+     "note_en": "Cover critical user journeys first.",
+     "note_ar": "غطِّ المسارات الحرجة للمستخدم أولًا.",
+     "resources": [
+      {
+       "url": "https://playwright.dev/",
+       "title": "Playwright"
+      }
+     ]
+    },
+    {
+     "id": "tdd",
+     "en": "TDD",
+     "ar": "التطوير المقاد بالاختبار",
+     "type": "optional",
+     "note_en": "Best for complex logic, less for pure UI.",
+     "note_ar": "مفيد في المنطق المعقّد أكثر من واجهات العرض.",
+     "resources": []
+    },
+    {
+     "id": "observability",
+     "en": "Logging, Metrics & Tracing",
+     "ar": "السجلات والقياسات والتتبّع",
+     "type": "primary",
+     "note_en": "You cannot fix what you cannot see.",
+     "note_ar": "لا يمكنك إصلاح ما لا تستطيع رؤيته.",
+     "resources": [
+      {
+       "url": "https://opentelemetry.io/docs/",
+       "title": "OpenTelemetry Docs"
+      }
+     ]
+    },
+    {
+     "id": "error-budget",
+     "en": "SLO / Error Budgets",
+     "ar": "مستويات الخدمة وميزانية الأخطاء",
+     "type": "optional",
+     "note_en": "Define acceptable failure instead of chasing perfection.",
+     "note_ar": "حدّد نسبة الفشل المقبولة بدل السعي للكمال.",
+     "resources": [
+      {
+       "url": "https://sre.google/books/",
+       "title": "Google SRE Books"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "en": "Architecture at Scale",
+   "ar": "البنية على نطاق واسع",
+   "nodes": [
+    {
+     "id": "system-design",
+     "en": "System Design",
+     "ar": "تصميم الأنظمة",
+     "type": "primary",
+     "note_en": "Start from non-functional needs: load, latency, availability.",
+     "note_ar": "ابدأ من المتطلبات غير الوظيفية: الحمل، التأخير، التوافر.",
+     "resources": [
+      {
+       "url": "https://github.com/donnemartin/system-design-primer",
+       "title": "System Design Primer"
+      }
+     ]
+    },
+    {
+     "id": "api-design",
+     "en": "API Design (REST / GraphQL)",
+     "ar": "تصميم الواجهات البرمجية",
+     "type": "primary",
+     "note_en": "Contract first: design and document before coding.",
+     "note_ar": "العقد قبل الكود: صمّم الواجهة ووثّقها أولًا.",
+     "resources": [
+      {
+       "url": "https://swagger.io/specification/",
+       "title": "OpenAPI Spec"
+      }
+     ]
+    },
+    {
+     "id": "data-modeling",
+     "en": "Data Modeling & Indexing",
+     "ar": "نمذجة البيانات والفهارس",
+     "type": "primary",
+     "note_en": "Most performance issues start in the schema.",
+     "note_ar": "٩٠٪ من مشاكل الأداء تبدأ من تصميم قاعدة البيانات.",
+     "resources": []
+    },
+    {
+     "id": "caching",
+     "en": "Caching Strategies",
+     "ar": "استراتيجيات التخزين المؤقت",
+     "type": "secondary",
+     "note_en": "Know your invalidation before you cache.",
+     "note_ar": "اعرف متى تُبطل الكاش قبل أن تستخدمه.",
+     "resources": []
+    },
+    {
+     "id": "queues",
+     "en": "Queues & Event-Driven",
+     "ar": "الطوابير والأنظمة الحدثية",
+     "type": "secondary",
+     "note_en": "Move long work out of the request cycle.",
+     "note_ar": "افصل العمليات الطويلة عن دورة الطلب.",
+     "resources": []
+    },
+    {
+     "id": "microservices",
+     "en": "Monolith vs Microservices",
+     "ar": "الأحادي مقابل الخدمات المصغّرة",
+     "type": "optional",
+     "note_en": "Start with a modular monolith; split only when needed.",
+     "note_ar": "ابدأ أحاديًا منظّمًا؛ لا تقسّم قبل أن تحتاج.",
+     "resources": []
+    },
+    {
+     "id": "scalability",
+     "en": "Scalability & Load Testing",
+     "ar": "التوسّع واختبار الحمل",
+     "type": "secondary",
+     "note_en": "Measure before optimising.",
+     "note_ar": "قِس قبل أن تحسّن، وحسّن ما يهم فقط.",
+     "resources": [
+      {
+       "url": "https://k6.io/docs/",
+       "title": "k6 Load Testing"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "en": "Security Engineering",
+   "ar": "هندسة الأمان",
+   "nodes": [
+    {
+     "id": "owasp",
+     "en": "OWASP Top 10",
+     "ar": "أهم عشر ثغرات",
+     "type": "primary",
+     "note_en": "The first checklist any professional reviewer runs.",
+     "note_ar": "أول ما يفحصه أي مراجع محترف لتطبيقك.",
+     "resources": [
+      {
+       "url": "https://owasp.org/www-project-top-ten/",
+       "title": "OWASP Top 10"
+      }
+     ]
+    },
+    {
+     "id": "authn-authz",
+     "en": "AuthN vs AuthZ",
+     "ar": "المصادقة مقابل الصلاحيات",
+     "type": "primary",
+     "note_en": "Identity and permission are two different problems.",
+     "note_ar": "من أنت شيء، وماذا تملك حق فعله شيء آخر.",
+     "resources": []
+    },
+    {
+     "id": "secrets",
+     "en": "Secrets & Key Management",
+     "ar": "إدارة المفاتيح والأسرار",
+     "type": "primary",
+     "note_en": "Never commit keys; rotate regularly.",
+     "note_ar": "لا مفاتيح في المستودع أبدًا، ودوّر المفاتيح دوريًا.",
+     "resources": []
+    },
+    {
+     "id": "supply-chain",
+     "en": "Supply Chain & Dependencies",
+     "ar": "سلسلة الإمداد والاعتماديات",
+     "type": "secondary",
+     "note_en": "Scan dependencies automatically and sign releases.",
+     "note_ar": "افحص الاعتماديات آليًا ووقّع إصداراتك.",
+     "resources": []
+    },
+    {
+     "id": "privacy",
+     "en": "Privacy & Data Protection",
+     "ar": "الخصوصية وحماية البيانات",
+     "type": "secondary",
+     "note_en": "Collect the least data for the shortest time.",
+     "note_ar": "اجمع أقل قدر من البيانات ولأقصر مدة.",
+     "resources": []
+    }
+   ]
+  },
+  {
+   "en": "DevOps & Delivery",
+   "ar": "التشغيل والتسليم",
+   "nodes": [
+    {
+     "id": "git-pro",
+     "en": "Advanced Git & Signed Commits",
+     "ar": "Git المتقدّم والكوميتات الموقّعة",
+     "type": "primary",
+     "note_en": "Rebase, bisect and signed commits signal maturity.",
+     "note_ar": "rebase، bisect، وتوقيع الكوميتات علامات نضج تقني.",
+     "resources": [
+      {
+       "url": "https://git-scm.com/book/en/v2",
+       "title": "Pro Git Book"
+      }
+     ]
+    },
+    {
+     "id": "ci-cd",
+     "en": "CI/CD Pipelines",
+     "ar": "خطوط التكامل والنشر",
+     "type": "primary",
+     "note_en": "Every merge passes automated tests and linting.",
+     "note_ar": "كل دمج يجب أن يمرّ باختبار وفحص جودة آلي.",
+     "resources": [
+      {
+       "url": "https://docs.github.com/actions",
+       "title": "GitHub Actions"
+      }
+     ]
+    },
+    {
+     "id": "docker",
+     "en": "Containers & Docker",
+     "ar": "الحاويات ودوكر",
+     "type": "primary",
+     "note_en": "One identical environment from laptop to production.",
+     "note_ar": "بيئة موحّدة من جهازك حتى الإنتاج.",
+     "resources": [
+      {
+       "url": "https://docs.docker.com/get-started/",
+       "title": "Docker Get Started"
+      }
+     ]
+    },
+    {
+     "id": "iac",
+     "en": "Infrastructure as Code",
+     "ar": "البنية ككود",
+     "type": "secondary",
+     "note_en": "Your infra should rebuild with one command.",
+     "note_ar": "بنيتك يجب أن تُعاد بناؤها بأمر واحد.",
+     "resources": []
+    },
+    {
+     "id": "release",
+     "en": "Release Strategies",
+     "ar": "استراتيجيات الإصدار",
+     "type": "secondary",
+     "note_en": "Canary, blue-green and flags reduce release risk.",
+     "note_ar": "Canary وBlue-Green وfeature flags تقلّل خطر النشر.",
+     "resources": []
+    },
+    {
+     "id": "cost",
+     "en": "Cloud Cost Awareness",
+     "ar": "وعي تكلفة السحابة",
+     "type": "optional",
+     "note_en": "Professionals balance performance and cost.",
+     "note_ar": "المهندس المحترف يوازن بين الأداء والتكلفة.",
+     "resources": []
+    }
+   ]
+  },
+  {
+   "en": "AI-Augmented Engineering",
+   "ar": "الهندسة المعزّزة بالذكاء الاصطناعي",
+   "nodes": [
+    {
+     "id": "prompting",
+     "en": "Effective Prompting",
+     "ar": "الصياغة الفعّالة للأوامر",
+     "type": "primary",
+     "note_en": "Give context, constraints and acceptance criteria.",
+     "note_ar": "اعطِ سياقًا وقيودًا ومعايير قبول واضحة.",
+     "resources": [
+      {
+       "url": "https://www.promptingguide.ai/",
+       "title": "Prompt Engineering Guide"
+      }
+     ]
+    },
+    {
+     "id": "copilot-flow",
+     "en": "AI Pair Programming",
+     "ar": "البرمجة الثنائية بالذكاء الاصطناعي",
+     "type": "primary",
+     "note_en": "Use it as an accelerator, never a replacement for understanding.",
+     "note_ar": "استخدمه مسرّعًا لا بديلًا عن الفهم.",
+     "resources": []
+    },
+    {
+     "id": "rag",
+     "en": "RAG & Embeddings",
+     "ar": "الاسترجاع المعزّز والتضمينات",
+     "type": "secondary",
+     "note_en": "Ground models in your data instead of retraining.",
+     "note_ar": "اربط النماذج ببياناتك بدل إعادة تدريبها.",
+     "resources": [
+      {
+       "url": "https://python.langchain.com/docs/tutorials/rag/",
+       "title": "RAG Tutorial"
+      }
+     ]
+    },
+    {
+     "id": "agents",
+     "en": "Agents & Tool Calling",
+     "ar": "الوكلاء واستدعاء الأدوات",
+     "type": "secondary",
+     "note_en": "An agent = planner + tools + memory + critic.",
+     "note_ar": "الوكيل = تخطيط + أدوات + ذاكرة + تقييم.",
+     "resources": []
+    },
+    {
+     "id": "ai-review",
+     "en": "AI Code Review Guardrails",
+     "ar": "ضوابط مراجعة الكود بالذكاء",
+     "type": "optional",
+     "note_en": "Never merge code you do not understand.",
+     "note_ar": "لا تدمج كودًا لا تفهمه ولو كتبه نموذج ممتاز.",
+     "resources": []
+    }
+   ]
+  },
+  {
+   "en": "Career & Influence",
+   "ar": "المسار المهني والتأثير",
+   "nodes": [
+    {
+     "id": "portfolio",
+     "en": "Portfolio & GitHub Profile",
+     "ar": "معرض الأعمال وملف GitHub",
+     "type": "primary",
+     "note_en": "Three deep projects beat thirty shallow ones.",
+     "note_ar": "ثلاثة مشاريع عميقة أقوى من ثلاثين مشروعًا سطحيًا.",
+     "resources": []
+    },
+    {
+     "id": "open-source",
+     "en": "Open Source Contribution",
+     "ar": "المساهمة في المصادر المفتوحة",
+     "type": "primary",
+     "note_en": "Start with docs or a small bug in a tool you use.",
+     "note_ar": "ابدأ بإصلاح توثيق أو خطأ صغير في مشروع تستخدمه.",
+     "resources": []
+    },
+    {
+     "id": "writing",
+     "en": "Technical Writing",
+     "ar": "الكتابة التقنية",
+     "type": "secondary",
+     "note_en": "Explaining what you learn builds both mastery and reputation.",
+     "note_ar": "اشرح ما تعلّمته؛ الشرح يثبّت الفهم ويبني السمعة.",
+     "resources": []
+    },
+    {
+     "id": "mentoring",
+     "en": "Mentoring & Leadership",
+     "ar": "الإرشاد والقيادة",
+     "type": "secondary",
+     "note_en": "Senior engineers lift the people around them.",
+     "note_ar": "المهندس الكبير يرفع من حوله لا نفسه فقط.",
+     "resources": []
+    },
+    {
+     "id": "interview",
+     "en": "System Design Interviews",
+     "ar": "مقابلات تصميم الأنظمة",
+     "type": "optional",
+     "note_en": "Practise explaining trade-offs out loud.",
+     "note_ar": "تدرّب بصوت عالٍ على شرح المقايضات.",
+     "resources": []
+    },
+    {
+     "id": "freelance",
+     "en": "Freelance & Product Thinking",
+     "ar": "العمل الحر والتفكير المنتجي",
+     "type": "optional",
+     "note_en": "Understand user value, not just technology.",
+     "note_ar": "افهم قيمة ما تبنيه للمستخدم لا التقنية فقط.",
+     "resources": []
+    }
+   ]
+  }
+ ],
+ "total": 45
+}

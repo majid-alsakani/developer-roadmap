@@ -92,3 +92,8 @@ header.top{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--b
 .search{width:100%;padding:13px 15px;border-radius:12px;border:1px solid var(--line);background:var(--panel);
   color:var(--ink);font-size:15px;margin-top:8px}
 footer{border-top:1px solid var(--line);padding:26px 0;color:var(--muted);font-size:13px}
+
+.byline{margin:10px 0 18px;font-size:14px;color:var(--muted);line-height:1.9}
+.byline strong{color:var(--text,inherit)}
+.byline a{color:var(--primary);text-decoration:none}
+.byline a:hover{text-decoration:underline}

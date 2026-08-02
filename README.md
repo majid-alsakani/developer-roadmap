@@ -8,8 +8,12 @@
 
 **خرائط طريق تفاعلية ثنائية اللغة للمطوّرين — من أول سطر كود إلى مهندس خبير.**
 
+**Created & maintained by [Majid Al-Sakani · ماجد السكني](https://github.com/majid-alsakani)** — Full Stack &amp; AI Engineer · Python · FastAPI · Django · React · AI Agents · Yemen 🇾🇪
+
+**إعداد وصيانة [ماجد السكني · Majid Al-Sakani](https://github.com/majid-alsakani)** — مهندس برمجيات متكامل وذكاء اصطناعي — اليمن
+
 [![Live site](https://img.shields.io/badge/🌐%20Live%20Site-Open-1f6feb?style=for-the-badge)](https://majid-alsakani.github.io/developer-roadmap/)
-[![Roadmaps](https://img.shields.io/badge/Roadmaps-8-2ea043?style=for-the-badge)](#-all-roadmaps--كل-الخرائط)
+[![Roadmaps](https://img.shields.io/badge/Roadmaps-9-2ea043?style=for-the-badge)](#-all-roadmaps--كل-الخرائط)
 [![Bilingual](https://img.shields.io/badge/Bilingual-EN%20%2F%20AR-8957e5?style=for-the-badge)](#)
 [![License](https://img.shields.io/badge/License-CC%20BY--SA%204.0-f0883e?style=for-the-badge)](LICENSE)
 [![Stars](https://img.shields.io/github/stars/majid-alsakani/developer-roadmap?style=for-the-badge&color=e3b341)](https://github.com/majid-alsakani/developer-roadmap/stargazers)
@@ -31,6 +35,13 @@
 ---
 
 ## 🧭 All roadmaps / كل الخرائط
+
+> ### 🏆 <a href="roadmaps/professional.md">Professional Software Engineer — مسار المبرمج المحترف</a> <sup>NEW</sup>
+> The senior track by **Majid Al-Sakani**: engineering mindset, clean architecture, testing, security, DevOps, AI-augmented workflow and career growth — **8 stages · 45 topics**.
+> 
+> المسار الاحترافي بإعداد **ماجد السكني**: عقلية الهندسة، البنية النظيفة، الاختبار، الأمان، DevOps، العمل مع الذكاء الاصطناعي، والنمو المهني — **٨ مراحل · ٤٥ موضوعًا**.
+> 
+> [![Open roadmap](https://img.shields.io/badge/📖%20Open%20roadmap-f59e0b?style=for-the-badge)](roadmaps/professional.md) [![Interactive](https://img.shields.io/badge/⚡%20Interactive-1f6feb?style=for-the-badge)](https://majid-alsakani.github.io/developer-roadmap/roadmap.html?r=professional)
 
 <table>
 <tr>

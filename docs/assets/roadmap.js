@@ -26,6 +26,53 @@ function applyShell(){
 }
 const t = k => T[lang][k];
 
+
+const AUTHOR = { name: "Majid Al-Sakani", nameAr: "ماجد السكني", url: "https://github.com/majid-alsakani" };
+const SITE = "https://majid-alsakani.github.io/developer-roadmap";
+
+function setMeta(sel, attr, key, content){
+  let el = document.head.querySelector(`${sel}[${attr}="${key}"]`);
+  if (!el){ el = document.createElement("meta"); el.setAttribute(attr, key); document.head.appendChild(el); }
+  el.setAttribute("content", content);
+}
+
+/* Per-roadmap SEO: unique title, description, canonical, OG tags and JSON-LD. */
+function renderSeo(){
+  const name = lang === "ar" ? data.ar : data.en;
+  const alt  = lang === "ar" ? data.en : data.ar;
+  const desc = (lang === "ar" ? data.desc_ar : data.desc_en) +
+    (lang === "ar" ? ` — ${data.total} موضوعًا بإعداد ${AUTHOR.nameAr} (${AUTHOR.name}).`
+                   : ` — ${data.total} topics curated by ${AUTHOR.name} (${AUTHOR.nameAr}).`);
+  const title = `${name} ${lang === "ar" ? "خريطة تعلّم تفاعلية" : "Roadmap"} · ${alt} | ${AUTHOR.name} ${AUTHOR.nameAr}`;
+  const url = `${SITE}/roadmap.html?r=${data.slug}`;
+  document.title = title;
+  setMeta("meta", "name", "description", desc);
+  setMeta("meta", "name", "author", `${AUTHOR.name} — ${AUTHOR.nameAr}`);
+  setMeta("meta", "property", "og:title", title);
+  setMeta("meta", "property", "og:description", desc);
+  setMeta("meta", "property", "og:url", url);
+  let can = document.head.querySelector('link[rel="canonical"]');
+  if (!can){ can = document.createElement("link"); can.rel = "canonical"; document.head.appendChild(can); }
+  can.href = url;
+
+  const ld = {
+    "@context": "https://schema.org",
+    "@graph": [
+      { "@type": "Course", name: `${name} — ${alt}`, description: desc, inLanguage: ["ar","en"], url,
+        isAccessibleForFree: true, numberOfCredits: data.total,
+        provider: { "@type": "Person", name: AUTHOR.name, alternateName: AUTHOR.nameAr, url: AUTHOR.url },
+        author:   { "@type": "Person", name: AUTHOR.name, alternateName: AUTHOR.nameAr, url: AUTHOR.url },
+        hasCourseInstance: { "@type": "CourseInstance", courseMode: "online", courseWorkload: `PT${data.total * 3}H` } },
+      { "@type": "BreadcrumbList", itemListElement: [
+        { "@type": "ListItem", position: 1, name: lang === "ar" ? "كل الخرائط" : "All roadmaps", item: `${SITE}/` },
+        { "@type": "ListItem", position: 2, name, item: url } ] }
+    ]
+  };
+  let s = document.getElementById("ldjson");
+  if (!s){ s = document.createElement("script"); s.type = "application/ld+json"; s.id = "ldjson"; document.head.appendChild(s); }
+  s.textContent = JSON.stringify(ld);
+}
+
 function save(){ localStorage.setItem(KEY, JSON.stringify(progress)); }
 
 function stats(){
@@ -45,7 +92,7 @@ function renderProgress(){
 
 function render(){
   applyShell();
-  document.title = (lang === "ar" ? data.ar : data.en) + " — Roadmap | Majid Al-Sakani";
+  renderSeo();
   document.getElementById("backBtn").textContent = "← " + t("back");
   document.getElementById("h1").textContent = data.icon + " " + (lang === "ar" ? data.ar : data.en);
   document.getElementById("lead").textContent = lang === "ar" ? data.desc_ar : data.desc_en;

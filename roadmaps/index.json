@@ -1,5 +1,13 @@
 [
   {
+    "slug": "professional",
+    "en": "Professional Software Engineer",
+    "ar": "المبرمج المحترف",
+    "icon": "🏆",
+    "desc_en": "The senior track: engineering mindset, clean architecture, testing, security, DevOps, AI-augmented workflow and career growth.",
+    "desc_ar": "المسار الاحترافي: عقلية الهندسة، البنية النظيفة، الاختبار، الأمان، DevOps، العمل مع الذكاء الاصطناعي، والنمو المهني."
+  },
+  {
     "slug": "frontend",
     "en": "Frontend Developer",
     "ar": "مطور الواجهات الأمامية",
