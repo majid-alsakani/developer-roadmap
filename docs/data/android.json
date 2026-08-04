@@ -1,0 +1,689 @@
+{
+ "slug": "android",
+ "en": "Android Developer",
+ "ar": "مطوّر أندرويد",
+ "desc_en": "Native Android with Kotlin: components, Jetpack Compose, architecture, storage, networking, testing and distribution.",
+ "desc_ar": "أندرويد الأصلي بلغة Kotlin: المكوّنات، Jetpack Compose، المعمارية، التخزين، الشبكات، الاختبار والنشر.",
+ "color": "#22c55e",
+ "icon": "🤖",
+ "groups": [
+  {
+   "en": "Pick a Language",
+   "ar": "اختر لغة",
+   "nodes": [
+    {
+     "id": "android-kotlin",
+     "en": "Kotlin (recommended)",
+     "ar": "كوتلن (موصى بها)",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "android-java",
+     "en": "Java",
+     "ar": "جافا",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    }
+   ]
+  },
+  {
+   "en": "The Fundamentals",
+   "ar": "الأساسيات",
+   "nodes": [
+    {
+     "id": "android-ide",
+     "en": "Android Studio & the IDE",
+     "ar": "أندرويد ستوديو وبيئة التطوير",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "android-kotlin-basics",
+     "en": "Basics of Kotlin",
+     "ar": "أساسيات كوتلن",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "android-oop",
+     "en": "Basics of OOP",
+     "ar": "أساسيات البرمجة الكائنية",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "android-dsa",
+     "en": "Data structures & algorithms",
+     "ar": "هياكل البيانات والخوارزميات",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "android-gradle",
+     "en": "What is Gradle and how to use it",
+     "ar": "ما هو Gradle وكيف تستخدمه",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "android-hello",
+     "en": "Build a basic Hello World app",
+     "ar": "ابنِ أول تطبيق Hello World",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    }
+   ]
+  },
+  {
+   "en": "Version Control",
+   "ar": "إدارة الإصدارات",
+   "nodes": [
+    {
+     "id": "android-git",
+     "en": "Git",
+     "ar": "جِت",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "android-github",
+     "en": "GitHub",
+     "ar": "جيت هَب",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "android-gitlab",
+     "en": "GitLab / Bitbucket",
+     "ar": "جيت لاب / بِت بَكِت",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    }
+   ]
+  },
+  {
+   "en": "App Components",
+   "ar": "مكوّنات التطبيق",
+   "nodes": [
+    {
+     "id": "android-activity",
+     "en": "Activity",
+     "ar": "النشاط Activity",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "android-lifecycle",
+     "en": "Activity lifecycle & state changes",
+     "ar": "دورة حياة النشاط وتغيّر الحالة",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "android-intent",
+     "en": "Intent (implicit & explicit)",
+     "ar": "النوايا الصريحة والضمنية",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "android-filters",
+     "en": "Intent filters",
+     "ar": "مرشّحات النوايا",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "android-backstack",
+     "en": "Tasks & back stack",
+     "ar": "المهام ومكدّس الرجوع",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "android-services",
+     "en": "Services",
+     "ar": "الخدمات",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "android-receiver",
+     "en": "Broadcast receiver",
+     "ar": "مستقبل البث",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "android-provider",
+     "en": "Content provider",
+     "ar": "مزوّد المحتوى",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    }
+   ]
+  },
+  {
+   "en": "Interface & Navigation",
+   "ar": "الواجهة والتنقّل",
+   "nodes": [
+    {
+     "id": "android-compose",
+     "en": "Jetpack Compose",
+     "ar": "جِت باك كومبوز",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "android-layouts",
+     "en": "Box, Column / Row, Scaffold, Constraint",
+     "ar": "التخطيطات: Box و Column/Row و Scaffold",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "android-lazy",
+     "en": "Lazy Column / Row",
+     "ar": "القوائم الكسولة Lazy Column/Row",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "android-elements",
+     "en": "Text, TextField, Button, Image, Icon, Card",
+     "ar": "العناصر: النص والحقول والأزرار والصور والبطاقات",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "android-dialogs",
+     "en": "Dialog, BottomSheet, TabRow, Drawer",
+     "ar": "الحوارات والأوراق السفلية والتبويبات والقائمة الجانبية",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "android-nav",
+     "en": "Navigation components & NavHost",
+     "ar": "مكوّنات التنقّل و NavHost",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "android-state",
+     "en": "remember / State, ViewModel state, side effects",
+     "ar": "إدارة الحالة والتأثيرات الجانبية",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "android-animations",
+     "en": "Animations",
+     "ar": "الحركات والانتقالات",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "android-shortcuts",
+     "en": "App shortcuts",
+     "ar": "اختصارات التطبيق",
+     "type": "optional",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "android-xml",
+     "en": "Legacy XML views: TextView, ImageView, RecyclerView, Fragments, ConstraintLayout",
+     "ar": "الواجهات القديمة بـXML: TextView و RecyclerView و Fragments",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    }
+   ]
+  },
+  {
+   "en": "Design & Architecture",
+   "ar": "التصميم والمعمارية",
+   "nodes": [
+    {
+     "id": "android-mvvm",
+     "en": "MVVM",
+     "ar": "نمط MVVM",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "android-mvi",
+     "en": "MVI",
+     "ar": "نمط MVI",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "android-mvp",
+     "en": "MVP / MVC",
+     "ar": "نمط MVP و MVC",
+     "type": "optional",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "android-repo",
+     "en": "Repository pattern",
+     "ar": "نمط المستودع",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "android-patterns",
+     "en": "Builder, Factory, Observer patterns",
+     "ar": "أنماط Builder و Factory و Observer",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "android-di",
+     "en": "Dependency injection",
+     "ar": "حقن التبعيات",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "android-hilt",
+     "en": "Hilt / Dagger / Koin",
+     "ar": "Hilt و Dagger و Koin",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "android-flow",
+     "en": "Kotlin Flow & LiveData",
+     "ar": "Kotlin Flow و LiveData",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "android-rx",
+     "en": "RxJava / RxKotlin",
+     "ar": "RxJava و RxKotlin",
+     "type": "optional",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    }
+   ]
+  },
+  {
+   "en": "Storage",
+   "ar": "التخزين",
+   "nodes": [
+    {
+     "id": "android-prefs",
+     "en": "Shared Preferences",
+     "ar": "التفضيلات المشتركة",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "android-datastore",
+     "en": "DataStore",
+     "ar": "داتا ستور",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "android-room",
+     "en": "Room database",
+     "ar": "قاعدة بيانات Room",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "android-fs",
+     "en": "File system",
+     "ar": "نظام الملفات",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    }
+   ]
+  },
+  {
+   "en": "Networking & Async",
+   "ar": "الشبكات والتزامن",
+   "nodes": [
+    {
+     "id": "android-retrofit",
+     "en": "Retrofit",
+     "ar": "ريترو فِت",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "android-okhttp",
+     "en": "OkHttp",
+     "ar": "أوك إتش تي تي بي",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "android-apollo",
+     "en": "Apollo Android (GraphQL)",
+     "ar": "أبولو أندرويد (GraphQL)",
+     "type": "optional",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "android-coroutines",
+     "en": "Coroutines",
+     "ar": "الكوروتينات",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "android-threads",
+     "en": "Threads",
+     "ar": "الخيوط",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "android-workmanager",
+     "en": "WorkManager",
+     "ar": "مدير المهام WorkManager",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    }
+   ]
+  },
+  {
+   "en": "Common Services",
+   "ar": "الخدمات الشائعة",
+   "nodes": [
+    {
+     "id": "android-fb-auth",
+     "en": "Firebase Authentication",
+     "ar": "مصادقة Firebase",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "android-crashlytics",
+     "en": "Crashlytics",
+     "ar": "كراشليتكس",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "android-fcm",
+     "en": "Cloud Messaging",
+     "ar": "الرسائل السحابية",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "android-firestore",
+     "en": "Firestore",
+     "ar": "فاير ستور",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "android-remote-config",
+     "en": "Remote Config",
+     "ar": "الإعدادات عن بُعد",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "android-admob",
+     "en": "Google AdMob",
+     "ar": "جوجل أدموب",
+     "type": "optional",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "android-play-services",
+     "en": "Google Play Services",
+     "ar": "خدمات جوجل بلاي",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "android-maps",
+     "en": "Google Maps",
+     "ar": "خرائط جوجل",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    }
+   ]
+  },
+  {
+   "en": "Quality & Security",
+   "ar": "الجودة والأمن",
+   "nodes": [
+    {
+     "id": "android-ktlint",
+     "en": "Ktlint / Detekt",
+     "ar": "Ktlint و Detekt",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "android-timber",
+     "en": "Timber logging",
+     "ar": "التسجيل بـTimber",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "android-leakcanary",
+     "en": "LeakCanary",
+     "ar": "ليك كناري",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "android-chucker",
+     "en": "Chucker",
+     "ar": "تشَكر",
+     "type": "optional",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "android-benchmark",
+     "en": "Jetpack Benchmark",
+     "ar": "قياس أداء Jetpack",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "android-junit",
+     "en": "JUnit",
+     "ar": "جي يونت",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "android-espresso",
+     "en": "Espresso UI tests",
+     "ar": "اختبارات الواجهة Espresso",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "android-security",
+     "en": "App security & obfuscation",
+     "ar": "أمن التطبيق والتعتيم",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    }
+   ]
+  },
+  {
+   "en": "Distribution",
+   "ar": "النشر والتوزيع",
+   "nodes": [
+    {
+     "id": "android-signed",
+     "en": "Signed APK / AAB",
+     "ar": "حزمة موقّعة APK/AAB",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "android-play",
+     "en": "Google Play Store",
+     "ar": "متجر جوجل بلاي",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "android-fb-dist",
+     "en": "Firebase App Distribution",
+     "ar": "توزيع Firebase",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "android-cicd",
+     "en": "CI/CD for mobile",
+     "ar": "CI/CD للتطبيقات",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    }
+   ]
+  }
+ ]
+}

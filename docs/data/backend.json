@@ -1,1 +1,809 @@
-{"slug":"backend","en":"Backend Developer","ar":"مطوّر الواجهات الخلفية","desc_en":"From language fundamentals to scalable distributed systems.","desc_ar":"من أساسيات اللغة إلى الأنظمة الموزّعة القابلة للتوسّع.","color":"#10b981","icon":"🛠️","groups":[{"en":"Foundations","ar":"الأساسيات","nodes":[{"id":"lang","en":"Pick a language (Python / Node / Go)","ar":"اختر لغة","type":"primary","note_en":"","note_ar":"","resources":[]},{"id":"os","en":"OS & terminal basics","ar":"نظام التشغيل وسطر الأوامر","type":"primary","note_en":"","note_ar":"","resources":[]},{"id":"git-b","en":"Git & code review","ar":"جِت ومراجعة الكود","type":"primary","note_en":"","note_ar":"","resources":[]},{"id":"net","en":"Networking & TCP/IP","ar":"الشبكات","type":"secondary","note_en":"","note_ar":"","resources":[]}]},{"en":"APIs","ar":"واجهات البرمجة","nodes":[{"id":"rest","en":"REST design","ar":"تصميم REST","type":"primary","note_en":"","note_ar":"","resources":[{"url":"https://restfulapi.net/","title":"REST API Guide"}]},{"id":"fastapi","en":"FastAPI / Express","ar":"أُطر الخوادم","type":"primary","note_en":"","note_ar":"","resources":[{"url":"https://fastapi.tiangolo.com/","title":"FastAPI Docs"}]},{"id":"validation","en":"Schema validation","ar":"التحقق من المخططات","type":"primary","note_en":"","note_ar":"","resources":[]},{"id":"graphql","en":"GraphQL","ar":"جراف كيو إل","type":"optional","note_en":"","note_ar":"","resources":[]},{"id":"openapi","en":"OpenAPI & docs","ar":"توثيق OpenAPI","type":"secondary","note_en":"","note_ar":"","resources":[]},{"id":"webhooks","en":"Webhooks & SSE","ar":"الويبهوك والبث اللحظي","type":"secondary","note_en":"","note_ar":"","resources":[]}]},{"en":"Databases","ar":"قواعد البيانات","nodes":[{"id":"sql","en":"SQL & PostgreSQL","ar":"SQL و PostgreSQL","type":"primary","note_en":"","note_ar":"","resources":[{"url":"https://www.postgresql.org/docs/","title":"PostgreSQL Docs"}]},{"id":"modeling","en":"Data modeling & normalization","ar":"نمذجة البيانات","type":"primary","note_en":"","note_ar":"","resources":[]},{"id":"index","en":"Indexes & query plans","ar":"الفهارس وخطط الاستعلام","type":"primary","note_en":"","note_ar":"","resources":[]},{"id":"tx","en":"Transactions & ACID","ar":"المعاملات و ACID","type":"primary","note_en":"","note_ar":"","resources":[]},{"id":"nosql","en":"NoSQL (Mongo, Redis)","ar":"قواعد NoSQL","type":"secondary","note_en":"","note_ar":"","resources":[]},{"id":"migrations","en":"Migrations","ar":"الترحيلات","type":"primary","note_en":"","note_ar":"","resources":[]}]},{"en":"Security","ar":"الأمن","nodes":[{"id":"authn","en":"Authentication (JWT, OAuth2)","ar":"المصادقة","type":"primary","note_en":"","note_ar":"","resources":[]},{"id":"authz","en":"Authorization & RBAC/RLS","ar":"الصلاحيات","type":"primary","note_en":"","note_ar":"","resources":[]},{"id":"owasp","en":"OWASP Top 10","ar":"أهم 10 ثغرات","type":"primary","note_en":"","note_ar":"","resources":[{"url":"https://owasp.org/www-project-top-ten/","title":"OWASP Top 10"}]},{"id":"secrets","en":"Secrets management","ar":"إدارة الأسرار","type":"primary","note_en":"","note_ar":"","resources":[]},{"id":"rate","en":"Rate limiting","ar":"تحديد المعدل","type":"secondary","note_en":"","note_ar":"","resources":[]}]},{"en":"Scale & Architecture","ar":"التوسّع والمعمارية","nodes":[{"id":"cache","en":"Caching strategies","ar":"استراتيجيات الكاش","type":"primary","note_en":"","note_ar":"","resources":[]},{"id":"queue","en":"Queues & background jobs","ar":"الطوابير والمهام الخلفية","type":"primary","note_en":"","note_ar":"","resources":[]},{"id":"micro","en":"Monolith vs microservices","ar":"المعمارية","type":"primary","note_en":"","note_ar":"","resources":[]},{"id":"events","en":"Event-driven design","ar":"المعمارية المعتمدة على الأحداث","type":"secondary","note_en":"","note_ar":"","resources":[]},{"id":"scaling","en":"Horizontal scaling & LB","ar":"التوسع الأفقي","type":"primary","note_en":"","note_ar":"","resources":[]}]},{"en":"Operations","ar":"التشغيل","nodes":[{"id":"docker","en":"Docker","ar":"دوكر","type":"primary","note_en":"","note_ar":"","resources":[{"url":"https://docs.docker.com/get-started/","title":"Docker Docs"}]},{"id":"cicd","en":"CI/CD pipelines","ar":"خطوط التسليم","type":"primary","note_en":"","note_ar":"","resources":[]},{"id":"obs","en":"Logging, metrics, tracing","ar":"المراقبة والتتبع","type":"primary","note_en":"","note_ar":"","resources":[]},{"id":"testing-b","en":"Unit & integration tests","ar":"الاختبارات","type":"primary","note_en":"","note_ar":"","resources":[]},{"id":"cloud","en":"Cloud (AWS / Cloudflare)","ar":"السحابة","type":"secondary","note_en":"","note_ar":"","resources":[]}]}],"total":31}
+{
+ "slug": "backend",
+ "en": "Backend Developer",
+ "ar": "مطوّر الواجهات الخلفية",
+ "desc_en": "The complete backend track: internet fundamentals, languages, databases, APIs, caching, security, architecture and scale.",
+ "desc_ar": "المسار الكامل للواجهات الخلفية: أساسيات الإنترنت، اللغات، قواعد البيانات، الـAPIs، الكاش، الأمن، المعمارية والتوسّع.",
+ "color": "#10b981",
+ "icon": "🛠️",
+ "groups": [
+  {
+   "en": "Internet Fundamentals",
+   "ar": "أساسيات الإنترنت",
+   "nodes": [
+    {
+     "id": "backend-how-internet",
+     "en": "How does the internet work?",
+     "ar": "كيف يعمل الإنترنت؟",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "backend-http",
+     "en": "What is HTTP?",
+     "ar": "ما هو HTTP؟",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "backend-domain",
+     "en": "What is a domain name?",
+     "ar": "ما هو اسم النطاق؟",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "backend-hosting",
+     "en": "What is hosting?",
+     "ar": "ما هي الاستضافة؟",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "backend-dns",
+     "en": "DNS and how it works",
+     "ar": "نظام أسماء النطاقات وكيف يعمل",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "backend-browsers",
+     "en": "Browsers and how they work",
+     "ar": "المتصفحات وكيف تعمل",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "backend-frontend-basics",
+     "en": "Frontend basics: HTML, CSS, JavaScript",
+     "ar": "أساسيات الواجهة: HTML و CSS و JavaScript",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    }
+   ]
+  },
+  {
+   "en": "Pick a Backend Language",
+   "ar": "اختر لغة خلفية",
+   "nodes": [
+    {
+     "id": "backend-python",
+     "en": "Python",
+     "ar": "بايثون",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "backend-javascript",
+     "en": "JavaScript / Node.js",
+     "ar": "جافاسكربت / Node.js",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "backend-go",
+     "en": "Go",
+     "ar": "لغة Go",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "backend-java",
+     "en": "Java",
+     "ar": "جافا",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "backend-csharp",
+     "en": "C#",
+     "ar": "سي شارب",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "backend-php",
+     "en": "PHP",
+     "ar": "بي إتش بي",
+     "type": "optional",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "backend-rust",
+     "en": "Rust",
+     "ar": "رَست",
+     "type": "optional",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "backend-ruby",
+     "en": "Ruby",
+     "ar": "روبي",
+     "type": "optional",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "backend-practice",
+     "en": "Build many projects in one language first",
+     "ar": "أتقن لغة واحدة وابنِ بها مشاريع كثيرة أولاً",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    }
+   ]
+  },
+  {
+   "en": "Version Control",
+   "ar": "إدارة الإصدارات",
+   "nodes": [
+    {
+     "id": "backend-git",
+     "en": "Git",
+     "ar": "جِت",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "backend-github",
+     "en": "GitHub",
+     "ar": "جيت هَب",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "backend-gitlab",
+     "en": "GitLab",
+     "ar": "جيت لاب",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "backend-code-review",
+     "en": "Branching strategy & code review",
+     "ar": "استراتيجية الفروع ومراجعة الكود",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    }
+   ]
+  },
+  {
+   "en": "Databases",
+   "ar": "قواعد البيانات",
+   "nodes": [
+    {
+     "id": "backend-postgres",
+     "en": "PostgreSQL",
+     "ar": "بوستجريس",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "backend-mysql",
+     "en": "MySQL / MariaDB",
+     "ar": "ماي إس كيو إل / ماريا دي بي",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "backend-mssql",
+     "en": "MS SQL / Oracle",
+     "ar": "إم إس إس كيو إل / أوراكل",
+     "type": "optional",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "backend-mongodb",
+     "en": "MongoDB / CouchDB (document)",
+     "ar": "MongoDB / CouchDB (مستندية)",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "backend-redis-db",
+     "en": "Redis / DynamoDB (key-value)",
+     "ar": "Redis / DynamoDB (مفتاح-قيمة)",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "backend-cassandra",
+     "en": "Cassandra / ClickHouse (column)",
+     "ar": "Cassandra / ClickHouse (عمودية)",
+     "type": "optional",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "backend-neo4j",
+     "en": "Neo4j / DGraph (graph)",
+     "ar": "Neo4j / DGraph (رسم بياني)",
+     "type": "optional",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "backend-timeseries",
+     "en": "InfluxDB / TimescaleDB (time series)",
+     "ar": "InfluxDB / TimescaleDB (سلاسل زمنية)",
+     "type": "optional",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "backend-orm",
+     "en": "ORMs & query builders",
+     "ar": "أدوات ORM وبناء الاستعلامات",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "backend-normalization",
+     "en": "Normalization & data modeling",
+     "ar": "التطبيع ونمذجة البيانات",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "backend-acid",
+     "en": "ACID & transactions",
+     "ar": "ACID والمعاملات",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "backend-indexes",
+     "en": "Indexes & query plans",
+     "ar": "الفهارس وخطط الاستعلام",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "backend-n1",
+     "en": "N+1 problem & profiling",
+     "ar": "مشكلة N+1 وتحليل الأداء",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "backend-migrations",
+     "en": "Migrations",
+     "ar": "الترحيلات",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "backend-replication",
+     "en": "Replication & sharding",
+     "ar": "النسخ والتقسيم",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "backend-cap",
+     "en": "CAP theorem & failure modes",
+     "ar": "نظرية CAP وأنماط الفشل",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    }
+   ]
+  },
+  {
+   "en": "APIs",
+   "ar": "واجهات البرمجة",
+   "nodes": [
+    {
+     "id": "backend-rest",
+     "en": "REST",
+     "ar": "REST",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "backend-json-api",
+     "en": "JSON APIs",
+     "ar": "واجهات JSON",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "backend-openapi",
+     "en": "OpenAPI specs & docs",
+     "ar": "توثيق OpenAPI",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "backend-graphql",
+     "en": "GraphQL",
+     "ar": "جراف كيو إل",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "backend-grpc",
+     "en": "gRPC",
+     "ar": "جي آر بي سي",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "backend-soap",
+     "en": "SOAP",
+     "ar": "صابون SOAP",
+     "type": "optional",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "backend-api-sec",
+     "en": "API security best practices",
+     "ar": "أفضل ممارسات أمن الـAPI",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    }
+   ]
+  },
+  {
+   "en": "Authentication & Security",
+   "ar": "المصادقة والأمن",
+   "nodes": [
+    {
+     "id": "backend-authn",
+     "en": "Authentication fundamentals",
+     "ar": "أساسيات المصادقة",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "backend-jwt",
+     "en": "JWT",
+     "ar": "رموز JWT",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "backend-oauth",
+     "en": "OAuth 2.0 / OpenID",
+     "ar": "OAuth 2.0 / OpenID",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "backend-cookie-auth",
+     "en": "Cookie & token based auth",
+     "ar": "المصادقة بالكوكيز والتوكن",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "backend-saml",
+     "en": "SAML",
+     "ar": "ساml",
+     "type": "optional",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "backend-hashing",
+     "en": "Hashing: bcrypt, scrypt, SHA",
+     "ar": "التجزئة: bcrypt و scrypt و SHA",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "backend-https",
+     "en": "HTTPS & SSL/TLS",
+     "ar": "HTTPS و SSL/TLS",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "backend-cors",
+     "en": "CORS & CSP",
+     "ar": "CORS و CSP",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "backend-owasp",
+     "en": "OWASP Top 10 risks",
+     "ar": "أهم 10 مخاطر OWASP",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "backend-server-sec",
+     "en": "Server hardening",
+     "ar": "تحصين الخوادم",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    }
+   ]
+  },
+  {
+   "en": "Caching & Real-Time",
+   "ar": "الكاش والزمن الحقيقي",
+   "nodes": [
+    {
+     "id": "backend-http-cache",
+     "en": "HTTP caching",
+     "ar": "كاش HTTP",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "backend-redis",
+     "en": "Redis",
+     "ar": "ريديس",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "backend-memcached",
+     "en": "Memcached",
+     "ar": "ممكاشد",
+     "type": "optional",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "backend-cdn",
+     "en": "CDN caching",
+     "ar": "كاش شبكات التوزيع",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "backend-websockets",
+     "en": "WebSockets",
+     "ar": "ويب سوكِت",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "backend-sse",
+     "en": "Server-Sent Events",
+     "ar": "الأحداث المرسلة من الخادم",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "backend-polling",
+     "en": "Long / short polling",
+     "ar": "الاستطلاع الطويل والقصير",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    }
+   ]
+  },
+  {
+   "en": "Testing & Delivery",
+   "ar": "الاختبار والنشر",
+   "nodes": [
+    {
+     "id": "backend-unit",
+     "en": "Unit testing",
+     "ar": "اختبار الوحدات",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "backend-integration",
+     "en": "Integration testing",
+     "ar": "اختبار التكامل",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "backend-functional",
+     "en": "Functional / E2E testing",
+     "ar": "الاختبار الوظيفي والشامل",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "backend-cicd",
+     "en": "CI / CD pipelines",
+     "ar": "خطوط CI/CD",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "backend-docker",
+     "en": "Docker & containers",
+     "ar": "دوكر والحاويات",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "backend-k8s",
+     "en": "Kubernetes",
+     "ar": "كوبرنيتيس",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "backend-ops",
+     "en": "Basic operations skills",
+     "ar": "مهارات التشغيل الأساسية",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    }
+   ]
+  },
+  {
+   "en": "Architecture & Scale",
+   "ar": "المعمارية والتوسّع",
+   "nodes": [
+    {
+     "id": "backend-monolith",
+     "en": "Monolith first",
+     "ar": "ابدأ بالمعمارية الأحادية",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "backend-microservices",
+     "en": "Microservices",
+     "ar": "الخدمات المصغّرة",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "backend-soa",
+     "en": "SOA & service mesh",
+     "ar": "SOA وشبكة الخدمات",
+     "type": "optional",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "backend-serverless",
+     "en": "Serverless",
+     "ar": "بدون خوادم",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "backend-twelve",
+     "en": "Twelve-factor apps",
+     "ar": "تطبيقات الاثني عشر عاملاً",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "backend-kafka",
+     "en": "Kafka / RabbitMQ message brokers",
+     "ar": "وسطاء الرسائل Kafka و RabbitMQ",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "backend-nginx",
+     "en": "Nginx / Caddy / Apache",
+     "ar": "Nginx و Caddy و Apache",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "backend-search",
+     "en": "Elasticsearch / Solr",
+     "ar": "محركات البحث Elasticsearch و Solr",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "backend-degradation",
+     "en": "Graceful degradation & throttling",
+     "ar": "التدهور الرشيق وتحديد المعدل",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "backend-circuit",
+     "en": "Circuit breaker & backpressure",
+     "ar": "قاطع الدائرة وضغط الرجوع",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "backend-observability",
+     "en": "Observability: metrics, logs, tracing",
+     "ar": "الرصد: المقاييس والسجلات والتتبع",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "backend-system-design",
+     "en": "System design",
+     "ar": "تصميم الأنظمة",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    }
+   ]
+  },
+  {
+   "en": "AI-Augmented Backend",
+   "ar": "الخلفية المعزّزة بالذكاء الاصطناعي",
+   "nodes": [
+    {
+     "id": "backend-llm-basics",
+     "en": "How LLMs work",
+     "ar": "كيف تعمل النماذج اللغوية",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "backend-copilot",
+     "en": "Copilot / Cursor / Claude Code",
+     "ar": "Copilot و Cursor و Claude Code",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "backend-ai-api",
+     "en": "Serving AI features from your API",
+     "ar": "تقديم مزايا الذكاء الاصطناعي عبر الـAPI",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    }
+   ]
+  }
+ ]
+}

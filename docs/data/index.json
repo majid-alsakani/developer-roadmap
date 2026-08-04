@@ -26,12 +26,12 @@
    "slug": "backend",
    "en": "Backend Developer",
    "ar": "مطوّر الواجهات الخلفية",
-   "desc_en": "From language fundamentals to scalable distributed systems.",
-   "desc_ar": "من أساسيات اللغة إلى الأنظمة الموزّعة القابلة للتوسّع.",
+   "desc_en": "The complete backend track: internet fundamentals, languages, databases, APIs, caching, security, architecture and scale.",
+   "desc_ar": "المسار الكامل للواجهات الخلفية: أساسيات الإنترنت، اللغات، قواعد البيانات، الـAPIs، الكاش، الأمن، المعمارية والتوسّع.",
    "color": "#10b981",
    "icon": "🛠️",
-   "groups": 6,
-   "nodes": 31
+   "groups": 10,
+   "nodes": 82
   },
   {
    "slug": "ai-engineer",
@@ -57,14 +57,14 @@
   },
   {
    "slug": "devops",
-   "en": "DevOps Engineer",
-   "ar": "مهندس DevOps",
-   "desc_en": "Automate, ship and operate reliable systems.",
-   "desc_ar": "الأتمتة والنشر وتشغيل أنظمة موثوقة.",
+   "en": "DevOps Engineer / SRE",
+   "ar": "مهندس DevOps والموثوقية",
+   "desc_en": "Automate, ship and operate reliable systems: Linux, networking, containers, IaC, CI/CD, observability and cloud.",
+   "desc_ar": "الأتمتة والنشر وتشغيل أنظمة موثوقة: لينكس، الشبكات، الحاويات، البنية ككود، CI/CD، الرصد، والسحابة.",
    "color": "#f97316",
    "icon": "⚙️",
-   "groups": 5,
-   "nodes": 20
+   "groups": 13,
+   "nodes": 86
   },
   {
    "slug": "fullstack",
@@ -98,6 +98,17 @@
    "icon": "📊",
    "groups": 4,
    "nodes": 18
+  },
+  {
+   "slug": "android",
+   "en": "Android Developer",
+   "ar": "مطوّر أندرويد",
+   "desc_en": "Native Android with Kotlin: components, Jetpack Compose, architecture, storage, networking, testing and distribution.",
+   "desc_ar": "أندرويد الأصلي بلغة Kotlin: المكوّنات، Jetpack Compose، المعمارية، التخزين، الشبكات، الاختبار والنشر.",
+   "color": "#22c55e",
+   "icon": "🤖",
+   "groups": 11,
+   "nodes": 68
   }
  ],
  "author": {

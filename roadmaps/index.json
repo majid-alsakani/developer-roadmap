@@ -1,74 +1,82 @@
 [
-  {
-    "slug": "professional",
-    "en": "Professional Software Engineer",
-    "ar": "المبرمج المحترف",
-    "icon": "🏆",
-    "desc_en": "The senior track: engineering mindset, clean architecture, testing, security, DevOps, AI-augmented workflow and career growth.",
-    "desc_ar": "المسار الاحترافي: عقلية الهندسة، البنية النظيفة، الاختبار، الأمان، DevOps، العمل مع الذكاء الاصطناعي، والنمو المهني."
-  },
-  {
-    "slug": "frontend",
-    "en": "Frontend Developer",
-    "ar": "مطور الواجهات الأمامية",
-    "icon": "🎨",
-    "desc_en": "From HTML fundamentals to production-grade React architecture.",
-    "desc_ar": "من أساسيات HTML إلى معمارية React جاهزة للإنتاج."
-  },
-  {
-    "slug": "backend",
-    "en": "Backend Developer",
-    "ar": "مطور الواجهات الخلفية",
-    "icon": "🛠️",
-    "desc_en": "APIs, databases, queues and distributed systems done properly.",
-    "desc_ar": "واجهات برمجية وقواعد بيانات وطوابير وأنظمة موزعة بشكل صحيح."
-  },
-  {
-    "slug": "python",
-    "en": "Python Engineer",
-    "ar": "مهندس بايثون",
-    "icon": "🐍",
-    "desc_en": "Modern Python: typing, async, packaging and performance.",
-    "desc_ar": "بايثون الحديثة: الأنواع، التزامن، التغليف والأداء."
-  },
-  {
-    "slug": "devops",
-    "en": "DevOps / SRE",
-    "ar": "هندسة العمليات والموثوقية",
-    "icon": "⚙️",
-    "desc_en": "Ship safely, observe everything, automate the boring parts.",
-    "desc_ar": "نشر آمن، مراقبة شاملة، وأتمتة كل ما هو ممل."
-  },
-  {
-    "slug": "ai-engineer",
-    "en": "AI / Agents Engineer",
-    "ar": "مهندس الذكاء الاصطناعي والوكلاء",
-    "icon": "🤖",
-    "desc_en": "From prompts to production agents with tools, memory and evals.",
-    "desc_ar": "من التلقين إلى وكلاء إنتاجيين بأدوات وذاكرة وتقييم."
-  },
-  {
-    "slug": "fullstack",
-    "en": "Full Stack Developer",
-    "ar": "مطور متكامل",
-    "icon": "🚀",
-    "desc_en": "One person, one product: frontend, backend, data and delivery.",
-    "desc_ar": "شخص واحد، منتج كامل: واجهة وخلفية وبيانات ونشر."
-  },
-  {
-    "slug": "mobile",
-    "en": "Mobile Developer",
-    "ar": "مطور تطبيقات الجوال",
-    "icon": "📱",
-    "desc_en": "Cross-platform apps that feel native on both stores.",
-    "desc_ar": "تطبيقات متعددة المنصات بإحساس أصلي على المتجرين."
-  },
-  {
-    "slug": "data",
-    "en": "Data Engineer",
-    "ar": "مهندس البيانات",
-    "icon": "📊",
-    "desc_en": "Reliable pipelines, modeled warehouses, trusted metrics.",
-    "desc_ar": "خطوط بيانات موثوقة ومستودعات منمذجة ومؤشرات جديرة بالثقة."
-  }
+ {
+  "slug": "professional",
+  "en": "Professional Software Engineer",
+  "ar": "المبرمج المحترف",
+  "icon": "🏆",
+  "desc_en": "The senior track: engineering mindset, clean architecture, testing, security, DevOps, AI-augmented workflow and career growth.",
+  "desc_ar": "المسار الاحترافي: عقلية الهندسة، البنية النظيفة، الاختبار، الأمان، DevOps، العمل مع الذكاء الاصطناعي، والنمو المهني."
+ },
+ {
+  "slug": "frontend",
+  "en": "Frontend Developer",
+  "ar": "مطور الواجهات الأمامية",
+  "icon": "🎨",
+  "desc_en": "From HTML fundamentals to production-grade React architecture.",
+  "desc_ar": "من أساسيات HTML إلى معمارية React جاهزة للإنتاج."
+ },
+ {
+  "slug": "backend",
+  "en": "Backend Developer",
+  "ar": "مطوّر الواجهات الخلفية",
+  "icon": "🛠️",
+  "desc_en": "The complete backend track: internet fundamentals, languages, databases, APIs, caching, security, architecture and scale.",
+  "desc_ar": "المسار الكامل للواجهات الخلفية: أساسيات الإنترنت، اللغات، قواعد البيانات، الـAPIs، الكاش، الأمن، المعمارية والتوسّع."
+ },
+ {
+  "slug": "python",
+  "en": "Python Engineer",
+  "ar": "مهندس بايثون",
+  "icon": "🐍",
+  "desc_en": "Modern Python: typing, async, packaging and performance.",
+  "desc_ar": "بايثون الحديثة: الأنواع، التزامن، التغليف والأداء."
+ },
+ {
+  "slug": "devops",
+  "en": "DevOps Engineer / SRE",
+  "ar": "مهندس DevOps والموثوقية",
+  "icon": "⚙️",
+  "desc_en": "Automate, ship and operate reliable systems: Linux, networking, containers, IaC, CI/CD, observability and cloud.",
+  "desc_ar": "الأتمتة والنشر وتشغيل أنظمة موثوقة: لينكس، الشبكات، الحاويات، البنية ككود، CI/CD، الرصد، والسحابة."
+ },
+ {
+  "slug": "ai-engineer",
+  "en": "AI / Agents Engineer",
+  "ar": "مهندس الذكاء الاصطناعي والوكلاء",
+  "icon": "🤖",
+  "desc_en": "From prompts to production agents with tools, memory and evals.",
+  "desc_ar": "من التلقين إلى وكلاء إنتاجيين بأدوات وذاكرة وتقييم."
+ },
+ {
+  "slug": "fullstack",
+  "en": "Full Stack Developer",
+  "ar": "مطور متكامل",
+  "icon": "🚀",
+  "desc_en": "One person, one product: frontend, backend, data and delivery.",
+  "desc_ar": "شخص واحد، منتج كامل: واجهة وخلفية وبيانات ونشر."
+ },
+ {
+  "slug": "mobile",
+  "en": "Mobile Developer",
+  "ar": "مطور تطبيقات الجوال",
+  "icon": "📱",
+  "desc_en": "Cross-platform apps that feel native on both stores.",
+  "desc_ar": "تطبيقات متعددة المنصات بإحساس أصلي على المتجرين."
+ },
+ {
+  "slug": "data",
+  "en": "Data Engineer",
+  "ar": "مهندس البيانات",
+  "icon": "📊",
+  "desc_en": "Reliable pipelines, modeled warehouses, trusted metrics.",
+  "desc_ar": "خطوط بيانات موثوقة ومستودعات منمذجة ومؤشرات جديرة بالثقة."
+ },
+ {
+  "slug": "android",
+  "en": "Android Developer",
+  "ar": "مطوّر أندرويد",
+  "icon": "🤖",
+  "desc_en": "Native Android with Kotlin: components, Jetpack Compose, architecture, storage, networking, testing and distribution.",
+  "desc_ar": "أندرويد الأصلي بلغة Kotlin: المكوّنات، Jetpack Compose، المعمارية، التخزين، الشبكات، الاختبار والنشر."
+ }
 ]

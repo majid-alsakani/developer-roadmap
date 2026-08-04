@@ -1,1 +1,863 @@
-{"slug":"devops","en":"DevOps Engineer","ar":"مهندس DevOps","desc_en":"Automate, ship and operate reliable systems.","desc_ar":"الأتمتة والنشر وتشغيل أنظمة موثوقة.","color":"#f97316","icon":"⚙️","groups":[{"en":"Systems","ar":"الأنظمة","nodes":[{"id":"linux","en":"Linux administration","ar":"إدارة لينكس","type":"primary","note_en":"","note_ar":"","resources":[]},{"id":"bash","en":"Bash scripting","ar":"سكربتات باش","type":"primary","note_en":"","note_ar":"","resources":[]},{"id":"net-do","en":"Networking (DNS, TLS, HTTP)","ar":"الشبكات","type":"primary","note_en":"","note_ar":"","resources":[]},{"id":"ssh","en":"SSH & key management","ar":"SSH وإدارة المفاتيح","type":"primary","note_en":"","note_ar":"","resources":[]}]},{"en":"Containers","ar":"الحاويات","nodes":[{"id":"docker-do","en":"Docker & images","ar":"دوكر والصور","type":"primary","note_en":"","note_ar":"","resources":[]},{"id":"compose","en":"docker compose","ar":"تشغيل متعدد الحاويات","type":"primary","note_en":"","note_ar":"","resources":[]},{"id":"k8s","en":"Kubernetes","ar":"كوبرنيتس","type":"secondary","note_en":"","note_ar":"","resources":[{"url":"https://kubernetes.io/docs/home/","title":"K8s Docs"}]},{"id":"registry-do","en":"Registries & supply chain","ar":"السجلات وسلسلة التوريد","type":"optional","note_en":"","note_ar":"","resources":[]}]},{"en":"Automation","ar":"الأتمتة","nodes":[{"id":"iac","en":"Terraform / IaC","ar":"البنية ككود","type":"primary","note_en":"","note_ar":"","resources":[]},{"id":"gha","en":"GitHub Actions","ar":"أتمتة GitHub","type":"primary","note_en":"","note_ar":"","resources":[]},{"id":"ansible","en":"Ansible","ar":"أنسيبل","type":"optional","note_en":"","note_ar":"","resources":[]},{"id":"gitops","en":"GitOps","ar":"GitOps","type":"secondary","note_en":"","note_ar":"","resources":[]}]},{"en":"Reliability","ar":"الموثوقية","nodes":[{"id":"mon","en":"Prometheus & Grafana","ar":"المراقبة والرسوم","type":"primary","note_en":"","note_ar":"","resources":[]},{"id":"logs","en":"Centralized logging","ar":"السجلات المركزية","type":"primary","note_en":"","note_ar":"","resources":[]},{"id":"slo","en":"SLO / SLI / error budgets","ar":"مؤشرات الخدمة","type":"primary","note_en":"","note_ar":"","resources":[]},{"id":"incident","en":"Incident response & postmortems","ar":"إدارة الحوادث","type":"primary","note_en":"","note_ar":"","resources":[]},{"id":"backup","en":"Backups & DR","ar":"النسخ والتعافي","type":"primary","note_en":"","note_ar":"","resources":[]}]},{"en":"Security","ar":"الأمن","nodes":[{"id":"secrets-do","en":"Secrets & vaults","ar":"إدارة الأسرار","type":"primary","note_en":"","note_ar":"","resources":[]},{"id":"scan","en":"Dependency & image scanning","ar":"فحص الاعتماديات","type":"primary","note_en":"","note_ar":"","resources":[]},{"id":"least","en":"Least privilege & IAM","ar":"أقل الصلاحيات","type":"primary","note_en":"","note_ar":"","resources":[]}]}],"total":20}
+{
+ "slug": "devops",
+ "en": "DevOps Engineer / SRE",
+ "ar": "مهندس DevOps والموثوقية",
+ "desc_en": "Automate, ship and operate reliable systems: Linux, networking, containers, IaC, CI/CD, observability and cloud.",
+ "desc_ar": "الأتمتة والنشر وتشغيل أنظمة موثوقة: لينكس، الشبكات، الحاويات، البنية ككود، CI/CD، الرصد، والسحابة.",
+ "color": "#f97316",
+ "icon": "⚙️",
+ "groups": [
+  {
+   "en": "Programming Language",
+   "ar": "لغة برمجة",
+   "nodes": [
+    {
+     "id": "devops-python",
+     "en": "Python",
+     "ar": "بايثون",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-go",
+     "en": "Go",
+     "ar": "لغة Go",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-nodejs",
+     "en": "JavaScript / Node.js",
+     "ar": "جافاسكربت / Node.js",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-ruby",
+     "en": "Ruby",
+     "ar": "روبي",
+     "type": "optional",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-rust",
+     "en": "Rust",
+     "ar": "رَست",
+     "type": "optional",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    }
+   ]
+  },
+  {
+   "en": "Operating Systems",
+   "ar": "أنظمة التشغيل",
+   "nodes": [
+    {
+     "id": "devops-ubuntu",
+     "en": "Ubuntu / Debian",
+     "ar": "أوبنتو / ديبيان",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-rhel",
+     "en": "RHEL & derivatives",
+     "ar": "ريدهات ومشتقاتها",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-suse",
+     "en": "SUSE Linux",
+     "ar": "سوزي لينكس",
+     "type": "optional",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-bsd",
+     "en": "FreeBSD / OpenBSD / NetBSD",
+     "ar": "أنظمة BSD",
+     "type": "optional",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-windows",
+     "en": "Windows Server",
+     "ar": "ويندوز سيرفر",
+     "type": "optional",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-os-concepts",
+     "en": "Processes, memory, filesystems, permissions",
+     "ar": "العمليات والذاكرة وأنظمة الملفات والصلاحيات",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    }
+   ]
+  },
+  {
+   "en": "Terminal & Scripting",
+   "ar": "الطرفية والبرمجة النصية",
+   "nodes": [
+    {
+     "id": "devops-bash",
+     "en": "Bash scripting",
+     "ar": "سكربتات Bash",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-powershell",
+     "en": "PowerShell",
+     "ar": "باور شل",
+     "type": "optional",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-text",
+     "en": "Text manipulation: grep, sed, awk",
+     "ar": "معالجة النصوص: grep و sed و awk",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-proc-mon",
+     "en": "Process monitoring",
+     "ar": "مراقبة العمليات",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-perf-mon",
+     "en": "Performance monitoring",
+     "ar": "مراقبة الأداء",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-net-tools",
+     "en": "Networking tools: dig, curl, ss, tcpdump",
+     "ar": "أدوات الشبكة: dig و curl و ss و tcpdump",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-editors",
+     "en": "Vim / Nano / Emacs",
+     "ar": "محررات Vim و Nano و Emacs",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    }
+   ]
+  },
+  {
+   "en": "Version Control",
+   "ar": "إدارة الإصدارات",
+   "nodes": [
+    {
+     "id": "devops-git",
+     "en": "Git",
+     "ar": "جِت",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-github",
+     "en": "GitHub",
+     "ar": "جيت هَب",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-gitlab",
+     "en": "GitLab",
+     "ar": "جيت لاب",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-bitbucket",
+     "en": "Bitbucket",
+     "ar": "بِت بَكِت",
+     "type": "optional",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    }
+   ]
+  },
+  {
+   "en": "Networking & Protocols",
+   "ar": "الشبكات والبروتوكولات",
+   "nodes": [
+    {
+     "id": "devops-osi",
+     "en": "OSI model",
+     "ar": "نموذج OSI",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-dns",
+     "en": "DNS",
+     "ar": "نظام أسماء النطاقات",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-http",
+     "en": "HTTP / HTTPS",
+     "ar": "HTTP و HTTPS",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-ssl",
+     "en": "SSL / TLS certificates",
+     "ar": "شهادات SSL/TLS",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-ssh",
+     "en": "SSH",
+     "ar": "الاتصال الآمن SSH",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-ftp",
+     "en": "FTP / SFTP",
+     "ar": "نقل الملفات FTP/SFTP",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-email",
+     "en": "SMTP, IMAP, POP3S, SPF, DKIM, DMARC",
+     "ar": "بروتوكولات البريد: SMTP و IMAP و SPF و DMARC",
+     "type": "optional",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    }
+   ]
+  },
+  {
+   "en": "Web Servers & Proxies",
+   "ar": "خوادم الويب والوسطاء",
+   "nodes": [
+    {
+     "id": "devops-nginx",
+     "en": "Nginx",
+     "ar": "إن جينكس",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-caddy",
+     "en": "Caddy",
+     "ar": "كادي",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-apache",
+     "en": "Apache",
+     "ar": "أباتشي",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-tomcat",
+     "en": "Tomcat / IIS",
+     "ar": "توم كات / IIS",
+     "type": "optional",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-reverse",
+     "en": "Reverse proxy",
+     "ar": "الوكيل العكسي",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-forward",
+     "en": "Forward proxy",
+     "ar": "الوكيل الأمامي",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-lb",
+     "en": "Load balancer",
+     "ar": "موزّع الأحمال",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-cache-server",
+     "en": "Caching server",
+     "ar": "خادم الكاش",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-firewall",
+     "en": "Firewall",
+     "ar": "الجدار الناري",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    }
+   ]
+  },
+  {
+   "en": "Containers & Orchestration",
+   "ar": "الحاويات والتنسيق",
+   "nodes": [
+    {
+     "id": "devops-docker",
+     "en": "Docker",
+     "ar": "دوكر",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-lxc",
+     "en": "LXC",
+     "ar": "حاويات LXC",
+     "type": "optional",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-k8s",
+     "en": "Kubernetes",
+     "ar": "كوبرنيتيس",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-eks",
+     "en": "GKE / EKS / AKS",
+     "ar": "الخدمات المُدارة GKE و EKS و AKS",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-ecs",
+     "en": "AWS ECS / Fargate",
+     "ar": "AWS ECS و Fargate",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-swarm",
+     "en": "Docker Swarm",
+     "ar": "دوكر سوارم",
+     "type": "optional",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-openshift",
+     "en": "OpenShift",
+     "ar": "أوبن شِفت",
+     "type": "optional",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    }
+   ]
+  },
+  {
+   "en": "Cloud & Serverless",
+   "ar": "السحابة وبدون خوادم",
+   "nodes": [
+    {
+     "id": "devops-aws",
+     "en": "AWS",
+     "ar": "أمازون AWS",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-azure",
+     "en": "Azure",
+     "ar": "أزور",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-gcp",
+     "en": "Google Cloud",
+     "ar": "جوجل كلاود",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-do",
+     "en": "Digital Ocean / Hetzner",
+     "ar": "ديجيتال أوشن / هتزنر",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-lambda",
+     "en": "AWS Lambda / Azure & GCP Functions",
+     "ar": "دوال AWS Lambda و Azure و GCP",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-edge",
+     "en": "Cloudflare Workers / Vercel / Netlify",
+     "ar": "Cloudflare Workers و Vercel و Netlify",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-railway",
+     "en": "Render / Railway / Heroku",
+     "ar": "Render و Railway و Heroku",
+     "type": "optional",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    }
+   ]
+  },
+  {
+   "en": "Infrastructure as Code",
+   "ar": "البنية التحتية ككود",
+   "nodes": [
+    {
+     "id": "devops-terraform",
+     "en": "Terraform",
+     "ar": "تيرافورم",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-pulumi",
+     "en": "Pulumi",
+     "ar": "بولومي",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-cdk",
+     "en": "AWS CDK / CloudFormation",
+     "ar": "AWS CDK و CloudFormation",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-ansible",
+     "en": "Ansible",
+     "ar": "أنسِبل",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-chef",
+     "en": "Chef / Puppet / Salt",
+     "ar": "Chef و Puppet و Salt",
+     "type": "optional",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    }
+   ]
+  },
+  {
+   "en": "CI/CD & GitOps",
+   "ar": "التكامل والنشر المستمر",
+   "nodes": [
+    {
+     "id": "devops-gha",
+     "en": "GitHub Actions",
+     "ar": "GitHub Actions",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-gitlabci",
+     "en": "GitLab CI",
+     "ar": "GitLab CI",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-jenkins",
+     "en": "Jenkins",
+     "ar": "جِنكِنز",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-circleci",
+     "en": "Circle CI / TeamCity / Buildkite",
+     "ar": "Circle CI و TeamCity و Buildkite",
+     "type": "optional",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-argocd",
+     "en": "ArgoCD",
+     "ar": "أرجو سي دي",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-fluxcd",
+     "en": "FluxCD",
+     "ar": "فلَكس سي دي",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-artifacts",
+     "en": "Artifactory / Nexus / Cloudsmith",
+     "ar": "إدارة الحزم: Artifactory و Nexus",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    }
+   ]
+  },
+  {
+   "en": "Secrets & Security",
+   "ar": "الأسرار والأمن",
+   "nodes": [
+    {
+     "id": "devops-vault",
+     "en": "HashiCorp Vault",
+     "ar": "خزنة Vault",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-sealed",
+     "en": "Sealed Secrets / ESO",
+     "ar": "Sealed Secrets و ESO",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-sops",
+     "en": "SOPS",
+     "ar": "سوبس SOPS",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-cloud-secrets",
+     "en": "Cloud-native secret managers",
+     "ar": "مديرو الأسرار السحابيون",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-least-priv",
+     "en": "Least privilege & IAM",
+     "ar": "أقل صلاحية وإدارة الهويات",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    }
+   ]
+  },
+  {
+   "en": "Observability",
+   "ar": "الرصد والمراقبة",
+   "nodes": [
+    {
+     "id": "devops-prometheus",
+     "en": "Prometheus",
+     "ar": "بروميثيوس",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-grafana",
+     "en": "Grafana",
+     "ar": "جرافانا",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-otel",
+     "en": "OpenTelemetry",
+     "ar": "أوبن تيليمتري",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-jaeger",
+     "en": "Jaeger tracing",
+     "ar": "تتبع Jaeger",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-loki",
+     "en": "Loki",
+     "ar": "لوكي",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-elk",
+     "en": "Elastic Stack / Graylog",
+     "ar": "Elastic Stack و Graylog",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-splunk",
+     "en": "Splunk / Papertrail",
+     "ar": "Splunk و Papertrail",
+     "type": "optional",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-datadog",
+     "en": "Datadog / New Relic / Dynatrace",
+     "ar": "Datadog و New Relic و Dynatrace",
+     "type": "optional",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-zabbix",
+     "en": "Zabbix",
+     "ar": "زابكس",
+     "type": "optional",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-slo",
+     "en": "SLI / SLO / error budgets",
+     "ar": "مؤشرات وأهداف الخدمة وميزانية الأخطاء",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    }
+   ]
+  },
+  {
+   "en": "Reliability & Design",
+   "ar": "الموثوقية والتصميم",
+   "nodes": [
+    {
+     "id": "devops-mesh",
+     "en": "Service mesh: Istio, Linkerd, Consul, Envoy",
+     "ar": "شبكة الخدمات: Istio و Linkerd و Consul",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-availability",
+     "en": "Availability patterns",
+     "ar": "أنماط التوافرية",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-data-mgmt",
+     "en": "Data management patterns",
+     "ar": "أنماط إدارة البيانات",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-impl",
+     "en": "Design & implementation patterns",
+     "ar": "أنماط التصميم والتنفيذ",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-mgmt-mon",
+     "en": "Management & monitoring patterns",
+     "ar": "أنماط الإدارة والمراقبة",
+     "type": "secondary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-incident",
+     "en": "Incident response & postmortems",
+     "ar": "الاستجابة للحوادث والتحليل اللاحق",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    },
+    {
+     "id": "devops-dr",
+     "en": "Backups & disaster recovery",
+     "ar": "النسخ الاحتياطي والتعافي من الكوارث",
+     "type": "primary",
+     "note_en": "",
+     "note_ar": "",
+     "resources": []
+    }
+   ]
+  }
+ ]
+}

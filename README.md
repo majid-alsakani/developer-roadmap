@@ -140,6 +140,30 @@ Reliable pipelines, modeled warehouses, trusted metrics.
 
 </td>
 </tr>
+<tr>
+<td width="50%" valign="top">
+
+### 🤖 <a href="roadmaps/android.md">Android Developer</a>
+**مطوّر أندرويد**
+
+Native Android with Kotlin, Jetpack Compose and clean architecture.  
+أندرويد الأصلي بلغة Kotlin و Jetpack Compose ومعمارية نظيفة.
+
+[![Open](https://img.shields.io/badge/Open%20roadmap-1f6feb?style=flat-square&logo=github&logoColor=white)](roadmaps/android.md)
+
+</td>
+<td width="50%" valign="top">
+
+### 🏆 <a href="roadmaps/professional.md">Professional Software Engineer</a>
+**المبرمج المحترف**
+
+The senior track: architecture, testing, security, delivery and career growth.  
+المسار الاحترافي: المعمارية والاختبار والأمان والنشر والنمو المهني.
+
+[![Open](https://img.shields.io/badge/Open%20roadmap-1f6feb?style=flat-square&logo=github&logoColor=white)](roadmaps/professional.md)
+
+</td>
+</tr>
 </table>
 
 ---
@@ -161,6 +185,8 @@ graph TD
     FS --> Q5{Curious about LLMs & agents?}
     Q5 -- Yes --> AI[AI Engineer Roadmap]
     FE --> MB[Mobile Roadmap]
+    MB --> AND[Android Roadmap]
+    AI --> PRO[Professional Software Engineer]
 ```
 
 ---
@@ -230,8 +256,8 @@ Built and maintained by **[Majid Al-Sakani · ماجد السكني](https://git
 
 ## 🧭 Interactive Roadmap Engine · محرّك الخرائط التفاعلي
 
-> Inspired by the UX of roadmap.sh — rebuilt from scratch, bilingual (AR/EN), zero dependencies, no tracking.
-> مستوحى من تجربة roadmap.sh — مبني من الصفر، ثنائي اللغة، بدون أي مكتبات خارجية أو تتبّع.
+> Designed, written and engineered from scratch by **Majid Al-Sakani · ماجد السكني** — bilingual (AR/EN), zero dependencies, no tracking, no third-party content.
+> مصمَّمة ومكتوبة ومهندسة من الصفر بواسطة **ماجد السكني · Majid Al-Sakani** — ثنائية اللغة، بدون أي مكتبات خارجية، بدون تتبّع، وبدون أي محتوى منقول.
 
 **▶ افتح الخرائط التفاعلية / Open the interactive maps:** <https://majid-alsakani.github.io/developer-roadmap/>
 
@@ -251,15 +277,16 @@ Built and maintained by **[Majid Al-Sakani · ماجد السكني](https://git
 | # | Roadmap | الخريطة | Topics |
 |---|---|---|---|
 | 1 | [Frontend Developer](https://majid-alsakani.github.io/developer-roadmap/roadmap.html?r=frontend) | مطوّر الواجهات الأمامية | 31 |
-| 2 | [Backend Developer](https://majid-alsakani.github.io/developer-roadmap/roadmap.html?r=backend) | مطوّر الواجهات الخلفية | 30 |
+| 2 | [Backend Developer](https://majid-alsakani.github.io/developer-roadmap/roadmap.html?r=backend) | مطوّر الواجهات الخلفية | 82 |
 | 3 | [AI / Agents Engineer](https://majid-alsakani.github.io/developer-roadmap/roadmap.html?r=ai-engineer) | مهندس الذكاء الاصطناعي والوكلاء | 26 |
 | 4 | [Python Developer](https://majid-alsakani.github.io/developer-roadmap/roadmap.html?r=python) | مطوّر بايثون | 19 |
-| 5 | [DevOps Engineer](https://majid-alsakani.github.io/developer-roadmap/roadmap.html?r=devops) | مهندس DevOps | 21 |
+| 5 | [DevOps Engineer](https://majid-alsakani.github.io/developer-roadmap/roadmap.html?r=devops) | مهندس DevOps والموثوقية | 86 |
 | 6 | [Full Stack Developer](https://majid-alsakani.github.io/developer-roadmap/roadmap.html?r=fullstack) | مطوّر متكامل | 17 |
 | 7 | [Mobile Developer](https://majid-alsakani.github.io/developer-roadmap/roadmap.html?r=mobile) | مطوّر تطبيقات الجوال | 15 |
 | 8 | [Data Engineer](https://majid-alsakani.github.io/developer-roadmap/roadmap.html?r=data) | مهندس البيانات | 21 |
+| 9 | [Android Developer](https://majid-alsakani.github.io/developer-roadmap/roadmap.html?r=android) | مطوّر أندرويد | 68 |
 
-**Total: 8 roadmaps · 30 stages · 180 topics · 100% bilingual**
+**Total: 10 roadmaps · 70 stages · 410 topics · 100% bilingual**
 
 ```
 docs/
