@@ -6,7 +6,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Developer Roadmaps AR/EN — خرائط تعلّم البرمجة التفاعلية | Majid Al-Sakani ماجد السكني</title>
-<meta name="description" content="By Majid Al-Sakani (ماجد السكني) — 9 comprehensive interactive developer roadmaps in Arabic and English: Frontend, Backend, Python, DevOps, AI Agents, Full Stack, Mobile, Data Engineering — 225 topics with progress tracking and free curated resources." />
+<meta name="description" content="By Majid Al-Sakani (ماجد السكني) — 10 comprehensive interactive developer roadmaps in Arabic and English, covering frontend, backend, Python, DevOps, AI agents, full stack, mobile, data, Android and professional engineering, with progress tracking and free curated resources." />
 <meta name="keywords" content="developer roadmap, خريطة تعلم البرمجة, roadmap عربي, frontend roadmap, backend roadmap, AI engineer roadmap, python roadmap, devops roadmap, تعلم البرمجة بالعربي, Majid Al-Sakani, ماجد السكني, majid alsakani, مبرمج يمني, Yemen developer, professional software engineer roadmap, مسار المبرمج المحترف, senior engineer roadmap" />
 <meta name="author" content="Majid Al-Sakani — ماجد السكني" />
 <meta property="og:site_name" content="Developer Roadmaps by Majid Al-Sakani" />
@@ -18,10 +18,13 @@
 <link rel="canonical" href="https://majid-alsakani.github.io/developer-roadmap/" />
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Developer Roadmaps AR/EN — خرائط تعلّم البرمجة التفاعلية" />
-<meta property="og:description" content="8 interactive bilingual roadmaps · 180 topics · progress tracking · free curated resources." />
+<meta property="og:description" content="10 interactive bilingual roadmaps · 400+ topics · progress tracking · free curated resources." />
 <meta property="og:url" content="https://majid-alsakani.github.io/developer-roadmap/" />
 <meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" type="image/png" sizes="96x96" href="./favicon-96.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png" />
 <link rel="stylesheet" href="./assets/roadmap.css" />
+<link rel="stylesheet" href="./assets/roadmap-premium.css" />
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -135,24 +138,36 @@
 </head>
 <body>
 <header class="top"><div class="wrap topbar">
-  <a class="brand" href="./index.html">🗺️ Roadmaps</a>
+  <a class="brand" href="./index.html" aria-label="Developer Roadmaps by Majid Al-Sakani">
+    <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none"><path d="M5 7.5 16 3l11 4.5v17L16 29 5 24.5v-17Z" stroke="currentColor" stroke-width="1.8"/><path d="M9 10.5 16 8l7 2.5v10L16 23l-7-2.5v-10Z" stroke="currentColor" stroke-width="1.4"/><path d="M10 16h4m4 0h4M16 8v15" stroke="currentColor" stroke-width="1.5"/></svg></span>
+    <span class="brand-copy"><b class="brand-name">ماجد السكني</b><small class="brand-sub">خرائط تعلّم البرمجة</small></span>
+  </a>
   <span class="spacer"></span>
+  <nav class="top-nav" aria-label="Primary navigation"><a id="navPaths" href="#paths">المسارات</a><a id="navHow" href="#how">كيف تعمل</a><a id="navAbout" href="#about">عن المشروع</a></nav>
   <button class="btn" id="langBtn">English</button>
   <button class="btn" id="themeBtn">🌙</button>
-  <a class="btn" href="https://github.com/majid-alsakani/developer-roadmap" target="_blank" rel="noopener">⭐ GitHub</a>
+  <a class="btn" href="https://github.com/majid-alsakani/developer-roadmap" target="_blank" rel="noopener">GitHub</a>
 </div></header>
 
 <main class="wrap">
   <section class="hero">
-    <h1 id="h1"></h1>
-    <p id="lead"></p>
-    <p class="byline">✍️ <strong>Majid Al-Sakani · ماجد السكني</strong> — Full Stack &amp; AI Engineer · Python · FastAPI · Django · React · Yemen 🇾🇪 · <a href="https://github.com/majid-alsakani" target="_blank" rel="noopener">GitHub</a></p>
-    <input class="search" id="search" />
+    <div class="hero-copy">
+      <span class="eyebrow" id="eyebrow">خرائط تفاعلية مجانية بالعربية والإنجليزية</span>
+      <h1 id="h1"></h1>
+      <p id="lead"></p>
+      <p class="byline"><strong>ماجد السكني</strong> — Full Stack &amp; AI Engineer · Python · FastAPI · Django · React · Yemen · <a href="https://github.com/majid-alsakani" target="_blank" rel="noopener">GitHub</a></p>
+      <div class="hero-actions"><a class="btn btn-primary" href="#paths" id="primaryCta">ابدأ من الصفر →</a><a class="btn btn-secondary" href="#paths" id="secondaryCta">استكشف المسارات →</a></div>
+      <div class="trust-row"><span><i></i><b id="statRoadmaps">10</b> <span id="statRoadmapsLabel">مسارات</span></span><span><i></i><b id="statTopics">400+</b> <span id="statTopicsLabel">موضوع</span></span><span><i></i><span id="statBilingual">ثنائية اللغة</span></span><span><i></i><span id="statSaved">تحفظ تقدمك</span></span></div>
+    </div>
+    <div class="hero-art" aria-hidden="true"><div class="route-visual"><div class="route-grid"></div><svg class="route-svg" viewBox="0 0 600 330" fill="none"><path d="M22 266C86 267 76 194 146 205s76 58 129 17c62-47 49-118 121-126 65-7 65 40 130 12 28-12 46-39 55-76" stroke="#2ed6c4" stroke-width="5" stroke-linecap="round"/><path d="M22 266C86 267 76 194 146 205s76 58 129 17c62-47 49-118 121-126 65-7 65 40 130 12 28-12 46-39 55-76" stroke="#2d8cff" stroke-width="14" stroke-linecap="round" opacity=".16"/><g fill="#071525" stroke="#2d8cff" stroke-width="3"><circle cx="22" cy="266" r="9"/><circle cx="146" cy="205" r="9"/><circle cx="275" cy="222" r="9"/><circle cx="396" cy="96" r="9"/><circle cx="526" cy="108" r="9"/><circle cx="581" cy="15" r="9"/></g><path d="M396 96v-38M581 15v-18" stroke="#f4b640" stroke-width="2" stroke-dasharray="4 5"/><path d="m396 58 14 6-14 6-14-6 14-6Zm185-41 14 6-14 6-14-6 14-6Z" fill="#f4b640"/></svg><div class="route-panel"><small id="routePanelLabel">تابع من حيث توقفت</small><strong id="routePanelTitle">مهندس الذكاء الاصطناعي والوكلاء</strong><div class="mini-bar"><i></i></div><div class="mini-meta"><span id="routePanelMeta">45 موضوع · 8 مراحل</span><b id="routePanelPct">0%</b></div></div><div class="stat-pill"><b>10</b><span id="statPillText">مسارات عملية<br/>من الصفر إلى الإنتاج</span></div></div></div>
   </section>
-  <div class="grid" id="grid"></div>
+  <section class="continue-panel" id="continuePanel" aria-live="polite"><div><h2 id="continueTitle">تابع من حيث توقفت</h2><p id="continueText">تقدّمك محفوظ على هذا الجهاز.</p><div class="continue-bar"><i id="continueBar"></i></div></div><a class="btn btn-primary" id="continueBtn" href="./roadmap.html?r=frontend">تابع المسار →</a></section>
+  <section id="paths"><div class="section-head"><div><h2 id="pathsTitle">اختر وجهتك</h2><p id="pathsLead">ابدأ بالمسار الذي يطابق هدفك، ثم تقدّم خطوة واحدة كل مرة.</p></div></div><input class="search" id="search" aria-label="Search roadmaps" /><div class="filters" id="filters" aria-label="Roadmap filters"><button class="filter active" data-filter="">الكل</button><button class="filter" data-filter="beginner">مبتدئ</button><button class="filter" data-filter="frontend">واجهات</button><button class="filter" data-filter="backend">خلفيات</button><button class="filter" data-filter="ai">ذكاء اصطناعي</button><button class="filter" data-filter="devops">DevOps</button><button class="filter" data-filter="data">بيانات</button></div><div class="grid" id="grid"></div></section>
+  <section class="about-strip" id="how"><div><span class="eyebrow" id="howEyebrow">كيف تعمل</span><h2 id="howTitle">تعلم واضح. تقدّم قابل للقياس.</h2></div><p id="howText">اختر مسارًا، افتح الموضوع، وحدد حالته. يحفظ الموقع تقدمك محليًا على جهازك، وتبقى المصادر مجانية وقابلة للمراجعة.</p></section>
+  <section class="about-strip" id="about"><div><span class="eyebrow" id="aboutEyebrow">صنعه ماجد السكني</span><h2 id="aboutTitle">أدوات تعلم مفيدة من اليمن إلى العالم.</h2></div><p id="aboutText">خرائط عملية بالعربية والإنجليزية تساعد المطورين على بناء أساس قوي، وفهم الصورة الكبيرة، واختيار الخطوة التالية بثقة.</p></section>
 </main>
 
-<footer><div class="wrap">© <span id="y"></span> <a href="https://github.com/majid-alsakani">Majid Al-Sakani · ماجد السكني</a> — CC BY-SA 4.0 · <a href="https://github.com/majid-alsakani/developer-roadmap">Contribute on GitHub</a></div></footer>
+<footer><div class="wrap">© <span id="y"></span> <a href="https://github.com/majid-alsakani">ماجد السكني · Majid Al-Sakani</a> — Developer Roadmaps · CC BY-SA 4.0 · <a href="https://github.com/majid-alsakani/developer-roadmap">Contribute on GitHub</a></div></footer>
 <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
 <script src="./assets/hub.js"></script>
 </body></html>

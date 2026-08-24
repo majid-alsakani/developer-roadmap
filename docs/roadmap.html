@@ -15,15 +15,16 @@
 <meta property="og:title" content="Interactive Developer Roadmap — خريطة تعلّم تفاعلية" />
 <meta property="og:description" content="Bilingual interactive roadmaps: Frontend, Backend, Python, DevOps, AI Agents, Full Stack, Mobile, Data." />
 <meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" type="image/png" sizes="96x96" href="./favicon-96.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png" />
 <link rel="stylesheet" href="./assets/roadmap.css" />
+<link rel="stylesheet" href="./assets/roadmap-premium.css" />
 </head>
 <body>
-<header class="top"><div class="wrap topbar">
-  <a class="brand" href="./index.html">🗺️ Roadmaps</a>
+<header class="top"><div class="wrap topbar roadmap-topbar">
+  <a class="brand" href="./index.html" aria-label="Developer Roadmaps by Majid Al-Sakani"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none"><path d="M5 7.5 16 3l11 4.5v17L16 29 5 24.5v-17Z" stroke="currentColor" stroke-width="1.8"/><path d="M9 10.5 16 8l7 2.5v10L16 23l-7-2.5v-10Z" stroke="currentColor" stroke-width="1.4"/><path d="M10 16h4m4 0h4M16 8v15" stroke="currentColor" stroke-width="1.5"/></svg></span><span class="brand-copy"><b class="brand-name">ماجد السكني</b><small class="brand-sub">خرائط تعلّم البرمجة</small></span></a>
   <span class="spacer"></span>
-  <button class="btn" id="langBtn">English</button>
-  <button class="btn" id="themeBtn">🌙</button>
-  <a class="btn" href="https://github.com/majid-alsakani/developer-roadmap" target="_blank" rel="noopener">GitHub</a>
+  <div class="roadmap-actions"><button class="btn" id="langBtn">English</button><button class="btn" id="themeBtn">🌙</button><a class="btn" href="https://github.com/majid-alsakani/developer-roadmap" target="_blank" rel="noopener">GitHub</a></div>
 </div></header>
 
 <main class="wrap">
@@ -35,6 +36,7 @@
     <span class="bar"><i id="bar"></i></span>
     <strong id="pct">0%</strong>
     <span style="color:var(--muted);font-size:13px" id="counts"></span>
+    <span class="save-note" id="saveNote">Your progress is saved on this device.</span>
     <button class="btn" id="resetBtn"></button>
   </div>
   <div class="legend" id="legend"></div>

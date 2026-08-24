@@ -2,17 +2,17 @@
 const T = {
   en: { back:"All roadmaps", progress:"Your progress", done:"Done", learning:"Learning", skip:"Skip", pending:"Pending",
         reset:"Reset", primary:"Core", secondary:"Recommended", optional:"Optional",
-        resources:"Free resources", nores:"No links yet — contributions welcome.", close:"Close",
+        resources:"Free resources", nores:"No links yet — contributions welcome.", close:"Close", saved:"Your progress is saved on this device.",
         of:"of", topics:"topics", markAs:"Mark this topic", share:"Copy link" },
   ar: { back:"كل الخرائط", progress:"تقدّمك", done:"أنجزته", learning:"أتعلّمه", skip:"تخطّيته", pending:"لم يبدأ",
         reset:"إعادة تعيين", primary:"أساسي", secondary:"موصى به", optional:"اختياري",
-        resources:"مصادر مجانية", nores:"لا توجد روابط بعد — مساهماتك مرحّب بها.", close:"إغلاق",
+        resources:"مصادر مجانية", nores:"لا توجد روابط بعد — مساهماتك مرحّب بها.", close:"إغلاق", saved:"يُحفظ تقدمك على هذا الجهاز.",
         of:"من", topics:"موضوعًا", markAs:"حدّد حالة الموضوع", share:"نسخ الرابط" }
 };
 const q = new URLSearchParams(location.search);
 const slug = q.get("r") || "frontend";
 let lang = localStorage.getItem("rm_lang") || "ar";
-let theme = localStorage.getItem("rm_theme") || "light";
+let theme = localStorage.getItem("rm_theme") || "dark";
 const KEY = "rm_progress_" + slug;
 let progress = JSON.parse(localStorage.getItem(KEY) || "{}");
 let data = null, current = null;
@@ -97,6 +97,7 @@ function render(){
   document.getElementById("h1").textContent = data.icon + " " + (lang === "ar" ? data.ar : data.en);
   document.getElementById("lead").textContent = lang === "ar" ? data.desc_ar : data.desc_en;
   document.getElementById("progLabel").textContent = t("progress");
+  document.getElementById("saveNote").textContent = t("saved");
   document.getElementById("resetBtn").textContent = t("reset");
   document.getElementById("legend").innerHTML =
     [["primary","var(--primary)"],["secondary","var(--secondary)"],["optional","var(--optional)"],
