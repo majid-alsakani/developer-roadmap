@@ -146,3 +146,35 @@ footer { background:rgba(4,13,25,.5); }
 .about-strip p { margin:0; color:var(--muted); line-height:1.9; }
 .empty-state { grid-column:1/-1; text-align:center; padding:40px; color:var(--muted); border:1px dashed var(--line); border-radius:18px; }
 @media(max-width:840px) { .top-nav { display:none; } .about-strip { grid-template-columns:1fr; gap:8px; } }
+
+/* Per-roadmap experience */
+.roadmap-hero { min-height:390px; padding:64px 0 38px; grid-template-columns:minmax(0,1fr) minmax(320px,.78fr); }
+.roadmap-hero-copy { position:relative; z-index:1; }
+.roadmap-kicker { display:inline-flex; align-items:center; gap:8px; color:var(--road-accent,var(--accent)); font-size:12px; font-weight:800; letter-spacing:.04em; text-transform:uppercase; }
+.roadmap-kicker::before { content:""; width:8px; height:8px; border-radius:50%; background:var(--road-accent,var(--accent)); box-shadow:0 0 14px var(--road-accent,var(--accent)); }
+.roadmap-hero h1 { font-size:clamp(34px,5vw,64px); margin:15px 0 13px; line-height:1.06; letter-spacing:-.05em; }
+.roadmap-hero p { max-width:650px; font-size:16px; }
+.roadmap-hero-meta { display:flex; flex-wrap:wrap; gap:9px; margin-top:20px; color:var(--muted); font-size:12px; }
+.roadmap-hero-meta span { border:1px solid var(--line); border-radius:999px; padding:7px 11px; background:rgba(14,38,68,.58); }
+[data-theme="light"] .roadmap-hero-meta span { background:rgba(255,255,255,.78); }
+.roadmap-hero-visual { position:relative; z-index:1; min-height:245px; display:grid; place-items:center; border:1px solid color-mix(in srgb,var(--road-accent,var(--accent)) 40%,var(--line)); border-radius:24px; overflow:hidden; background:radial-gradient(circle at 55% 48%,color-mix(in srgb,var(--road-accent,var(--accent)) 25%,transparent),transparent 48%),linear-gradient(145deg,rgba(12,34,60,.96),rgba(6,18,33,.92)); box-shadow:0 0 70px color-mix(in srgb,var(--road-accent,var(--accent)) 14%,transparent),var(--shadow-premium); }
+[data-theme="light"] .roadmap-hero-visual { background:radial-gradient(circle at 55% 48%,color-mix(in srgb,var(--road-accent,var(--accent)) 18%,transparent),transparent 48%),linear-gradient(145deg,#fff,#e8f1fa); }
+.roadmap-hero-visual::before { content:""; position:absolute; inset:0; opacity:.34; background-image:linear-gradient(color-mix(in srgb,var(--road-accent,var(--accent)) 13%,transparent) 1px,transparent 1px),linear-gradient(90deg,color-mix(in srgb,var(--road-accent,var(--accent)) 13%,transparent) 1px,transparent 1px); background-size:28px 28px; }
+.roadmap-art { position:relative; width:90%; height:80%; }
+.roadmap-art svg { width:100%; height:100%; overflow:visible; }
+.roadmap-art .art-line { stroke:var(--road-accent,var(--accent)); }
+.roadmap-art .art-node { fill:var(--panel-strong); stroke:var(--road-accent,var(--accent)); }
+.roadmap-art .art-node.done { fill:var(--road-accent,var(--accent)); }
+.roadmap-art .art-label { fill:var(--muted); font-size:13px; font-family:ui-sans-serif,system-ui,sans-serif; }
+.roadmap-hero[data-track="professional"] .roadmap-hero-visual { --road-accent:#f4b640; }
+.roadmap-hero[data-track="frontend"] .roadmap-hero-visual { --road-accent:#2d8cff; }
+.roadmap-hero[data-track="backend"] .roadmap-hero-visual { --road-accent:#2ed6c4; }
+.roadmap-hero[data-track="ai-engineer"] .roadmap-hero-visual { --road-accent:#a78bfa; }
+.roadmap-hero[data-track="python"] .roadmap-hero-visual { --road-accent:#f4b640; }
+.roadmap-hero[data-track="devops"] .roadmap-hero-visual { --road-accent:#ff8b71; }
+.roadmap-hero[data-track="fullstack"] .roadmap-hero-visual { --road-accent:#22c7e9; }
+.roadmap-hero[data-track="mobile"] .roadmap-hero-visual { --road-accent:#f472b6; }
+.roadmap-hero[data-track="data"] .roadmap-hero-visual { --road-accent:#2ed6c4; }
+.roadmap-hero[data-track="android"] .roadmap-hero-visual { --road-accent:#55d98a; }
+.roadmap-actions .btn:first-child { border-color:color-mix(in srgb,var(--road-accent,var(--accent)) 55%,var(--line)); }
+@media(max-width:840px) { .roadmap-hero { grid-template-columns:1fr; min-height:0; } .roadmap-hero-visual { min-height:220px; } }
