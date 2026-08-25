@@ -3,11 +3,11 @@ const T = {
   en: { back:"All roadmaps", progress:"Your progress", done:"Done", learning:"Learning", skip:"Skip", pending:"Pending",
         reset:"Reset", primary:"Core", secondary:"Recommended", optional:"Optional",
         resources:"Free resources", nores:"No links yet — contributions welcome.", close:"Close", saved:"Your progress is saved on this device.",
-        of:"of", topics:"topics", markAs:"Mark this topic", share:"Copy link", quiz:"Quick quiz", testYourself:"Test yourself", quizIntro:"Check your understanding in two quick questions.", startQuiz:"Start quiz", question:"Question", checkAnswer:"Check answer", nextQuestion:"Next question", finishQuiz:"Finish quiz", correct:"Correct", incorrect:"Not quite", chooseAnswer:"Choose an answer first.", score:"Your score", bestScore:"Best score", attempts:"attempts", passed:"Passed", tryAgain:"Try again", noQuiz:"A quiz is coming for this topic.", pathQuiz:"Path check", pathQuizIntro:"A focused check built from this roadmap's topic quizzes.", pathQuizStart:"Start path check", pathQuizEmpty:"Path check will appear as more topic quizzes are added.", pathQuizResult:"Path check complete", pathQuizPassed:"Strong foundation", pathQuizRetry:"Try path check again", pathQuizNext:"Next question", topicLabel:"Topic" },
+        of:"of", topics:"topics", markAs:"Mark this topic", share:"Copy link", quiz:"Quick quiz", testYourself:"Test yourself", quizIntro:"Check your understanding in two quick questions.", startQuiz:"Start quiz", question:"Question", checkAnswer:"Check answer", nextQuestion:"Next question", finishQuiz:"Finish quiz", correct:"Correct", incorrect:"Not quite", chooseAnswer:"Choose an answer first.", score:"Your score", bestScore:"Best score", attempts:"attempts", passed:"Passed", tryAgain:"Try again", noQuiz:"A quiz is coming for this topic.", pathQuiz:"Path check", pathQuizIntro:"A focused check built from this roadmap's topic quizzes.", pathQuizStart:"Start path check", pathQuizEmpty:"Path check will appear as more topic quizzes are added.", pathQuizResult:"Path check complete", pathQuizPassed:"Strong foundation", pathQuizRetry:"Try path check again", pathQuizNext:"Next question", topicLabel:"Topic", mediaTitle:"Learn with trusted media", video:"Video", course:"Course", interactive:"Interactive course", openResource:"Open resource", educationKicker:"Learning system", educationTitle:"Learn, practice, review, ship", educationProject:"Applied project", milestones:"Delivery milestones", beginner:"Beginner", intermediate:"Intermediate", advanced:"Advanced" },
   ar: { back:"كل الخرائط", progress:"تقدّمك", done:"أنجزته", learning:"أتعلّمه", skip:"تخطّيته", pending:"لم يبدأ",
         reset:"إعادة تعيين", primary:"أساسي", secondary:"موصى به", optional:"اختياري",
         resources:"مصادر مجانية", nores:"لا توجد روابط بعد — مساهماتك مرحّب بها.", close:"إغلاق", saved:"يُحفظ تقدمك على هذا الجهاز.",
-        of:"من", topics:"موضوعًا", markAs:"حدّد حالة الموضوع", share:"نسخ الرابط", quiz:"اختبار قصير", testYourself:"اختبر نفسك", quizIntro:"تحقق من فهمك في سؤالين سريعين.", startQuiz:"ابدأ الاختبار", question:"السؤال", checkAnswer:"تحقق من الإجابة", nextQuestion:"السؤال التالي", finishQuiz:"إنهاء الاختبار", correct:"إجابة صحيحة", incorrect:"ليست الإجابة الصحيحة", chooseAnswer:"اختر إجابة أولًا.", score:"نتيجتك", bestScore:"أفضل نتيجة", attempts:"محاولات", passed:"اجتاز الاختبار", tryAgain:"أعد المحاولة", noQuiz:"سيُضاف اختبار لهذا الموضوع قريبًا.", pathQuiz:"اختبار المسار", pathQuizIntro:"اختبار مركز مبني على اختبارات موضوعات هذا المسار.", pathQuizStart:"ابدأ اختبار المسار", pathQuizEmpty:"سيظهر اختبار المسار عند إضافة اختبارات إلى مزيد من موضوعاته.", pathQuizResult:"اكتمل اختبار المسار", pathQuizPassed:"أساس قوي", pathQuizRetry:"أعد اختبار المسار", pathQuizNext:"السؤال التالي", topicLabel:"الموضوع" }
+        of:"من", topics:"موضوعًا", markAs:"حدّد حالة الموضوع", share:"نسخ الرابط", quiz:"اختبار قصير", testYourself:"اختبر نفسك", quizIntro:"تحقق من فهمك في سؤالين سريعين.", startQuiz:"ابدأ الاختبار", question:"السؤال", checkAnswer:"تحقق من الإجابة", nextQuestion:"السؤال التالي", finishQuiz:"إنهاء الاختبار", correct:"إجابة صحيحة", incorrect:"ليست الإجابة الصحيحة", chooseAnswer:"اختر إجابة أولًا.", score:"نتيجتك", bestScore:"أفضل نتيجة", attempts:"محاولات", passed:"اجتاز الاختبار", tryAgain:"أعد المحاولة", noQuiz:"سيُضاف اختبار لهذا الموضوع قريبًا.", pathQuiz:"اختبار المسار", pathQuizIntro:"اختبار مركز مبني على اختبارات موضوعات هذا المسار.", pathQuizStart:"ابدأ اختبار المسار", pathQuizEmpty:"سيظهر اختبار المسار عند إضافة اختبارات إلى مزيد من موضوعاته.", pathQuizResult:"اكتمل اختبار المسار", pathQuizPassed:"أساس قوي", pathQuizRetry:"أعد اختبار المسار", pathQuizNext:"السؤال التالي", topicLabel:"الموضوع", mediaTitle:"تعلّم من مصادر موثوقة", video:"فيديو", course:"دورة", interactive:"دورة تفاعلية", openResource:"فتح المصدر", educationKicker:"نظام التعلم", educationTitle:"تعلّم، طبّق، راجع، ابنِ", educationProject:"مشروع تطبيقي", milestones:"مراحل التسليم", beginner:"مبتدئ", intermediate:"متوسط", advanced:"متقدم" }
 };
 const q = new URLSearchParams(location.search);
 const slug = q.get("r") || "frontend";
@@ -21,6 +21,8 @@ let quizSession = null;
 let pathQuizSession = null;
 let data = null, current = null;
 let quizData = {};
+let educationData = null;
+let mediaData = [];
 
 function applyShell(){
   document.documentElement.lang = lang;
@@ -129,6 +131,7 @@ function render(){
   renderSeo();
   renderHeroTrack();
   renderPathQuizBar();
+  renderEducation();
   document.getElementById("backBtn").textContent = "← " + t("back");
   document.getElementById("h1").textContent = data.icon + " " + (lang === "ar" ? data.ar : data.en);
   document.getElementById("lead").textContent = lang === "ar" ? data.desc_ar : data.desc_en;
@@ -157,6 +160,15 @@ function render(){
 
   map.querySelectorAll(".node").forEach(b => b.addEventListener("click", () => openNode(b.dataset.id)));
   renderProgress();
+}
+
+function mediaFor(node){ return mediaData.filter(item => item.roadmap_slug === slug && item.topic_id === node?.id && item.status === "verified"); }
+function renderMedia(node){
+  const title = document.getElementById("dMediaTitle"), box = document.getElementById("dMedia");
+  if (!title || !box) return;
+  const items = mediaFor(node);
+  title.textContent = t("mediaTitle");
+  box.innerHTML = items.length ? items.map(item => { const kind = item.type.includes("video") ? "video" : item.type.includes("interactive") ? "interactive" : "course"; return `<a class="media-card media-${kind}" href="${item.url}" target="_blank" rel="noopener"><span class="media-icon">${kind === "video" ? "▶" : kind === "interactive" ? "◎" : "↗"}</span><span><strong>${lang === "ar" ? item.title_ar : item.title_en}</strong><small>${item.provider} · ${t(kind)}</small></span><span class="media-open">${t("openResource")}</span></a>`; }).join("") : `<p class="media-empty">${lang === "ar" ? "ستضاف فيديوهات ودورات مرتبطة بهذا الموضوع بعد مراجعتها." : "Videos and courses will be added after editorial review."}</p>`;
 }
 
 function findNode(id){
@@ -208,6 +220,20 @@ function renderQuiz(node){
   } else {
     document.getElementById("quizNext").addEventListener("click", () => { quizSession.index += 1; quizSession.checked = false; renderQuiz(node); });
   }
+}
+
+function renderEducation(){
+  const panel = document.getElementById("educationPanel");
+  if (!panel) return;
+  const track = educationData?.roadmaps?.[slug];
+  panel.hidden = !track?.projects?.length;
+  if (!track?.projects?.length) return;
+  document.getElementById("educationKicker").textContent = t("educationKicker");
+  document.getElementById("educationTitle").textContent = t("educationTitle");
+  document.getElementById("educationMethod").textContent = educationData.method?.[lang] || "";
+  document.getElementById("educationRules").innerHTML = (educationData.rules?.[lang] || []).map(rule => `<span>${rule}</span>`).join("");
+  const difficultyLabel = value => t(value) || value;
+  document.getElementById("educationProjects").innerHTML = track.projects.map(project => `<article class="education-project"><span class="project-label">${t("educationProject")}</span><h3>${lang === "ar" ? project.title_ar : project.title_en}</h3><p>${lang === "ar" ? project.brief_ar : project.brief_en}</p><span class="project-label">${t("milestones")}</span><ul class="education-milestones">${(lang === "ar" ? project.milestones_ar : project.milestones_en).map(step => `<li>${step}</li>`).join("")}</ul><span class="education-difficulty">${difficultyLabel(project.difficulty)}</span></article>`).join("");
 }
 
 function pathQuestions(){
@@ -262,6 +288,7 @@ function openNode(id){
   document.getElementById("dTitle").textContent = lang === "ar" ? current.ar : current.en;
   document.getElementById("dAlt").textContent = lang === "ar" ? current.en : current.ar;
   document.getElementById("dMark").textContent = t("markAs");
+  renderMedia(current);
   document.getElementById("dResTitle").textContent = t("resources");
   document.getElementById("dStates").innerHTML =
     ["done","learning","skip","pending"].map(s =>
@@ -305,11 +332,15 @@ document.getElementById("resetBtn").addEventListener("click", () => {
 
 Promise.all([
   fetch(`./data/${slug}.json`).then(r => r.ok ? r.json() : Promise.reject()),
-  fetch(`./data/quizzes/${slug}.json`).then(r => r.ok ? r.json() : { topics: {} }).catch(() => ({ topics: {} }))
+  fetch(`./data/quizzes/${slug}.json`).then(r => r.ok ? r.json() : { topics: {} }).catch(() => ({ topics: {} })),
+  fetch("./data/education.json").then(r => r.ok ? r.json() : { roadmaps: {} }).catch(() => ({ roadmaps: {} })),
+  fetch("./data/media.json").then(r => r.ok ? r.json() : { items: [] }).catch(() => ({ items: [] }))
 ])
-  .then(([roadmap, quizzes]) => {
+  .then(([roadmap, quizzes, education, media]) => {
     data = roadmap;
     quizData = quizzes.topics || {};
+    educationData = education;
+    mediaData = media.items || [];
     render();
   })
   .catch(() => { document.getElementById("map").innerHTML = "<p>Roadmap not found.</p>"; });

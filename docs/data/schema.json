@@ -37,6 +37,17 @@
         "slug", "topic_count", "quiz_topic_count", "quiz_question_count",
         "coverage_percent", "invalid_or_empty_entries"
       ]
+    },
+    "education.json": {
+      "kind": "roadmap_education",
+      "fields": ["schema_version", "kind", "author", "method", "rules", "roadmaps"],
+      "roadmap_fields": ["projects"],
+      "project_fields": ["id", "title_ar", "title_en", "brief_ar", "brief_en", "milestones_ar", "milestones_en", "difficulty"]
+    },
+    "media.json": {
+      "kind": "roadmap_media",
+      "fields": ["schema_version", "kind", "editorial_policy", "items"],
+      "item_fields": ["id", "roadmap_slug", "topic_id", "type", "provider", "title_ar", "title_en", "url", "source_url", "source_kind", "checked_at", "status"]
     }
   },
   "quality_rules": {
@@ -44,6 +55,9 @@
     "question_ids_unique_within_roadmap": true,
     "single_questions_have_exactly_one_answer": true,
     "coverage_claim_allowed_only_at_percent": 100,
-    "bilingual_fields_required": true
+    "bilingual_fields_required": true,
+    "education_projects_have_bilingual_milestones": true,
+    "media_items_must_reference_real_topic_ids": true,
+    "media_status_must_be_verified_before_display": true
   }
 }

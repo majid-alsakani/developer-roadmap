@@ -1,0 +1,75 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "roadmap_education",
+  "author": "Majid Al-Sakani",
+  "method": {
+    "ar": "تعلّم → طبّق → اختبر → راجع → ابنِ مشروعًا",
+    "en": "Learn → Practice → Check → Review → Ship a project"
+  },
+  "rules": {
+    "ar": ["ابدأ بالأساسيات قبل الأدوات", "طبّق كل مرحلة في مشروع صغير", "لا تعتبر الموضوع منجزًا قبل تنفيذ تمرين", "أعد مراجعة الأسئلة التي أخطأت فيها"],
+    "en": ["Learn foundations before tools", "Apply every stage in a small project", "Do not mark a topic complete before practicing", "Review questions you missed"]
+  },
+  "roadmaps": {
+    "professional": {
+      "projects": [
+        {"id":"pro-quality-service","title_ar":"خدمة إنتاجية بجودة مؤسسية","title_en":"A production-quality service","brief_ar":"صمّم خدمة صغيرة مع اختبارات، توثيق، تسجيل، ومراجعة أمنية.","brief_en":"Design a small service with tests, documentation, logging, and a security review.","milestones_ar":["تحليل المتطلبات وتقسيمها","تصميم الوحدات والواجهات","إضافة الاختبارات والمراقبة","كتابة README وقرارين معماريين"],"milestones_en":["Analyse and decompose requirements","Design modules and interfaces","Add tests and observability","Write a README and two architecture decisions"],"difficulty":"advanced"},
+        {"id":"pro-open-source","title_ar":"مساهمة مفتوحة المصدر","title_en":"An open-source contribution","brief_ar":"اختر مشروعًا حقيقيًا، اقرأ بنيته، ثم نفّذ إصلاحًا صغيرًا موثقًا.","brief_en":"Choose a real project, understand its structure, and ship a documented small fix.","milestones_ar":["اختيار مستودع وقراءة قواعد المساهمة","تحديد مشكلة قابلة للقياس","فتح issue أو اقتراح واضح","إرسال pull request مع اختبار"],"milestones_en":["Choose a repository and read its contribution rules","Find a measurable issue","Open a clear issue or proposal","Submit a pull request with a test"],"difficulty":"advanced"}
+      ]
+    },
+    "frontend": {
+      "projects": [
+        {"id":"fe-dashboard","title_ar":"لوحة تحكم متجاوبة","title_en":"A responsive dashboard","brief_ar":"ابنِ لوحة تحكم تصلح للهاتف وسطح المكتب مع حالة تحميل وأخطاء وإتاحة وصول.","brief_en":"Build a mobile-to-desktop dashboard with loading, error, and accessibility states.","milestones_ar":["هيكلة HTML دلالية","نظام تصميم متجاوب","جلب بيانات وحالات واجهة","اختبار لوحة المفاتيح والأداء"],"milestones_en":["Semantic HTML structure","Responsive design system","Data fetching and UI states","Keyboard and performance checks"],"difficulty":"beginner"},
+        {"id":"fe-offline-app","title_ar":"تطبيق ويب يعمل دون اتصال","title_en":"An offline-capable web app","brief_ar":"طوّر تطبيقًا صغيرًا يحفظ تغييرات المستخدم ويستعيدها عند عودة الاتصال.","brief_en":"Build a small app that preserves user changes and reconciles them after reconnecting.","milestones_ar":["إنشاء واجهة قابلة للتثبيت","إدارة التخزين المحلي","إظهار حالة الاتصال","اختبار الاستعادة والمزامنة"],"milestones_en":["Create an installable interface","Manage local storage","Show connection state","Test recovery and reconciliation"],"difficulty":"intermediate"}
+      ]
+    },
+    "backend": {
+      "projects": [
+        {"id":"be-rest-api","title_ar":"واجهة REST آمنة","title_en":"A secure REST API","brief_ar":"أنشئ API موثقًا مع تحقق من المدخلات، صلاحيات، واختبارات تكامل.","brief_en":"Create a documented API with input validation, authorization, and integration tests.","milestones_ar":["تصميم الموارد والعقود","التحقق ومعالجة الأخطاء","المصادقة والصلاحيات","اختبارات وتوثيق OpenAPI"],"milestones_en":["Design resources and contracts","Validate inputs and handle errors","Add authentication and authorization","Add tests and OpenAPI docs"],"difficulty":"intermediate"},
+        {"id":"be-scalable-service","title_ar":"خدمة قابلة للتوسع","title_en":"A scalable service","brief_ar":"قسّم خدمة تتعامل مع التخزين المؤقت والطوابير والمراقبة تحت حمل تجريبي.","brief_en":"Design a service using caching, queues, and observability under a controlled load test.","milestones_ar":["قياس خط الأساس","إضافة cache وطابور","اختبار الفشل والتعافي","توثيق قرارات التوسع"],"milestones_en":["Measure a baseline","Add a cache and queue","Test failure and recovery","Document scaling decisions"],"difficulty":"advanced"}
+      ]
+    },
+    "ai-engineer": {
+      "projects": [
+        {"id":"ai-rag-assistant","title_ar":"مساعد بحث مع RAG","title_en":"A retrieval-augmented assistant","brief_ar":"ابنِ مساعدًا يسترجع مصادره ويعرضها مع تقييم الدقة والهلوسة.","brief_en":"Build an assistant that retrieves sources and exposes an evaluation for accuracy and hallucination.","milestones_ar":["تجهيز البيانات وتقسيمها","الفهرسة والاسترجاع","الإجابة مع الاستشهاد","مجموعة تقييم وتحسين"],"milestones_en":["Prepare and chunk data","Index and retrieve","Answer with citations","Build an evaluation set and iterate"],"difficulty":"advanced"},
+        {"id":"ai-agent-workflow","title_ar":"وكيل متعدد الأدوات","title_en":"A tool-using agent workflow","brief_ar":"صمّم وكيلًا محدود الصلاحيات مع سجل خطوات وحدود واضحة للتنفيذ.","brief_en":"Design a least-privilege agent with traceable steps and explicit execution limits.","milestones_ar":["تعريف الأدوات والعقود","إدارة الحالة والذاكرة","حواجز الأمان والموافقة","اختبارات حالات الفشل"],"milestones_en":["Define tools and contracts","Manage state and memory","Add safety gates and approval","Test failure cases"],"difficulty":"advanced"}
+      ]
+    },
+    "python": {
+      "projects": [
+        {"id":"py-cli","title_ar":"أداة سطر أوامر بايثون","title_en":"A Python CLI tool","brief_ar":"أنشئ أداة عملية بواجهة أوامر، اختبارات، وتغليف قابل للتثبيت.","brief_en":"Build a useful CLI with commands, tests, and installable packaging.","milestones_ar":["تصميم الأوامر","فصل المنطق عن الواجهة","اختبارات الوحدات","تغليف وتوثيق"],"milestones_en":["Design commands","Separate logic from the interface","Write unit tests","Package and document"],"difficulty":"beginner"},
+        {"id":"py-api","title_ar":"API بايثون جاهزة للإنتاج","title_en":"A production-ready Python API","brief_ar":"طوّر API مع typing، تحقق، قاعدة بيانات، واختبارات.","brief_en":"Build an API with typing, validation, a database, and tests.","milestones_ar":["نمذجة البيانات","إنشاء endpoints","إضافة migrations","اختبارات وتشغيل موثق"],"milestones_en":["Model the data","Create endpoints","Add migrations","Test and document the runbook"],"difficulty":"intermediate"}
+      ]
+    },
+    "devops": {
+      "projects": [
+        {"id":"ops-pipeline","title_ar":"خط نشر مستمر","title_en":"A continuous delivery pipeline","brief_ar":"ابنِ خطًا يختبر التطبيق ويصنع artifact وينشره مع إمكانية الرجوع.","brief_en":"Build a pipeline that tests, packages, deploys, and supports rollback.","milestones_ar":["فحص الكود والاختبارات","بناء artifact","بيئة staging ونشر","rollback ومراقبة"],"milestones_en":["Lint and test","Build an artifact","Stage and deploy","Rollback and observe"],"difficulty":"intermediate"},
+        {"id":"ops-observability","title_ar":"منصة مراقبة موثوقة","title_en":"A reliable observability setup","brief_ar":"أضف logs وmetrics وtraces مع تنبيهات قابلة للتنفيذ.","brief_en":"Add logs, metrics, and traces with actionable alerts.","milestones_ar":["تعريف مؤشرات الخدمة","تجميع السجلات","إنشاء dashboards","اختبار تنبيه وتعافٍ"],"milestones_en":["Define service indicators","Collect logs","Create dashboards","Test an alert and recovery"],"difficulty":"advanced"}
+      ]
+    },
+    "fullstack": {
+      "projects": [
+        {"id":"fs-product","title_ar":"منتج ويب متكامل","title_en":"A full-stack product","brief_ar":"صمّم منتجًا من الواجهة إلى API وقاعدة البيانات والنشر.","brief_en":"Design a product from UI to API, database, and deployment.","milestones_ar":["تجربة المستخدم والنماذج","عقد API","التخزين والمصادقة","اختبار ونشر"],"milestones_en":["User flow and forms","API contract","Persistence and auth","Testing and deployment"],"difficulty":"intermediate"},
+        {"id":"fs-collab","title_ar":"تطبيق تعاوني فوري","title_en":"A collaborative real-time app","brief_ar":"ابنِ مساحة عمل صغيرة مع تحديثات فورية وحل تعارضات واضح.","brief_en":"Build a small workspace with live updates and an explicit conflict strategy.","milestones_ar":["نمذجة الموارد","تحديث فوري","صلاحيات ومساحات","اختبار التزامن"],"milestones_en":["Model resources","Add live updates","Add permissions and workspaces","Test concurrency"],"difficulty":"advanced"}
+      ]
+    },
+    "mobile": {
+      "projects": [
+        {"id":"mobile-habit","title_ar":"تطبيق عادات للجوال","title_en":"A mobile habit app","brief_ar":"طوّر تطبيقًا يعمل دون اتصال مع إشعارات وحالة واضحة.","brief_en":"Build an offline-capable habit app with notifications and clear state.","milestones_ar":["تصميم الشاشات","إدارة الحالة","التخزين المحلي","اختبار الأجهزة"],"milestones_en":["Design screens","Manage state","Persist locally","Test on devices"],"difficulty":"beginner"},
+        {"id":"mobile-sync","title_ar":"تطبيق جوال متزامن","title_en":"A synchronized mobile app","brief_ar":"أضف تسجيل دخول ومزامنة متعارضة بطريقة آمنة.","brief_en":"Add sign-in and safe conflict-aware synchronization.","milestones_ar":["تجربة تسجيل الدخول","طابور offline","دمج آمن","إصدار تجريبي"],"milestones_en":["Sign-in flow","Offline queue","Safe reconciliation","Beta release"],"difficulty":"intermediate"}
+      ]
+    },
+    "data": {
+      "projects": [
+        {"id":"data-pipeline","title_ar":"خط معالجة بيانات","title_en":"A data pipeline","brief_ar":"اجلب بياناتًا، نظفها، اختبرها، وخزنها مع تتبع الجودة.","brief_en":"Ingest, clean, test, and store data with quality checks.","milestones_ar":["مصدر بيانات وعقد","تحويلات قابلة لإعادة التشغيل","اختبارات جودة","جدولة ومراقبة"],"milestones_en":["Source and contract","Replayable transformations","Quality tests","Scheduling and monitoring"],"difficulty":"intermediate"},
+        {"id":"data-warehouse","title_ar":"مستودع تحليلي","title_en":"An analytical warehouse","brief_ar":"صمّم نموذجًا تحليليًا ولوحة مؤشرات موثقة المصدر.","brief_en":"Design an analytical model and a dashboard with documented lineage.","milestones_ar":["نمذجة facts وdimensions","تحميل تدريجي","تعريف المقاييس","تدقيق النتائج"],"milestones_en":["Model facts and dimensions","Incremental loading","Define metrics","Audit results"],"difficulty":"advanced"}
+      ]
+    },
+    "android": {
+      "projects": [
+        {"id":"android-compose","title_ar":"تطبيق أندرويد بـ Compose","title_en":"An Android Compose app","brief_ar":"ابنِ تطبيقًا أصليًا مع Compose وViewModel واختبارات واجهة.","brief_en":"Build a native app with Compose, ViewModel, and UI tests.","milestones_ar":["الشاشات والتنقل","إدارة الحالة","التخزين والشبكة","اختبارات التفاعل"],"milestones_en":["Screens and navigation","State management","Storage and networking","Interaction tests"],"difficulty":"beginner"},
+        {"id":"android-release","title_ar":"إصدار أندرويد موثوق","title_en":"A reliable Android release","brief_ar":"جهّز إصدارًا يراعي الأداء، الأذونات، التوقيع، والتوزيع.","brief_en":"Prepare a release covering performance, permissions, signing, and distribution.","milestones_ar":["تحسين الأداء","مراجعة الأذونات","بناء signed release","اختبار التوزيع"],"milestones_en":["Tune performance","Review permissions","Build a signed release","Test distribution"],"difficulty":"advanced"}
+      ]
+    }
+  }
+}
