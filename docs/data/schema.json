@@ -1,88 +1,49 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "description": "Static JSON content model for Developer Roadmaps by Majid Al-Sakani.",
   "files": {
     "roadmaps.json": {
       "kind": "roadmap_catalog",
-      "fields": [
-        "schema_version",
-        "kind",
-        "updated_at",
-        "author",
-        "stats",
-        "roadmaps"
-      ],
+      "fields": ["schema_version", "kind", "updated_at", "author", "stats", "roadmaps"],
       "roadmap_fields": [
-        "slug",
-        "en",
-        "ar",
-        "desc_en",
-        "desc_ar",
-        "color",
-        "icon",
-        "topic_count",
-        "stage_count",
-        "quiz_topic_count",
-        "quiz_question_count"
+        "slug", "en", "ar", "desc_en", "desc_ar", "color", "icon",
+        "topic_count", "stage_count", "quiz_topic_count", "quiz_question_count", "quiz_coverage_percent"
+      ],
+      "stats_fields": [
+        "roadmap_count", "topic_count", "quiz_topic_count", "quiz_question_count", "quiz_coverage_percent"
       ]
     },
     "<slug>.json": {
       "kind": "roadmap_content",
-      "fields": [
-        "schema_version",
-        "kind",
-        "slug",
-        "en",
-        "ar",
-        "desc_en",
-        "desc_ar",
-        "color",
-        "icon",
-        "groups"
-      ],
-      "group_fields": [
-        "en",
-        "ar",
-        "nodes"
-      ],
-      "node_fields": [
-        "id",
-        "en",
-        "ar",
-        "type",
-        "note_en",
-        "note_ar",
-        "resources"
-      ]
+      "fields": ["schema_version", "kind", "slug", "en", "ar", "desc_en", "desc_ar", "color", "icon", "groups"],
+      "group_fields": ["en", "ar", "nodes"],
+      "node_fields": ["id", "en", "ar", "type", "note_en", "note_ar", "resources"]
     },
     "quizzes/<slug>.json": {
       "kind": "roadmap_quizzes",
-      "fields": [
-        "schema_version",
-        "kind",
-        "roadmap_slug",
-        "updated_at",
-        "topics"
-      ],
-      "topic_fields": [
-        "topic_id",
-        "questions"
-      ],
+      "fields": ["schema_version", "kind", "roadmap_slug", "updated_at", "question_policy", "topics"],
+      "topic_fields": ["topic_id", "questions"],
       "question_fields": [
-        "id",
-        "type",
-        "question_en",
-        "question_ar",
-        "options",
-        "answer",
-        "explanation_en",
-        "explanation_ar"
+        "id", "type", "difficulty", "question_en", "question_ar", "options", "answer",
+        "explanation_en", "explanation_ar", "skill"
       ],
-      "option_fields": [
-        "id",
-        "en",
-        "ar"
+      "optional_quality_fields": ["tags", "learning_objective", "review_status", "source_urls"],
+      "option_fields": ["id", "en", "ar"]
+    },
+    "quiz_coverage.json": {
+      "kind": "quiz_coverage",
+      "fields": ["schema_version", "kind", "generated_at", "policy", "totals", "roadmaps"],
+      "roadmap_fields": [
+        "slug", "topic_count", "quiz_topic_count", "quiz_question_count",
+        "coverage_percent", "invalid_or_empty_entries"
       ]
     }
+  },
+  "quality_rules": {
+    "topic_ids_must_exist_in_roadmap_content": true,
+    "question_ids_unique_within_roadmap": true,
+    "single_questions_have_exactly_one_answer": true,
+    "coverage_claim_allowed_only_at_percent": 100,
+    "bilingual_fields_required": true
   }
 }

@@ -209,3 +209,21 @@ footer { background:rgba(4,13,25,.5); }
 
 .quiz-badge { display:inline-grid; place-items:center; min-width:20px; height:20px; margin-inline-start:auto; margin-inline-end:7px; border-radius:7px; color:var(--road-accent,var(--accent)); border:1px solid color-mix(in srgb,var(--road-accent,var(--accent)) 52%,var(--line)); font-size:10px; font-weight:900; }
 .node.has-quiz .quiz-badge { box-shadow:0 0 12px color-mix(in srgb,var(--road-accent,var(--accent)) 18%,transparent); }
+
+/* Account and sync surface */
+.account-root{position:relative;display:flex;align-items:center;gap:8px;margin-inline:10px 0;z-index:20}
+.account-button{border-color:color-mix(in srgb,var(--accent-2) 42%,var(--line));color:var(--ink);white-space:nowrap}
+.sync-status{display:none;color:var(--muted);font-size:11px;white-space:nowrap}
+.account-popover{position:absolute;top:calc(100% + 12px);inset-inline-end:0;width:min(360px,calc(100vw - 32px));padding:18px;border:1px solid var(--line);border-radius:18px;background:var(--panel-strong);box-shadow:0 20px 60px rgba(0,0,0,.28);text-align:start}
+.account-popover[hidden]{display:none}
+.account-popover strong{display:block;font-size:16px;margin-bottom:8px}
+.account-popover p{color:var(--muted);font-size:13px;line-height:1.7;margin:0 0 14px}
+.account-actions{display:grid;gap:10px}
+.account-actions .btn{width:100%;justify-content:center}
+.account-hint{font-size:12px!important;background:color-mix(in srgb,var(--accent-2) 9%,transparent);padding:10px;border-radius:10px;margin:0!important}
+.account-divider{text-align:center;color:var(--muted);font-size:12px}
+.account-label{font-size:12px;color:var(--muted)}
+.account-input{width:100%;box-sizing:border-box;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);padding:10px 12px;font:inherit}
+.account-close{margin-top:4px;width:100%;justify-content:center}
+@media (min-width:860px){.sync-status{display:inline-block}}
+@media (max-width:700px){.account-root{margin-inline:6px 0}.account-button{font-size:11px;padding:7px 9px}.account-popover{position:fixed;top:70px;inset-inline:16px;width:auto}}

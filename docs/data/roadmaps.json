@@ -11,7 +11,8 @@
     "roadmap_count": 10,
     "topic_count": 410,
     "quiz_topic_count": 10,
-    "quiz_question_count": 20
+    "quiz_question_count": 20,
+    "quiz_coverage_percent": 2.4
   },
   "roadmaps": [
     {
@@ -26,7 +27,8 @@
       "topic_count": 45,
       "stage_count": 8,
       "quiz_topic_count": 1,
-      "quiz_question_count": 2
+      "quiz_question_count": 2,
+      "quiz_coverage_percent": 2.2
     },
     {
       "slug": "frontend",
@@ -40,7 +42,8 @@
       "topic_count": 34,
       "stage_count": 7,
       "quiz_topic_count": 1,
-      "quiz_question_count": 2
+      "quiz_question_count": 2,
+      "quiz_coverage_percent": 2.9
     },
     {
       "slug": "backend",
@@ -54,7 +57,8 @@
       "topic_count": 82,
       "stage_count": 10,
       "quiz_topic_count": 1,
-      "quiz_question_count": 2
+      "quiz_question_count": 2,
+      "quiz_coverage_percent": 1.2
     },
     {
       "slug": "ai-engineer",
@@ -68,7 +72,8 @@
       "topic_count": 26,
       "stage_count": 5,
       "quiz_topic_count": 1,
-      "quiz_question_count": 2
+      "quiz_question_count": 2,
+      "quiz_coverage_percent": 3.8
     },
     {
       "slug": "python",
@@ -82,7 +87,8 @@
       "topic_count": 19,
       "stage_count": 4,
       "quiz_topic_count": 1,
-      "quiz_question_count": 2
+      "quiz_question_count": 2,
+      "quiz_coverage_percent": 5.3
     },
     {
       "slug": "devops",
@@ -96,7 +102,8 @@
       "topic_count": 86,
       "stage_count": 13,
       "quiz_topic_count": 1,
-      "quiz_question_count": 2
+      "quiz_question_count": 2,
+      "quiz_coverage_percent": 1.2
     },
     {
       "slug": "fullstack",
@@ -110,7 +117,8 @@
       "topic_count": 17,
       "stage_count": 4,
       "quiz_topic_count": 1,
-      "quiz_question_count": 2
+      "quiz_question_count": 2,
+      "quiz_coverage_percent": 5.9
     },
     {
       "slug": "mobile",
@@ -124,7 +132,8 @@
       "topic_count": 15,
       "stage_count": 4,
       "quiz_topic_count": 1,
-      "quiz_question_count": 2
+      "quiz_question_count": 2,
+      "quiz_coverage_percent": 6.7
     },
     {
       "slug": "data",
@@ -138,7 +147,8 @@
       "topic_count": 18,
       "stage_count": 4,
       "quiz_topic_count": 1,
-      "quiz_question_count": 2
+      "quiz_question_count": 2,
+      "quiz_coverage_percent": 5.6
     },
     {
       "slug": "android",
@@ -152,7 +162,8 @@
       "topic_count": 68,
       "stage_count": 11,
       "quiz_topic_count": 1,
-      "quiz_question_count": 2
+      "quiz_question_count": 2,
+      "quiz_coverage_percent": 1.5
     }
   ]
 }

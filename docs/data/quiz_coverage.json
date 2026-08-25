@@ -1,0 +1,98 @@
+{
+  "schema_version": "1.1.0",
+  "kind": "quiz_coverage",
+  "generated_at": "2026-08-25",
+  "policy": {
+    "target_questions_per_topic": 2,
+    "coverage_claim_allowed_at_percent": 100
+  },
+  "totals": {
+    "roadmap_count": 10,
+    "topic_count": 410,
+    "quiz_topic_count": 10,
+    "quiz_question_count": 20,
+    "coverage_percent": 2.4
+  },
+  "roadmaps": [
+    {
+      "slug": "ai-engineer",
+      "topic_count": 26,
+      "quiz_topic_count": 1,
+      "quiz_question_count": 2,
+      "coverage_percent": 3.8,
+      "invalid_or_empty_entries": []
+    },
+    {
+      "slug": "android",
+      "topic_count": 68,
+      "quiz_topic_count": 1,
+      "quiz_question_count": 2,
+      "coverage_percent": 1.5,
+      "invalid_or_empty_entries": []
+    },
+    {
+      "slug": "backend",
+      "topic_count": 82,
+      "quiz_topic_count": 1,
+      "quiz_question_count": 2,
+      "coverage_percent": 1.2,
+      "invalid_or_empty_entries": []
+    },
+    {
+      "slug": "data",
+      "topic_count": 18,
+      "quiz_topic_count": 1,
+      "quiz_question_count": 2,
+      "coverage_percent": 5.6,
+      "invalid_or_empty_entries": []
+    },
+    {
+      "slug": "devops",
+      "topic_count": 86,
+      "quiz_topic_count": 1,
+      "quiz_question_count": 2,
+      "coverage_percent": 1.2,
+      "invalid_or_empty_entries": []
+    },
+    {
+      "slug": "frontend",
+      "topic_count": 34,
+      "quiz_topic_count": 1,
+      "quiz_question_count": 2,
+      "coverage_percent": 2.9,
+      "invalid_or_empty_entries": []
+    },
+    {
+      "slug": "fullstack",
+      "topic_count": 17,
+      "quiz_topic_count": 1,
+      "quiz_question_count": 2,
+      "coverage_percent": 5.9,
+      "invalid_or_empty_entries": []
+    },
+    {
+      "slug": "mobile",
+      "topic_count": 15,
+      "quiz_topic_count": 1,
+      "quiz_question_count": 2,
+      "coverage_percent": 6.7,
+      "invalid_or_empty_entries": []
+    },
+    {
+      "slug": "professional",
+      "topic_count": 45,
+      "quiz_topic_count": 1,
+      "quiz_question_count": 2,
+      "coverage_percent": 2.2,
+      "invalid_or_empty_entries": []
+    },
+    {
+      "slug": "python",
+      "topic_count": 19,
+      "quiz_topic_count": 1,
+      "quiz_question_count": 2,
+      "coverage_percent": 5.3,
+      "invalid_or_empty_entries": []
+    }
+  ]
+}

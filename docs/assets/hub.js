@@ -123,8 +123,9 @@ function draw(filter = ""){
     return `<a class="card ${i.slug === "professional" ? "featured-card" : ""}" href="./roadmap.html?r=${encodeURIComponent(i.slug)}"><div class="card-art art-${esc(i.slug)}">${art(i.slug)}${feature}</div><div class="card-body"><h3>${esc(lang === "ar" ? i.ar : i.en)}<span class="en-name">${esc(lang === "ar" ? i.en : i.ar)}</span></h3><p>${esc(lang === "ar" ? i.desc_ar : i.desc_en)}</p><div class="meta"><span>${i.topic_count || i.nodes} ${copy.topics} · ${i.stage_count || i.groups} ${copy.stages}</span><span class="difficulty">${copy[difficulty]}</span></div><div class="card-link">${copy.start} <span>→</span></div></div></a>`;
   }).join("") || `<p class="empty-state">${lang === "ar" ? "لا توجد مسارات مطابقة لبحثك." : "No roadmaps match your search."}</p>`;
 }
-document.getElementById("langBtn").addEventListener("click", () => { lang = lang === "ar" ? "en" : "ar"; localStorage.setItem("rm_lang", lang); shell(); draw(document.getElementById("search").value); });
+document.getElementById("langBtn").addEventListener("click", () => { lang = lang === "ar" ? "en" : "ar"; localStorage.setItem("rm_lang", lang); window.dispatchEvent(new CustomEvent("rm:language-changed", { detail: { lang } })); shell(); draw(document.getElementById("search").value); });
 document.getElementById("themeBtn").addEventListener("click", () => { theme = theme === "dark" ? "light" : "dark"; localStorage.setItem("rm_theme", theme); shell(); });
 document.getElementById("search").addEventListener("input", e => draw(e.target.value));
 document.querySelectorAll("#filters .filter").forEach(btn => btn.addEventListener("click", () => { activeCategory = btn.dataset.filter; shell(); draw(document.getElementById("search").value); }));
+window.addEventListener("rm:sync-applied", () => { shell(); draw(document.getElementById("search").value); });
 fetch("./data/roadmaps.json").then(r => r.ok ? r.json() : Promise.reject()).catch(() => fetch("./data/index.json").then(r => r.json())).then(d => { items = d.roadmaps; shell(); draw(); }).catch(() => { document.getElementById("grid").innerHTML = `<p class="empty-state">Unable to load roadmaps.</p>`; });

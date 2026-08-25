@@ -106,7 +106,7 @@ function renderHeroTrack(){
   document.getElementById("heroMeta").innerHTML = `<span>${topicTotal(data)} ${lang === "ar" ? "موضوعًا" : "topics"}</span><span>${stageTotal(data)} ${lang === "ar" ? "مراحل" : "stages"}</span><span>${lang === "ar" ? "تقدم محفوظ" : "Progress saved"}</span>`;
   visual.innerHTML = heroArt(data.slug);
 }
-function save(){ localStorage.setItem(KEY, JSON.stringify(progress)); }
+function save(){ localStorage.setItem(KEY, JSON.stringify(progress)); window.dispatchEvent(new CustomEvent("rm:progress-changed", { detail: { slug, progress } })); }
 
 function stats(){
   const total = topicTotal(data);
@@ -171,7 +171,7 @@ function quizFor(node){
 function saveQuizResult(node, score){
   const old = quizResults[node.id] || { bestScore: 0, attempts: 0, passed: false };
   quizResults[node.id] = { bestScore: Math.max(old.bestScore || 0, score), attempts: (old.attempts || 0) + 1, passed: Boolean(old.passed || score >= 70), updatedAt: new Date().toISOString() };
-  localStorage.setItem(QUIZ_KEY, JSON.stringify(quizResults));
+  localStorage.setItem(QUIZ_KEY, JSON.stringify(quizResults)); window.dispatchEvent(new CustomEvent("rm:quiz-changed", { detail: { slug, results: quizResults } }));
 }
 function renderQuiz(node){
   const panel = document.getElementById("quizPanel");
@@ -245,13 +245,13 @@ document.getElementById("scrim").addEventListener("click", closeDrawer);
 document.getElementById("dClose").addEventListener("click", closeDrawer);
 document.addEventListener("keydown", e => e.key === "Escape" && closeDrawer());
 document.getElementById("langBtn").addEventListener("click", () => {
-  lang = lang === "ar" ? "en" : "ar"; localStorage.setItem("rm_lang", lang); render(); closeDrawer();
+  lang = lang === "ar" ? "en" : "ar"; localStorage.setItem("rm_lang", lang); window.dispatchEvent(new CustomEvent("rm:language-changed", { detail: { lang } })); render(); closeDrawer();
 });
 document.getElementById("themeBtn").addEventListener("click", () => {
   theme = theme === "dark" ? "light" : "dark"; localStorage.setItem("rm_theme", theme); applyShell();
 });
 document.getElementById("resetBtn").addEventListener("click", () => {
-  progress = {}; save(); render();
+  progress = {}; localStorage.removeItem(KEY); window.dispatchEvent(new CustomEvent("rm:progress-reset", { detail: { slug } })); render();
 });
 
 Promise.all([
