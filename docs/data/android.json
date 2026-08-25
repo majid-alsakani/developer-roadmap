@@ -18,7 +18,65 @@
      "type": "primary",
      "note_en": "",
      "note_ar": "",
-     "resources": []
+     "resources": [],
+     "quiz": [
+      {
+       "id": "android-kotlin-q1",
+       "type": "single",
+       "question_en": "Which language is recommended for modern native Android development in this roadmap?",
+       "question_ar": "ما اللغة الموصى بها لتطوير Android الأصلي الحديث في هذا المسار؟",
+       "options": [
+        {
+         "id": "a",
+         "en": "Kotlin",
+         "ar": "Kotlin"
+        },
+        {
+         "id": "b",
+         "en": "PHP",
+         "ar": "PHP"
+        },
+        {
+         "id": "c",
+         "en": "Ruby",
+         "ar": "Ruby"
+        }
+       ],
+       "answer": [
+        "a"
+       ],
+       "explanation_en": "Kotlin is the recommended language for modern Android development.",
+       "explanation_ar": "Kotlin هي اللغة الموصى بها لتطوير Android الحديث."
+      },
+      {
+       "id": "android-kotlin-q2",
+       "type": "single",
+       "question_en": "What is an IDE useful for?",
+       "question_ar": "في ماذا تفيد بيئة التطوير المتكاملة IDE؟",
+       "options": [
+        {
+         "id": "a",
+         "en": "Editing, running, and debugging code",
+         "ar": "تحرير الكود وتشغيله وتصحيح أخطائه"
+        },
+        {
+         "id": "b",
+         "en": "Replacing the app store",
+         "ar": "استبدال متجر التطبيقات"
+        },
+        {
+         "id": "c",
+         "en": "Storing user passwords publicly",
+         "ar": "تخزين كلمات مرور المستخدمين علنًا"
+        }
+       ],
+       "answer": [
+        "a"
+       ],
+       "explanation_en": "An IDE combines development tools such as editing, building, and debugging.",
+       "explanation_ar": "تجمع IDE أدوات مثل التحرير والبناء وتصحيح الأخطاء."
+      }
+     ]
     },
     {
      "id": "android-java",

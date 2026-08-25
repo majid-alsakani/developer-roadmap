@@ -27,7 +27,65 @@
      "type": "primary",
      "note_en": "",
      "note_ar": "",
-     "resources": []
+     "resources": [],
+     "quiz": [
+      {
+       "id": "be-http-q1",
+       "type": "single",
+       "question_en": "What does HTTP primarily define?",
+       "question_ar": "ماذا يحدد HTTP بشكل أساسي؟",
+       "options": [
+        {
+         "id": "a",
+         "en": "How clients and servers communicate on the web",
+         "ar": "كيفية اتصال العملاء والخوادم عبر الويب"
+        },
+        {
+         "id": "b",
+         "en": "How a database stores indexes",
+         "ar": "كيفية تخزين قاعدة البيانات للفهارس"
+        },
+        {
+         "id": "c",
+         "en": "How a compiler optimizes code",
+         "ar": "كيفية تحسين المترجم للكود"
+        }
+       ],
+       "answer": [
+        "a"
+       ],
+       "explanation_en": "HTTP is a web communication protocol between clients and servers.",
+       "explanation_ar": "HTTP بروتوكول اتصال ويب بين العملاء والخوادم."
+      },
+      {
+       "id": "be-http-q2",
+       "type": "single",
+       "question_en": "Which status class represents a successful response?",
+       "question_ar": "أي فئة من رموز الحالة تمثل استجابة ناجحة؟",
+       "options": [
+        {
+         "id": "a",
+         "en": "2xx",
+         "ar": "2xx"
+        },
+        {
+         "id": "b",
+         "en": "4xx",
+         "ar": "4xx"
+        },
+        {
+         "id": "c",
+         "en": "5xx",
+         "ar": "5xx"
+        }
+       ],
+       "answer": [
+        "a"
+       ],
+       "explanation_en": "2xx status codes indicate successful processing.",
+       "explanation_ar": "تشير رموز 2xx إلى معالجة ناجحة."
+      }
+     ]
     },
     {
      "id": "backend-domain",

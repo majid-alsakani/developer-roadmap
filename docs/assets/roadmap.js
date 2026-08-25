@@ -3,11 +3,11 @@ const T = {
   en: { back:"All roadmaps", progress:"Your progress", done:"Done", learning:"Learning", skip:"Skip", pending:"Pending",
         reset:"Reset", primary:"Core", secondary:"Recommended", optional:"Optional",
         resources:"Free resources", nores:"No links yet — contributions welcome.", close:"Close", saved:"Your progress is saved on this device.",
-        of:"of", topics:"topics", markAs:"Mark this topic", share:"Copy link" },
+        of:"of", topics:"topics", markAs:"Mark this topic", share:"Copy link", quiz:"Quick quiz", testYourself:"Test yourself", quizIntro:"Check your understanding in two quick questions.", startQuiz:"Start quiz", question:"Question", checkAnswer:"Check answer", nextQuestion:"Next question", finishQuiz:"Finish quiz", correct:"Correct", incorrect:"Not quite", chooseAnswer:"Choose an answer first.", score:"Your score", bestScore:"Best score", attempts:"attempts", passed:"Passed", tryAgain:"Try again", noQuiz:"A quiz is coming for this topic." },
   ar: { back:"كل الخرائط", progress:"تقدّمك", done:"أنجزته", learning:"أتعلّمه", skip:"تخطّيته", pending:"لم يبدأ",
         reset:"إعادة تعيين", primary:"أساسي", secondary:"موصى به", optional:"اختياري",
         resources:"مصادر مجانية", nores:"لا توجد روابط بعد — مساهماتك مرحّب بها.", close:"إغلاق", saved:"يُحفظ تقدمك على هذا الجهاز.",
-        of:"من", topics:"موضوعًا", markAs:"حدّد حالة الموضوع", share:"نسخ الرابط" }
+        of:"من", topics:"موضوعًا", markAs:"حدّد حالة الموضوع", share:"نسخ الرابط", quiz:"اختبار قصير", testYourself:"اختبر نفسك", quizIntro:"تحقق من فهمك في سؤالين سريعين.", startQuiz:"ابدأ الاختبار", question:"السؤال", checkAnswer:"تحقق من الإجابة", nextQuestion:"السؤال التالي", finishQuiz:"إنهاء الاختبار", correct:"إجابة صحيحة", incorrect:"ليست الإجابة الصحيحة", chooseAnswer:"اختر إجابة أولًا.", score:"نتيجتك", bestScore:"أفضل نتيجة", attempts:"محاولات", passed:"اجتاز الاختبار", tryAgain:"أعد المحاولة", noQuiz:"سيُضاف اختبار لهذا الموضوع قريبًا." }
 };
 const q = new URLSearchParams(location.search);
 const slug = q.get("r") || "frontend";
@@ -15,6 +15,9 @@ let lang = localStorage.getItem("rm_lang") || "ar";
 let theme = localStorage.getItem("rm_theme") || "dark";
 const KEY = "rm_progress_" + slug;
 let progress = JSON.parse(localStorage.getItem(KEY) || "{}");
+const QUIZ_KEY = "rm_quiz_" + slug;
+let quizResults = JSON.parse(localStorage.getItem(QUIZ_KEY) || "{}");
+let quizSession = null;
 let data = null, current = null;
 
 function applyShell(){
@@ -142,9 +145,9 @@ function render(){
         ${g.nodes.map(nd => {
           const st = progress[nd.id] || "";
           const mark = st === "done" ? "✔" : st === "learning" ? "◐" : st === "skip" ? "✕" : "";
-          return `<button class="node ${nd.type}" data-id="${nd.id}" ${st ? `data-state="${st}"` : ""}>
+          return `<button class="node ${nd.type} ${quizFor(nd).length ? "has-quiz" : ""}" data-id="${nd.id}" ${st ? `data-state="${st}"` : ""}>
             <span>${lang === "ar" ? nd.ar : nd.en}<span class="sub">${lang === "ar" ? nd.en : nd.ar}</span></span>
-            <span class="tick">${mark}</span></button>`;
+            ${quizFor(nd).length ? `<span class="quiz-badge" title="${t("quiz")}">Q</span>` : ""}<span class="tick">${mark}</span></button>`;
         }).join("")}
       </div>
     </section>`).join("");
@@ -156,6 +159,47 @@ function render(){
 function findNode(id){
   for (const g of data.groups) for (const nd of g.nodes) if (nd.id === id) return nd;
   return null;
+}
+
+function quizFor(node){ return Array.isArray(node?.quiz) ? node.quiz : []; }
+function saveQuizResult(node, score){
+  const old = quizResults[node.id] || { bestScore: 0, attempts: 0, passed: false };
+  quizResults[node.id] = { bestScore: Math.max(old.bestScore || 0, score), attempts: (old.attempts || 0) + 1, passed: Boolean(old.passed || score >= 70), updatedAt: new Date().toISOString() };
+  localStorage.setItem(QUIZ_KEY, JSON.stringify(quizResults));
+}
+function renderQuiz(node){
+  const panel = document.getElementById("quizPanel");
+  const content = document.getElementById("quizContent");
+  const questions = quizFor(node);
+  document.getElementById("quizTitle").textContent = t("quiz");
+  document.getElementById("quizIntro").textContent = questions.length ? t("quizIntro") : t("noQuiz");
+  panel.hidden = !questions.length;
+  if (!questions.length) return;
+  if (!quizSession || quizSession.nodeId !== node.id) quizSession = null;
+  const result = quizResults[node.id];
+  if (!quizSession){
+    content.innerHTML = `<button class="btn quiz-start" id="quizStart">${t("startQuiz")}</button>${result ? `<div class="quiz-best">${t("bestScore")}: ${result.bestScore}% · ${result.attempts} ${t("attempts")}</div>` : ""}`;
+    document.getElementById("quizStart").addEventListener("click", () => { quizSession = { nodeId: node.id, index: 0, answers: {}, checked: false, correct: 0 }; renderQuiz(node); });
+    return;
+  }
+  if (quizSession.index >= questions.length){
+    const score = Math.round(quizSession.correct / questions.length * 100);
+    if (!quizSession.saved){ saveQuizResult(node, score); quizSession.saved = true; }
+    const latest = quizResults[node.id];
+    content.innerHTML = `<div class="quiz-summary"><div class="quiz-score">${score}%</div><p>${t("score")}: ${quizSession.correct} / ${questions.length}<br>${score >= 70 ? t("passed") : t("incorrect")}</p><div class="quiz-best">${t("bestScore")}: ${latest.bestScore}% · ${latest.attempts} ${t("attempts")}</div><button class="btn quiz-start" id="quizRetry">${t("tryAgain")}</button></div>`;
+    document.getElementById("quizRetry").addEventListener("click", () => { quizSession = { nodeId: node.id, index: 0, answers: {}, checked: false, correct: 0 }; renderQuiz(node); });
+    return;
+  }
+  const currentQuestion = questions[quizSession.index];
+  const selected = quizSession.answers[currentQuestion.id] || "";
+  const isCorrect = quizSession.checked && currentQuestion.answer.includes(selected);
+  content.innerHTML = `<div class="quiz-question"><span class="quiz-count">${t("question")} ${quizSession.index + 1} / ${questions.length}</span><h5>${lang === "ar" ? currentQuestion.question_ar : currentQuestion.question_en}</h5><div class="quiz-options">${currentQuestion.options.map(option => `<label class="quiz-option ${selected === option.id ? "selected" : ""} ${quizSession.checked && currentQuestion.answer.includes(option.id) ? "correct" : ""} ${quizSession.checked && selected === option.id && !isCorrect ? "wrong" : ""}"><input type="radio" name="quizAnswer" value="${option.id}" ${selected === option.id ? "checked" : ""} ${quizSession.checked ? "disabled" : ""}><span>${lang === "ar" ? option.ar : option.en}</span></label>`).join("")}</div>${quizSession.checked ? `<div class="quiz-feedback ${isCorrect ? "correct" : "wrong"}"><strong>${isCorrect ? t("correct") : t("incorrect")}</strong><br>${lang === "ar" ? currentQuestion.explanation_ar : currentQuestion.explanation_en}</div>` : ""}<div class="quiz-actions">${quizSession.checked ? `<button class="btn" id="quizNext">${quizSession.index === questions.length - 1 ? t("finishQuiz") : t("nextQuestion")}</button>` : `<button class="btn btn-primary" id="quizCheck">${t("checkAnswer")}</button>`}</div></div>`;
+  if (!quizSession.checked){
+    content.querySelectorAll('input[name="quizAnswer"]').forEach(input => input.addEventListener("change", () => { quizSession.answers[currentQuestion.id] = input.value; renderQuiz(node); }));
+    document.getElementById("quizCheck").addEventListener("click", () => { if (!quizSession.answers[currentQuestion.id]) { const n = document.createElement("div"); n.className = "quiz-feedback wrong"; n.textContent = t("chooseAnswer"); content.appendChild(n); return; } quizSession.checked = true; if (currentQuestion.answer.includes(quizSession.answers[currentQuestion.id])) quizSession.correct += 1; renderQuiz(node); });
+  } else {
+    document.getElementById("quizNext").addEventListener("click", () => { quizSession.index += 1; quizSession.checked = false; renderQuiz(node); });
+  }
 }
 
 function openNode(id){
@@ -182,6 +226,7 @@ function openNode(id){
   document.getElementById("dRes").innerHTML = res.length
     ? res.map(r => `<a href="${r.url}" target="_blank" rel="noopener">🔗 ${r.title}</a>`).join("")
     : `<p style="color:var(--muted);font-size:14px">${t("nores")}</p>`;
+  renderQuiz(current);
   document.getElementById("scrim").classList.add("on");
   document.getElementById("drawer").classList.add("on");
 }
