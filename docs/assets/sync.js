@@ -11,9 +11,9 @@
 
   const copy = {
     ar: {
-      account: "الحساب", signedIn: "الحساب متصل", signedOut: "ضيف — تقدمك محلي", syncing: "جارٍ مزامنة تقدمك…", synced: "تمت المزامنة مع الحساب", offline: "وضع عدم الاتصال — سيعاد المحاولة", setup: "الحسابات جاهزة، لكن لم تتم تهيئة Supabase بعد.", setupHint: "أضف رابط المشروع وpublishable key في supabase-config.js ثم طبّق migration قاعدة البيانات.", signIn: "تسجيل الدخول", signOut: "تسجيل الخروج", github: "المتابعة مع GitHub", magic: "إرسال رابط دخول بالبريد", email: "البريد الإلكتروني", close: "إغلاق", sent: "تم إرسال رابط الدخول. افحص بريدك.", invalid: "أدخل بريدًا إلكترونيًا صحيحًا.", error: "تعذر تنفيذ العملية. تحقق من إعدادات Supabase أو اتصال الشبكة.", local: "التقدم محفوظ محليًا على هذا الجهاز." },
+      account: "الحساب", dashboard: "لوحة الإنجاز", signedIn: "الحساب متصل", signedOut: "ضيف — تقدمك محلي", syncing: "جارٍ مزامنة تقدمك…", synced: "تمت المزامنة مع الحساب", offline: "وضع عدم الاتصال — سيعاد المحاولة", setup: "الحسابات جاهزة، لكن لم تتم تهيئة Supabase بعد.", setupHint: "أضف رابط المشروع وpublishable key في supabase-config.js ثم طبّق migration قاعدة البيانات.", signIn: "تسجيل الدخول", signOut: "تسجيل الخروج", github: "المتابعة مع GitHub", magic: "إرسال رابط دخول بالبريد", email: "البريد الإلكتروني", close: "إغلاق", sent: "تم إرسال رابط الدخول. افحص بريدك.", invalid: "أدخل بريدًا إلكترونيًا صحيحًا.", error: "تعذر تنفيذ العملية. تحقق من إعدادات Supabase أو اتصال الشبكة.", local: "التقدم محفوظ محليًا على هذا الجهاز." },
     en: {
-      account: "Account", signedIn: "Account connected", signedOut: "Guest — progress is local", syncing: "Syncing your progress…", synced: "Synced with your account", offline: "Offline — will retry automatically", setup: "Accounts are ready, but Supabase is not configured yet.", setupHint: "Add the project URL and publishable key to supabase-config.js, then apply the database migration.", signIn: "Sign in", signOut: "Sign out", github: "Continue with GitHub", magic: "Send magic link", email: "Email address", close: "Close", sent: "Sign-in link sent. Check your email.", invalid: "Enter a valid email address.", error: "The operation failed. Check Supabase settings or your connection.", local: "Progress is saved locally on this device." }
+      account: "Account", dashboard: "Progress dashboard", signedIn: "Account connected", signedOut: "Guest — progress is local", syncing: "Syncing your progress…", synced: "Synced with your account", offline: "Offline — will retry automatically", setup: "Accounts are ready, but Supabase is not configured yet.", setupHint: "Add the project URL and publishable key to supabase-config.js, then apply the database migration.", signIn: "Sign in", signOut: "Sign out", github: "Continue with GitHub", magic: "Send magic link", email: "Email address", close: "Close", sent: "Sign-in link sent. Check your email.", invalid: "Enter a valid email address.", error: "The operation failed. Check Supabase settings or your connection.", local: "Progress is saved locally on this device." }
   };
 
   function lang() { return localStorage.getItem("rm_lang") || "ar"; }
@@ -99,17 +99,17 @@
     statusEl.textContent = user ? (status === "syncing" ? text("syncing") : status === "synced" ? text("synced") : status === "offline" ? text("offline") : text("signedIn")) : text("signedOut");
     if (!validConfig()) {
       message.textContent = text("setup");
-      actions.innerHTML = `<p class="account-hint">${text("setupHint")}</p>`;
+      actions.innerHTML = `<p class="account-hint">${text("setupHint")}</p><a class="btn account-dashboard" href="./dashboard.html">${text("dashboard")}</a>`;
       return;
     }
     if (user) {
       message.textContent = status === "synced" ? text("synced") : text("syncing");
-      actions.innerHTML = `<button class="btn" id="signOutButton" type="button">${text("signOut")}</button>`;
+      actions.innerHTML = `<a class="btn account-dashboard" href="./dashboard.html">${text("dashboard")}</a><button class="btn" id="signOutButton" type="button">${text("signOut")}</button>`;
       document.getElementById("signOutButton").addEventListener("click", signOut);
       return;
     }
     message.textContent = text("local");
-    actions.innerHTML = `<button class="btn btn-primary" id="githubButton" type="button">${text("github")}</button><div class="account-divider">${lang() === "ar" ? "أو" : "or"}</div><label class="account-label" for="magicEmail">${text("email")}</label><input class="account-input" id="magicEmail" type="email" autocomplete="email" placeholder="name@example.com"><button class="btn" id="magicButton" type="button">${text("magic")}</button>`;
+    actions.innerHTML = `<a class="btn account-dashboard" href="./dashboard.html">${text("dashboard")}</a><button class="btn btn-primary" id="githubButton" type="button">${text("github")}</button><div class="account-divider">${lang() === "ar" ? "أو" : "or"}</div><label class="account-label" for="magicEmail">${text("email")}</label><input class="account-input" id="magicEmail" type="email" autocomplete="email" placeholder="name@example.com"><button class="btn" id="magicButton" type="button">${text("magic")}</button>`;
     document.getElementById("githubButton").addEventListener("click", signInGithub);
     document.getElementById("magicButton").addEventListener("click", signInMagic);
   }
@@ -214,6 +214,19 @@
     } catch (_) { setStatus(navigator.onLine ? "local" : "offline"); }
   }
 
+  function eventRow(slug, eventType, nodeId, metadata) {
+    return { key: `event:${slug}:${eventType}:${Date.now()}:${Math.random().toString(36).slice(2, 8)}`, kind: "learning_event", roadmap_slug: slug, node_id: nodeId || null, event_type: eventType, metadata: metadata || {}, created_at: new Date().toISOString() };
+  }
+
+  async function pushEvent(slug, eventType, nodeId, metadata) {
+    const row = eventRow(slug, eventType, nodeId, metadata);
+    if (!user || !client || !navigator.onLine) { queueRows([row]); return; }
+    try {
+      const result = await client.from("learning_events").insert({ user_id: user.id, roadmap_slug: row.roadmap_slug, node_id: row.node_id, event_type: row.event_type, metadata: row.metadata, created_at: row.created_at });
+      if (result.error) throw result.error;
+    } catch (_) { queueRows([row]); }
+  }
+
   async function pushProgress(slug, progress) {
     updateMeta(slug, progress);
     const rows = progressRows(slug, progress);
@@ -221,6 +234,7 @@
     const payload = rows.map(row => ({ user_id: user.id, roadmap_slug: row.roadmap_slug, node_id: row.node_id, status: row.status, updated_at: row.updated_at }));
     try { const result = await client.from("progress").upsert(payload, { onConflict: "user_id,roadmap_slug,node_id" }); if (result.error) throw result.error; setStatus("synced"); }
     catch (_) { queueRows(rows); setStatus(navigator.onLine ? "local" : "offline"); }
+    pushEvent(slug, "progress_saved", null, { completed: Object.values(progress || {}).filter(v => v === "done").length, learning: Object.values(progress || {}).filter(v => v === "learning").length });
   }
 
   async function pushQuiz(slug, results) {
@@ -229,6 +243,8 @@
     const payload = rows.map(row => ({ user_id: user.id, roadmap_slug: row.roadmap_slug, node_id: row.node_id, best_score: row.best_score, attempts: row.attempts, passed: row.passed, updated_at: row.updated_at }));
     try { const result = await client.from("quiz_results").upsert(payload, { onConflict: "user_id,roadmap_slug,node_id" }); if (result.error) throw result.error; setStatus("synced"); }
     catch (_) { queueRows(rows); setStatus(navigator.onLine ? "local" : "offline"); }
+    const latest = rows.slice(-1)[0];
+    pushEvent(slug, "quiz_saved", latest?.node_id || null, { best_score: latest?.best_score || 0, attempts: latest?.attempts || 0, passed: Boolean(latest?.passed) });
   }
 
   async function resetProgress(slug) {
@@ -239,6 +255,24 @@
     catch (_) { setStatus("offline"); }
   }
 
+  function localSnapshot() {
+    const progress = {};
+    const quizzes = {};
+    Object.keys(localStorage).forEach(key => {
+      if (key.startsWith("rm_progress_") && !key.startsWith("rm_progress_meta_")) progress[key.replace("rm_progress_", "")] = parse(key, {});
+      if (key.startsWith("rm_quiz_")) quizzes[key.replace("rm_quiz_", "")] = parse(key, {});
+    });
+    return { progress, quizzes };
+  }
+
+  async function getSnapshot() {
+    if (validConfig()) await loadClient();
+    const local = localSnapshot();
+    let cloud = null;
+    if (client && user) cloud = await fetchCloud();
+    return { user, local, cloud, status, queued: parse(QUEUE_KEY, []).length };
+  }
+
   async function flushQueue() {
     if (!client || !user || !navigator.onLine) return;
     const rows = parse(QUEUE_KEY, []);
@@ -246,8 +280,10 @@
     try {
       const progress = rows.filter(r => r.kind === "progress").map(r => ({ user_id: user.id, roadmap_slug: r.roadmap_slug, node_id: r.node_id, status: r.status, updated_at: r.updated_at }));
       const quizzes = rows.filter(r => r.kind === "quiz_results").map(r => ({ user_id: user.id, roadmap_slug: r.roadmap_slug, node_id: r.node_id, best_score: r.best_score, attempts: r.attempts, passed: r.passed, updated_at: r.updated_at }));
+      const events = rows.filter(r => r.kind === "learning_event").map(r => ({ user_id: user.id, roadmap_slug: r.roadmap_slug, node_id: r.node_id, event_type: r.event_type, metadata: r.metadata || {}, created_at: r.created_at }));
       if (progress.length) { const result = await client.from("progress").upsert(progress, { onConflict: "user_id,roadmap_slug,node_id" }); if (result.error) throw result.error; }
       if (quizzes.length) { const result = await client.from("quiz_results").upsert(quizzes, { onConflict: "user_id,roadmap_slug,node_id" }); if (result.error) throw result.error; }
+      if (events.length) { const result = await client.from("learning_events").insert(events); if (result.error) throw result.error; }
       localStorage.removeItem(QUEUE_KEY); setStatus("synced");
     } catch (_) { setStatus("offline"); }
   }
@@ -266,6 +302,6 @@
     catch (_) { setStatus("local"); }
   }
 
-  window.RoadmapSync = Object.freeze({ init, refresh: mergeAccount, getUser: () => user, isConfigured: validConfig });
+  window.RoadmapSync = Object.freeze({ init, refresh: mergeAccount, getUser: () => user, getSnapshot, isConfigured: validConfig });
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init();
 })();

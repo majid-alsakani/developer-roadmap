@@ -37,3 +37,18 @@ Magic-link login is also available after enabling email authentication in Supaba
 ## 5. Verify the flow
 
 Test guest progress, sign-in, local-to-cloud migration, sign-out without deleting local data, a second browser session, offline edits followed by reconnect, and an attempted cross-user read. The last test must be rejected by RLS. The browser should expose only the configured publishable key.
+
+
+## 6. التتبع المتقدم ولوحة الإنجاز
+
+أضيفت صفحة `docs/dashboard.html` لعرض ملخص التقدم عبر المسارات، الاختبارات، الخطوة التعليمية التالية، وآخر النشاطات. تعمل الصفحة محليًا للضيف وتقرأ البيانات المدمجة بعد تسجيل الدخول.
+
+للتتبع السحابي المتقدم، طبّق migration الجديدة بعد migration الأساسية:
+
+```text
+supabase/migrations/202608250002_learning_events.sql
+```
+
+ينشئ هذا الجدول `learning_events` لتسجيل أحداث `progress_saved` و`quiz_saved` و`sync_completed`. لا تُخزَّن إجابات الاختبارات الخام؛ تُرسل فقط نتيجة الاختبار وعدد المحاولات وحالة الاجتياز ضمن `metadata`. الجدول محمي بسياسات RLS تمنع المستخدم من قراءة أو إدخال أحداث مستخدم آخر.
+
+بعد تطبيق الـ migrations، شغّل اختبارات RLS الموجودة في `supabase/tests/`. يبقى الموقع صالحًا للعمل دون Supabase؛ وتظهر لوحة الإنجاز التقدم المحلي وتستمر الاختبارات والتوصيات دون حساب. عند تفعيل الحساب، تدمج طبقة المزامنة البيانات المحلية مع السحابية، وتضع الأحداث غير المرسلة في طابور يعاد إرساله عند عودة الاتصال.

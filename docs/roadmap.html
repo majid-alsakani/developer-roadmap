@@ -40,6 +40,7 @@
     <button class="btn" id="resetBtn"></button>
   </div>
   <div class="legend" id="legend"></div>
+  <section class="path-quiz-bar" id="pathQuizBar" hidden aria-live="polite"><div><span class="roadmap-kicker" id="pathQuizKicker"></span><h2 id="pathQuizTitle"></h2><p id="pathQuizText"></p></div><button class="btn btn-primary" id="pathQuizStart" type="button"></button></section>
 
   <div class="map" id="map"></div>
 </main>
@@ -64,6 +65,8 @@
     <div class="res" id="dRes"></div>
   </div>
 </aside>
+
+<section class="path-quiz-modal" id="pathQuizModal" hidden role="dialog" aria-modal="true" aria-labelledby="pathQuizModalTitle"><div class="path-quiz-dialog"><div class="path-quiz-dialog-head"><div><span class="roadmap-kicker" id="pathQuizModalKicker"></span><h2 id="pathQuizModalTitle"></h2></div><button class="btn" id="pathQuizClose" type="button">✕</button></div><div id="pathQuizContent"></div></div></section>
 
 <footer><div class="wrap">© <span id="y"></span> <a href="https://github.com/majid-alsakani">Majid Al-Sakani · ماجد السكني</a> — CC BY-SA 4.0 · <a href="https://github.com/majid-alsakani/developer-roadmap">Contribute</a></div></footer>
 <script>document.getElementById('y').textContent=new Date().getFullYear()</script>

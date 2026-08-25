@@ -3,11 +3,11 @@ const T = {
   en: { back:"All roadmaps", progress:"Your progress", done:"Done", learning:"Learning", skip:"Skip", pending:"Pending",
         reset:"Reset", primary:"Core", secondary:"Recommended", optional:"Optional",
         resources:"Free resources", nores:"No links yet — contributions welcome.", close:"Close", saved:"Your progress is saved on this device.",
-        of:"of", topics:"topics", markAs:"Mark this topic", share:"Copy link", quiz:"Quick quiz", testYourself:"Test yourself", quizIntro:"Check your understanding in two quick questions.", startQuiz:"Start quiz", question:"Question", checkAnswer:"Check answer", nextQuestion:"Next question", finishQuiz:"Finish quiz", correct:"Correct", incorrect:"Not quite", chooseAnswer:"Choose an answer first.", score:"Your score", bestScore:"Best score", attempts:"attempts", passed:"Passed", tryAgain:"Try again", noQuiz:"A quiz is coming for this topic." },
+        of:"of", topics:"topics", markAs:"Mark this topic", share:"Copy link", quiz:"Quick quiz", testYourself:"Test yourself", quizIntro:"Check your understanding in two quick questions.", startQuiz:"Start quiz", question:"Question", checkAnswer:"Check answer", nextQuestion:"Next question", finishQuiz:"Finish quiz", correct:"Correct", incorrect:"Not quite", chooseAnswer:"Choose an answer first.", score:"Your score", bestScore:"Best score", attempts:"attempts", passed:"Passed", tryAgain:"Try again", noQuiz:"A quiz is coming for this topic.", pathQuiz:"Path check", pathQuizIntro:"A focused check built from this roadmap's topic quizzes.", pathQuizStart:"Start path check", pathQuizEmpty:"Path check will appear as more topic quizzes are added.", pathQuizResult:"Path check complete", pathQuizPassed:"Strong foundation", pathQuizRetry:"Try path check again", pathQuizNext:"Next question", topicLabel:"Topic" },
   ar: { back:"كل الخرائط", progress:"تقدّمك", done:"أنجزته", learning:"أتعلّمه", skip:"تخطّيته", pending:"لم يبدأ",
         reset:"إعادة تعيين", primary:"أساسي", secondary:"موصى به", optional:"اختياري",
         resources:"مصادر مجانية", nores:"لا توجد روابط بعد — مساهماتك مرحّب بها.", close:"إغلاق", saved:"يُحفظ تقدمك على هذا الجهاز.",
-        of:"من", topics:"موضوعًا", markAs:"حدّد حالة الموضوع", share:"نسخ الرابط", quiz:"اختبار قصير", testYourself:"اختبر نفسك", quizIntro:"تحقق من فهمك في سؤالين سريعين.", startQuiz:"ابدأ الاختبار", question:"السؤال", checkAnswer:"تحقق من الإجابة", nextQuestion:"السؤال التالي", finishQuiz:"إنهاء الاختبار", correct:"إجابة صحيحة", incorrect:"ليست الإجابة الصحيحة", chooseAnswer:"اختر إجابة أولًا.", score:"نتيجتك", bestScore:"أفضل نتيجة", attempts:"محاولات", passed:"اجتاز الاختبار", tryAgain:"أعد المحاولة", noQuiz:"سيُضاف اختبار لهذا الموضوع قريبًا." }
+        of:"من", topics:"موضوعًا", markAs:"حدّد حالة الموضوع", share:"نسخ الرابط", quiz:"اختبار قصير", testYourself:"اختبر نفسك", quizIntro:"تحقق من فهمك في سؤالين سريعين.", startQuiz:"ابدأ الاختبار", question:"السؤال", checkAnswer:"تحقق من الإجابة", nextQuestion:"السؤال التالي", finishQuiz:"إنهاء الاختبار", correct:"إجابة صحيحة", incorrect:"ليست الإجابة الصحيحة", chooseAnswer:"اختر إجابة أولًا.", score:"نتيجتك", bestScore:"أفضل نتيجة", attempts:"محاولات", passed:"اجتاز الاختبار", tryAgain:"أعد المحاولة", noQuiz:"سيُضاف اختبار لهذا الموضوع قريبًا.", pathQuiz:"اختبار المسار", pathQuizIntro:"اختبار مركز مبني على اختبارات موضوعات هذا المسار.", pathQuizStart:"ابدأ اختبار المسار", pathQuizEmpty:"سيظهر اختبار المسار عند إضافة اختبارات إلى مزيد من موضوعاته.", pathQuizResult:"اكتمل اختبار المسار", pathQuizPassed:"أساس قوي", pathQuizRetry:"أعد اختبار المسار", pathQuizNext:"السؤال التالي", topicLabel:"الموضوع" }
 };
 const q = new URLSearchParams(location.search);
 const slug = q.get("r") || "frontend";
@@ -18,6 +18,7 @@ let progress = JSON.parse(localStorage.getItem(KEY) || "{}");
 const QUIZ_KEY = "rm_quiz_" + slug;
 let quizResults = JSON.parse(localStorage.getItem(QUIZ_KEY) || "{}");
 let quizSession = null;
+let pathQuizSession = null;
 let data = null, current = null;
 let quizData = {};
 
@@ -127,6 +128,7 @@ function render(){
   applyShell();
   renderSeo();
   renderHeroTrack();
+  renderPathQuizBar();
   document.getElementById("backBtn").textContent = "← " + t("back");
   document.getElementById("h1").textContent = data.icon + " " + (lang === "ar" ? data.ar : data.en);
   document.getElementById("lead").textContent = lang === "ar" ? data.desc_ar : data.desc_en;
@@ -208,6 +210,50 @@ function renderQuiz(node){
   }
 }
 
+function pathQuestions(){
+  if (!data) return [];
+  return data.groups.flatMap(g => g.nodes || []).flatMap(node => quizFor(node).map(question => ({ question, topicId: node.id, topicName: lang === "ar" ? node.ar : node.en })));
+}
+function pathQuizPool(){
+  const all = pathQuestions();
+  const weak = all.filter(item => !quizResults[item.topicId]?.passed || (quizResults[item.topicId]?.bestScore || 0) < 70);
+  const strong = all.filter(item => !weak.includes(item));
+  return [...weak, ...strong].slice(0, Math.min(10, all.length));
+}
+function renderPathQuizBar(){
+  const bar = document.getElementById("pathQuizBar");
+  if (!bar) return;
+  const pool = pathQuizPool();
+  bar.hidden = !pool.length;
+  if (!pool.length) return;
+  document.getElementById("pathQuizKicker").textContent = t("pathQuiz");
+  document.getElementById("pathQuizTitle").textContent = t("pathQuiz");
+  document.getElementById("pathQuizText").textContent = `${t("pathQuizIntro")} ${pool.length} ${t("question")}`;
+  document.getElementById("pathQuizStart").textContent = t("pathQuizStart");
+}
+function closePathQuiz(){ const modal = document.getElementById("pathQuizModal"); if (modal) modal.hidden = true; pathQuizSession = null; }
+function renderPathQuiz(){
+  const modal = document.getElementById("pathQuizModal"), content = document.getElementById("pathQuizContent");
+  if (!modal || !content) return;
+  const pool = pathQuizPool();
+  document.getElementById("pathQuizModalKicker").textContent = t("pathQuiz");
+  document.getElementById("pathQuizModalTitle").textContent = data ? (lang === "ar" ? data.ar : data.en) : t("pathQuiz");
+  if (!pathQuizSession) { content.innerHTML = `<div class="path-quiz-result"><p>${t("pathQuizIntro")}</p><button class="btn btn-primary" id="pathQuizLaunch">${t("pathQuizStart")}</button></div>`; document.getElementById("pathQuizLaunch").addEventListener("click", () => { pathQuizSession = { index: 0, answers: {}, checked: false, correct: 0, pool }; renderPathQuiz(); }); return; }
+  if (pathQuizSession.index >= pathQuizSession.pool.length){
+    const score = Math.round(pathQuizSession.correct / pathQuizSession.pool.length * 100);
+    if (!pathQuizSession.saved) { saveQuizResult({ id: "__path_quiz__" }, score); pathQuizSession.saved = true; }
+    content.innerHTML = `<div class="path-quiz-result"><div class="path-quiz-result-score">${score}%</div><h3>${t("pathQuizResult")}</h3><p>${t("score")}: ${pathQuizSession.correct} / ${pathQuizSession.pool.length}<br>${score >= 70 ? t("pathQuizPassed") : t("incorrect")}</p><button class="btn btn-primary" id="pathQuizRetry">${t("pathQuizRetry")}</button></div>`;
+    document.getElementById("pathQuizRetry").addEventListener("click", () => { pathQuizSession = { index: 0, answers: {}, checked: false, correct: 0, pool: pathQuizPool() }; renderPathQuiz(); }); return;
+  }
+  const item = pathQuizSession.pool[pathQuizSession.index], question = item.question, selected = pathQuizSession.answers[question.id] || "", isCorrect = pathQuizSession.checked && question.answer.includes(selected);
+  content.innerHTML = `<div class="path-quiz-q"><span class="quiz-count">${t("question")} ${pathQuizSession.index + 1} / ${pathQuizSession.pool.length}</span><span class="path-quiz-topic">${t("topicLabel")}: ${item.topicName}</span><h3>${lang === "ar" ? question.question_ar : question.question_en}</h3><div class="path-quiz-options">${question.options.map(option => `<label class="path-quiz-option ${selected === option.id ? "selected" : ""} ${pathQuizSession.checked && question.answer.includes(option.id) ? "correct" : ""} ${pathQuizSession.checked && selected === option.id && !isCorrect ? "wrong" : ""}"><input type="radio" name="pathQuizAnswer" value="${option.id}" ${selected === option.id ? "checked" : ""} ${pathQuizSession.checked ? "disabled" : ""}><span>${lang === "ar" ? option.ar : option.en}</span></label>`).join("")}</div>${pathQuizSession.checked ? `<div class="path-quiz-feedback ${isCorrect ? "correct" : "wrong"}"><strong>${isCorrect ? t("correct") : t("incorrect")}</strong><br>${lang === "ar" ? question.explanation_ar : question.explanation_en}</div>` : ""}<div class="path-quiz-actions">${pathQuizSession.checked ? `<button class="btn btn-primary" id="pathQuizNext">${pathQuizSession.index === pathQuizSession.pool.length - 1 ? t("finishQuiz") : t("pathQuizNext")}</button>` : `<button class="btn btn-primary" id="pathQuizCheck">${t("checkAnswer")}</button>`}</div></div>`;
+  if (!pathQuizSession.checked){
+    content.querySelectorAll('input[name="pathQuizAnswer"]').forEach(input => input.addEventListener("change", () => { pathQuizSession.answers[question.id] = input.value; renderPathQuiz(); }));
+    document.getElementById("pathQuizCheck").addEventListener("click", () => { if (!pathQuizSession.answers[question.id]) { const n = document.createElement("div"); n.className = "path-quiz-feedback wrong"; n.textContent = t("chooseAnswer"); content.appendChild(n); return; } pathQuizSession.checked = true; if (question.answer.includes(pathQuizSession.answers[question.id])) pathQuizSession.correct += 1; renderPathQuiz(); });
+  } else document.getElementById("pathQuizNext").addEventListener("click", () => { pathQuizSession.index += 1; pathQuizSession.checked = false; renderPathQuiz(); });
+}
+function openPathQuiz(){ const modal = document.getElementById("pathQuizModal"); if (!modal) return; pathQuizSession = null; modal.hidden = false; renderPathQuiz(); }
+
 function openNode(id){
   current = findNode(id);
   if (!current) return;
@@ -242,10 +288,13 @@ function closeDrawer(){
 }
 
 document.getElementById("scrim").addEventListener("click", closeDrawer);
+document.getElementById("pathQuizStart").addEventListener("click", openPathQuiz);
+document.getElementById("pathQuizClose").addEventListener("click", closePathQuiz);
+document.getElementById("pathQuizModal").addEventListener("click", e => { if (e.target.id === "pathQuizModal") closePathQuiz(); });
 document.getElementById("dClose").addEventListener("click", closeDrawer);
-document.addEventListener("keydown", e => e.key === "Escape" && closeDrawer());
+document.addEventListener("keydown", e => { if (e.key === "Escape") { closeDrawer(); closePathQuiz(); } });
 document.getElementById("langBtn").addEventListener("click", () => {
-  lang = lang === "ar" ? "en" : "ar"; localStorage.setItem("rm_lang", lang); window.dispatchEvent(new CustomEvent("rm:language-changed", { detail: { lang } })); render(); closeDrawer();
+  lang = lang === "ar" ? "en" : "ar"; localStorage.setItem("rm_lang", lang); window.dispatchEvent(new CustomEvent("rm:language-changed", { detail: { lang } })); render(); if (!document.getElementById("pathQuizModal").hidden) renderPathQuiz(); closeDrawer();
 });
 document.getElementById("themeBtn").addEventListener("click", () => {
   theme = theme === "dark" ? "light" : "dark"; localStorage.setItem("rm_theme", theme); applyShell();

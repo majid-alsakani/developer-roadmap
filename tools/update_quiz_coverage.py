@@ -10,7 +10,7 @@ QUIZZES = DATA / 'quizzes'
 def load_topics():
     result = {}
     for path in sorted(DATA.glob('*.json')):
-        if path.name in {'index.json', 'roadmaps.json', 'schema.json'}:
+        if path.name in {'index.json', 'roadmaps.json', 'schema.json', 'quiz_coverage.json'}:
             continue
         data = json.loads(path.read_text(encoding='utf-8'))
         result[path.stem] = [node['id'] for group in data.get('groups', []) for node in group.get('nodes', [])]
@@ -47,10 +47,12 @@ def main():
             'coverage_percent': round(covered / len(ids) * 100, 1) if ids else 0,
             'invalid_or_empty_entries': invalid_ids,
         })
+    existing_path = DATA / 'quiz_coverage.json'
+    existing = json.loads(existing_path.read_text(encoding='utf-8')) if existing_path.exists() else {}
     manifest = {
         'schema_version': '1.1.0',
         'kind': 'quiz_coverage',
-        'generated_at': date.today().isoformat(),
+        'generated_at': existing.get('generated_at', date.today().isoformat()),
         'policy': {'target_questions_per_topic': 2, 'coverage_claim_allowed_at_percent': 100},
         'totals': {
             'roadmap_count': len(rows),

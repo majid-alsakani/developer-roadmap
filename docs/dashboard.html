@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>لوحة الإنجاز · ماجد السكني</title>
+  <meta name="description" content="لوحة إنجاز شخصية لمتابعة مسارات تعلّم البرمجة والاختبارات مع ماجد السكني." />
+  <meta name="author" content="Majid Al-Sakani — ماجد السكني" />
+  <link rel="icon" type="image/png" sizes="96x96" href="./favicon-96.png" />
+  <link rel="stylesheet" href="./assets/roadmap.css" />
+  <link rel="stylesheet" href="./assets/roadmap-premium.css" />
+  <link rel="stylesheet" href="./assets/dashboard.css" />
+</head>
+<body>
+<header class="top"><div class="wrap topbar dashboard-topbar">
+  <a class="brand" href="./index.html" aria-label="Developer Roadmaps by Majid Al-Sakani"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none"><path d="M5 7.5 16 3l11 4.5v17L16 29 5 24.5v-17Z" stroke="currentColor" stroke-width="1.8"/><path d="M9 10.5 16 8l7 2.5v10L16 23l-7-2.5v-10Z" stroke="currentColor" stroke-width="1.4"/><path d="M10 16h4m4 0h4M16 8v15" stroke="currentColor" stroke-width="1.5"/></svg></span><span class="brand-copy"><b class="brand-name">ماجد السكني</b><small class="brand-sub">خرائط تعلّم البرمجة</small></span></a>
+  <nav class="dashboard-nav"><a href="./index.html" id="backHome">الخرائط</a><a href="./dashboard.html" class="active" id="dashboardNav">لوحة الإنجاز</a></nav>
+  <span class="spacer"></span><div class="roadmap-actions"><button class="btn" id="langBtn" type="button">English</button><button class="btn" id="themeBtn" type="button">☀️</button></div>
+</div></header>
+<main class="wrap dashboard-main">
+  <section class="dashboard-hero"><div><span class="dashboard-kicker" id="kicker">منصة تعلّم ماجد السكني</span><h1 id="title">لوحة إنجازك التعليمية</h1><p id="lead">رؤية واحدة تجمع تقدّمك، اختباراتك، وخطوتك التالية.</p></div><div class="dashboard-identity"><span class="identity-avatar" id="avatar">م</span><div><strong id="identityName">ضيف</strong><span id="identityState">تقدمك محفوظ محليًا</span></div></div></section>
+  <section class="dashboard-stats" aria-label="Learning summary">
+    <article class="summary-card"><span id="statDoneLabel">الموضوعات المنجزة</span><strong id="statDone">0</strong><small id="statDoneMeta">من أصل 410</small></article>
+    <article class="summary-card"><span id="statLearningLabel">قيد التعلم</span><strong id="statLearning">0</strong><small id="statLearningMeta">خطوات نشطة</small></article>
+    <article class="summary-card"><span id="statQuizLabel">متوسط الاختبارات</span><strong id="statQuiz">—</strong><small id="statQuizMeta">لا توجد محاولات بعد</small></article>
+    <article class="summary-card accent-card"><span id="statPathsLabel">المسارات النشطة</span><strong id="statPaths">0</strong><small id="statPathsMeta">اختر مسارًا وابدأ</small></article>
+  </section>
+  <section class="dashboard-grid">
+    <div class="dashboard-column"><div class="section-head dashboard-section-head"><div><span class="dashboard-kicker" id="pathsKicker">خريطة التقدم</span><h2 id="pathsTitle">مساراتي التعليمية</h2></div><a class="btn btn-primary" href="./index.html" id="browseBtn">استكشف المسارات</a></div><div id="pathsList" class="dashboard-paths"></div></div>
+    <aside class="dashboard-column side-column"><section class="next-card"><span class="dashboard-kicker" id="nextKicker">الخطوة التالية</span><h2 id="nextTitle">ابدأ باختيار مسار</h2><p id="nextText">سنقترح لك أول موضوع غير منجز في المسار الأكثر نشاطًا.</p><a class="btn btn-primary" id="nextButton" href="./index.html">استكشف المسارات</a></section><section class="activity-card"><div class="section-head"><div><span class="dashboard-kicker" id="activityKicker">ذاكرة التعلم</span><h2 id="activityTitle">آخر النشاطات</h2></div></div><div id="activityList" class="activity-list"></div></section></aside>
+  </section>
+</main>
+<footer><div class="wrap">© <span id="y"></span> <a href="https://github.com/majid-alsakani">Majid Al-Sakani · ماجد السكني</a> — CC BY-SA 4.0 · <a href="https://github.com/majid-alsakani/developer-roadmap">Contribute</a></div></footer>
+<script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+<script src="./assets/supabase-config.js"></script>
+<script src="./assets/sync.js"></script>
+<script src="./assets/dashboard.js"></script>
+</body></html>
