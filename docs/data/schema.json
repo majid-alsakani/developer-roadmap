@@ -1,0 +1,88 @@
+{
+  "schema_version": "1.0.0",
+  "description": "Static JSON content model for Developer Roadmaps by Majid Al-Sakani.",
+  "files": {
+    "roadmaps.json": {
+      "kind": "roadmap_catalog",
+      "fields": [
+        "schema_version",
+        "kind",
+        "updated_at",
+        "author",
+        "stats",
+        "roadmaps"
+      ],
+      "roadmap_fields": [
+        "slug",
+        "en",
+        "ar",
+        "desc_en",
+        "desc_ar",
+        "color",
+        "icon",
+        "topic_count",
+        "stage_count",
+        "quiz_topic_count",
+        "quiz_question_count"
+      ]
+    },
+    "<slug>.json": {
+      "kind": "roadmap_content",
+      "fields": [
+        "schema_version",
+        "kind",
+        "slug",
+        "en",
+        "ar",
+        "desc_en",
+        "desc_ar",
+        "color",
+        "icon",
+        "groups"
+      ],
+      "group_fields": [
+        "en",
+        "ar",
+        "nodes"
+      ],
+      "node_fields": [
+        "id",
+        "en",
+        "ar",
+        "type",
+        "note_en",
+        "note_ar",
+        "resources"
+      ]
+    },
+    "quizzes/<slug>.json": {
+      "kind": "roadmap_quizzes",
+      "fields": [
+        "schema_version",
+        "kind",
+        "roadmap_slug",
+        "updated_at",
+        "topics"
+      ],
+      "topic_fields": [
+        "topic_id",
+        "questions"
+      ],
+      "question_fields": [
+        "id",
+        "type",
+        "question_en",
+        "question_ar",
+        "options",
+        "answer",
+        "explanation_en",
+        "explanation_ar"
+      ],
+      "option_fields": [
+        "id",
+        "en",
+        "ar"
+      ]
+    }
+  }
+}

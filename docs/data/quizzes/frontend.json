@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "roadmap_quizzes",
+  "roadmap_slug": "frontend",
+  "updated_at": "2026-08-25",
+  "topics": {
+    "http": {
+      "topic_id": "http",
+      "questions": [
+        {
+          "id": "fe-http-q1",
+          "type": "single",
+          "question_en": "Which HTTP method is commonly used to retrieve a resource?",
+          "question_ar": "أي طريقة HTTP تستخدم عادةً لجلب مورد؟",
+          "options": [
+            {
+              "id": "a",
+              "en": "GET",
+              "ar": "GET"
+            },
+            {
+              "id": "b",
+              "en": "POST",
+              "ar": "POST"
+            },
+            {
+              "id": "c",
+              "en": "DELETE",
+              "ar": "DELETE"
+            }
+          ],
+          "answer": [
+            "a"
+          ],
+          "explanation_en": "GET requests a representation of a resource.",
+          "explanation_ar": "تطلب GET تمثيلًا لمورد معين."
+        },
+        {
+          "id": "fe-http-q2",
+          "type": "single",
+          "question_en": "What does a 404 response usually mean?",
+          "question_ar": "ماذا تعني استجابة 404 عادةً؟",
+          "options": [
+            {
+              "id": "a",
+              "en": "The resource was not found",
+              "ar": "لم يتم العثور على المورد"
+            },
+            {
+              "id": "b",
+              "en": "The server is permanently redirected",
+              "ar": "الخادم أعاد التوجيه نهائيًا"
+            },
+            {
+              "id": "c",
+              "en": "The request succeeded",
+              "ar": "نجح الطلب"
+            }
+          ],
+          "answer": [
+            "a"
+          ],
+          "explanation_en": "404 indicates that the requested resource could not be found.",
+          "explanation_ar": "تشير 404 إلى عدم العثور على المورد المطلوب."
+        }
+      ]
+    }
+  }
+}

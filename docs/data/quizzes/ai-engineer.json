@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "roadmap_quizzes",
+  "roadmap_slug": "ai-engineer",
+  "updated_at": "2026-08-25",
+  "topics": {
+    "tokens": {
+      "topic_id": "tokens",
+      "questions": [
+        {
+          "id": "ai-tokens-q1",
+          "type": "single",
+          "question_en": "Why do tokens matter in an LLM request?",
+          "question_ar": "لماذا تهم الرموز في طلب نموذج اللغة؟",
+          "options": [
+            {
+              "id": "a",
+              "en": "They affect context limits and cost",
+              "ar": "تؤثر في حدود السياق والتكلفة"
+            },
+            {
+              "id": "b",
+              "en": "They select the monitor size",
+              "ar": "تحدد حجم الشاشة"
+            },
+            {
+              "id": "c",
+              "en": "They replace the database",
+              "ar": "تستبدل قاعدة البيانات"
+            }
+          ],
+          "answer": [
+            "a"
+          ],
+          "explanation_en": "Token count influences how much context fits and how usage is billed.",
+          "explanation_ar": "يؤثر عدد الرموز في مقدار السياق والتكلفة."
+        },
+        {
+          "id": "ai-tokens-q2",
+          "type": "single",
+          "question_en": "What is context in an LLM call?",
+          "question_ar": "ما المقصود بالسياق في استدعاء نموذج اللغة؟",
+          "options": [
+            {
+              "id": "a",
+              "en": "The input and conversation supplied to the model",
+              "ar": "المدخلات والمحادثة المقدمة للنموذج"
+            },
+            {
+              "id": "b",
+              "en": "The operating system kernel",
+              "ar": "نواة نظام التشغيل"
+            },
+            {
+              "id": "c",
+              "en": "A CSS container",
+              "ar": "حاوية CSS"
+            }
+          ],
+          "answer": [
+            "a"
+          ],
+          "explanation_en": "Context is the information the model can use for the current response.",
+          "explanation_ar": "السياق هو المعلومات التي يستطيع النموذج استخدامها في الاستجابة الحالية."
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "roadmap_quizzes",
+  "roadmap_slug": "professional",
+  "updated_at": "2026-08-25",
+  "topics": {
+    "problem-solving": {
+      "topic_id": "problem-solving",
+      "questions": [
+        {
+          "id": "ps-q1",
+          "type": "single",
+          "question_en": "What is a useful first step when a problem feels too large?",
+          "question_ar": "ما الخطوة المفيدة الأولى عندما تبدو المشكلة كبيرة جدًا؟",
+          "options": [
+            {
+              "id": "a",
+              "en": "Break it into smaller parts",
+              "ar": "تقسيمها إلى أجزاء أصغر"
+            },
+            {
+              "id": "b",
+              "en": "Add more tools immediately",
+              "ar": "إضافة أدوات أكثر فورًا"
+            },
+            {
+              "id": "c",
+              "en": "Skip requirements",
+              "ar": "تجاهل المتطلبات"
+            }
+          ],
+          "answer": [
+            "a"
+          ],
+          "explanation_en": "Decomposition turns a large problem into smaller, testable decisions.",
+          "explanation_ar": "يساعد التفكيك على تحويل المشكلة الكبيرة إلى قرارات أصغر قابلة للاختبار."
+        },
+        {
+          "id": "ps-q2",
+          "type": "single",
+          "question_en": "What should you clarify before choosing an implementation?",
+          "question_ar": "ماذا ينبغي أن توضّح قبل اختيار طريقة التنفيذ؟",
+          "options": [
+            {
+              "id": "a",
+              "en": "The problem and success criteria",
+              "ar": "المشكلة ومعايير النجاح"
+            },
+            {
+              "id": "b",
+              "en": "The framework version only",
+              "ar": "إصدار الإطار فقط"
+            },
+            {
+              "id": "c",
+              "en": "The color palette",
+              "ar": "لوحة الألوان"
+            }
+          ],
+          "answer": [
+            "a"
+          ],
+          "explanation_en": "Clear goals prevent solving the wrong problem.",
+          "explanation_ar": "وضوح الهدف يمنع حل المشكلة الخطأ."
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "roadmap_quizzes",
+  "roadmap_slug": "mobile",
+  "updated_at": "2026-08-25",
+  "topics": {
+    "rn": {
+      "topic_id": "rn",
+      "questions": [
+        {
+          "id": "mobile-rn-q1",
+          "type": "single",
+          "question_en": "What does React Native help you build?",
+          "question_ar": "ماذا تساعد React Native على بنائه؟",
+          "options": [
+            {
+              "id": "a",
+              "en": "Cross-platform mobile applications",
+              "ar": "تطبيقات جوال متعددة المنصات"
+            },
+            {
+              "id": "b",
+              "en": "Only SQL schemas",
+              "ar": "مخططات SQL فقط"
+            },
+            {
+              "id": "c",
+              "en": "Linux kernels",
+              "ar": "أنوية Linux"
+            }
+          ],
+          "answer": [
+            "a"
+          ],
+          "explanation_en": "React Native lets teams build mobile apps using React patterns and native capabilities.",
+          "explanation_ar": "تساعد React Native على بناء تطبيقات جوال باستخدام أنماط React وقدرات أصلية."
+        },
+        {
+          "id": "mobile-rn-q2",
+          "type": "single",
+          "question_en": "Why should mobile layouts account for different screen sizes?",
+          "question_ar": "لماذا يجب أن تراعي واجهات الجوال أحجام الشاشات المختلفة؟",
+          "options": [
+            {
+              "id": "a",
+              "en": "To keep content usable and readable",
+              "ar": "للحفاظ على قابلية الاستخدام والقراءة"
+            },
+            {
+              "id": "b",
+              "en": "To increase database indexes",
+              "ar": "لزيادة فهارس قاعدة البيانات"
+            },
+            {
+              "id": "c",
+              "en": "To remove all navigation",
+              "ar": "لإزالة التنقل بالكامل"
+            }
+          ],
+          "answer": [
+            "a"
+          ],
+          "explanation_en": "Responsive layouts reduce friction across devices.",
+          "explanation_ar": "تقلل الواجهات المتجاوبة الصعوبة بين الأجهزة المختلفة."
+        }
+      ]
+    }
+  }
+}

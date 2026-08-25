@@ -19,6 +19,7 @@ const QUIZ_KEY = "rm_quiz_" + slug;
 let quizResults = JSON.parse(localStorage.getItem(QUIZ_KEY) || "{}");
 let quizSession = null;
 let data = null, current = null;
+let quizData = {};
 
 function applyShell(){
   document.documentElement.lang = lang;
@@ -161,7 +162,12 @@ function findNode(id){
   return null;
 }
 
-function quizFor(node){ return Array.isArray(node?.quiz) ? node.quiz : []; }
+function quizFor(node){
+  const entry = quizData[node?.id];
+  if (Array.isArray(entry)) return entry;
+  if (entry && Array.isArray(entry.questions)) return entry.questions;
+  return Array.isArray(node?.quiz) ? node.quiz : [];
+}
 function saveQuizResult(node, score){
   const old = quizResults[node.id] || { bestScore: 0, attempts: 0, passed: false };
   quizResults[node.id] = { bestScore: Math.max(old.bestScore || 0, score), attempts: (old.attempts || 0) + 1, passed: Boolean(old.passed || score >= 70), updatedAt: new Date().toISOString() };
@@ -248,7 +254,13 @@ document.getElementById("resetBtn").addEventListener("click", () => {
   progress = {}; save(); render();
 });
 
-fetch(`./data/${slug}.json`)
-  .then(r => r.ok ? r.json() : Promise.reject())
-  .then(d => { data = d; render(); })
+Promise.all([
+  fetch(`./data/${slug}.json`).then(r => r.ok ? r.json() : Promise.reject()),
+  fetch(`./data/quizzes/${slug}.json`).then(r => r.ok ? r.json() : { topics: {} }).catch(() => ({ topics: {} }))
+])
+  .then(([roadmap, quizzes]) => {
+    data = roadmap;
+    quizData = quizzes.topics || {};
+    render();
+  })
   .catch(() => { document.getElementById("map").innerHTML = "<p>Roadmap not found.</p>"; });

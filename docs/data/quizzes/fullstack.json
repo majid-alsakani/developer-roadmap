@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "roadmap_quizzes",
+  "roadmap_slug": "fullstack",
+  "updated_at": "2026-08-25",
+  "topics": {
+    "react-fs": {
+      "topic_id": "react-fs",
+      "questions": [
+        {
+          "id": "fs-react-q1",
+          "type": "single",
+          "question_en": "What is React primarily used to build?",
+          "question_ar": "في ماذا تستخدم React بشكل أساسي؟",
+          "options": [
+            {
+              "id": "a",
+              "en": "User interfaces",
+              "ar": "واجهات المستخدم"
+            },
+            {
+              "id": "b",
+              "en": "Database storage engines",
+              "ar": "محركات تخزين قواعد البيانات"
+            },
+            {
+              "id": "c",
+              "en": "Container runtimes",
+              "ar": "بيئات تشغيل الحاويات"
+            }
+          ],
+          "answer": [
+            "a"
+          ],
+          "explanation_en": "React is a library for composing user interfaces from components.",
+          "explanation_ar": "React مكتبة لبناء واجهات المستخدم من مكونات."
+        },
+        {
+          "id": "fs-react-q2",
+          "type": "single",
+          "question_en": "Why are TypeScript types useful in a React project?",
+          "question_ar": "لماذا تفيد الأنواع في TypeScript داخل مشروع React؟",
+          "options": [
+            {
+              "id": "a",
+              "en": "They catch many mistakes before runtime",
+              "ar": "تكشف أخطاء كثيرة قبل التشغيل"
+            },
+            {
+              "id": "b",
+              "en": "They make every request faster",
+              "ar": "تجعل كل طلب أسرع"
+            },
+            {
+              "id": "c",
+              "en": "They replace accessibility testing",
+              "ar": "تستبدل اختبار الإتاحة"
+            }
+          ],
+          "answer": [
+            "a"
+          ],
+          "explanation_en": "Static types improve feedback during development but do not replace runtime tests.",
+          "explanation_ar": "تحسن الأنواع الثابتة التغذية الراجعة أثناء التطوير لكنها لا تستبدل اختبارات التشغيل."
+        }
+      ]
+    }
+  }
+}

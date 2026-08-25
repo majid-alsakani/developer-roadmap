@@ -1,234 +1,176 @@
 {
- "slug": "mobile",
- "en": "Mobile Developer",
- "ar": "مطوّر تطبيقات الجوال",
- "desc_en": "Build and ship cross-platform mobile apps.",
- "desc_ar": "بناء ونشر تطبيقات جوال متعددة المنصات.",
- "color": "#ec4899",
- "icon": "📱",
- "groups": [
-  {
-   "en": "Foundations",
-   "ar": "الأساسيات",
-   "nodes": [
+  "slug": "mobile",
+  "en": "Mobile Developer",
+  "ar": "مطوّر تطبيقات الجوال",
+  "desc_en": "Build and ship cross-platform mobile apps.",
+  "desc_ar": "بناء ونشر تطبيقات جوال متعددة المنصات.",
+  "color": "#ec4899",
+  "icon": "📱",
+  "groups": [
     {
-     "id": "js-mob",
-     "en": "JavaScript / TypeScript",
-     "ar": "جافاسكربت وتايبسكربت",
-     "type": "primary",
-     "note_en": "",
-     "note_ar": "",
-     "resources": []
-    },
-    {
-     "id": "mobile-ux",
-     "en": "Mobile UX patterns",
-     "ar": "أنماط تجربة الجوال",
-     "type": "primary",
-     "note_en": "",
-     "note_ar": "",
-     "resources": []
-    },
-    {
-     "id": "platform",
-     "en": "iOS vs Android differences",
-     "ar": "الفروق بين المنصتين",
-     "type": "secondary",
-     "note_en": "",
-     "note_ar": "",
-     "resources": []
-    }
-   ]
-  },
-  {
-   "en": "Framework",
-   "ar": "إطار العمل",
-   "nodes": [
-    {
-     "id": "rn",
-     "en": "React Native + Expo",
-     "ar": "رياكت نيتف وإكسبو",
-     "type": "primary",
-     "note_en": "",
-     "note_ar": "",
-     "resources": [
-      {
-       "url": "https://docs.expo.dev/",
-       "title": "Expo Docs"
-      }
-     ],
-     "quiz": [
-      {
-       "id": "mobile-rn-q1",
-       "type": "single",
-       "question_en": "What does React Native help you build?",
-       "question_ar": "ماذا تساعد React Native على بنائه؟",
-       "options": [
+      "en": "Foundations",
+      "ar": "الأساسيات",
+      "nodes": [
         {
-         "id": "a",
-         "en": "Cross-platform mobile applications",
-         "ar": "تطبيقات جوال متعددة المنصات"
+          "id": "js-mob",
+          "en": "JavaScript / TypeScript",
+          "ar": "جافاسكربت وتايبسكربت",
+          "type": "primary",
+          "note_en": "",
+          "note_ar": "",
+          "resources": []
         },
         {
-         "id": "b",
-         "en": "Only SQL schemas",
-         "ar": "مخططات SQL فقط"
+          "id": "mobile-ux",
+          "en": "Mobile UX patterns",
+          "ar": "أنماط تجربة الجوال",
+          "type": "primary",
+          "note_en": "",
+          "note_ar": "",
+          "resources": []
         },
         {
-         "id": "c",
-         "en": "Linux kernels",
-         "ar": "أنوية Linux"
+          "id": "platform",
+          "en": "iOS vs Android differences",
+          "ar": "الفروق بين المنصتين",
+          "type": "secondary",
+          "note_en": "",
+          "note_ar": "",
+          "resources": []
         }
-       ],
-       "answer": [
-        "a"
-       ],
-       "explanation_en": "React Native lets teams build mobile apps using React patterns and native capabilities.",
-       "explanation_ar": "تساعد React Native على بناء تطبيقات جوال باستخدام أنماط React وقدرات أصلية."
-      },
-      {
-       "id": "mobile-rn-q2",
-       "type": "single",
-       "question_en": "Why should mobile layouts account for different screen sizes?",
-       "question_ar": "لماذا يجب أن تراعي واجهات الجوال أحجام الشاشات المختلفة؟",
-       "options": [
+      ]
+    },
+    {
+      "en": "Framework",
+      "ar": "إطار العمل",
+      "nodes": [
         {
-         "id": "a",
-         "en": "To keep content usable and readable",
-         "ar": "للحفاظ على قابلية الاستخدام والقراءة"
+          "id": "rn",
+          "en": "React Native + Expo",
+          "ar": "رياكت نيتف وإكسبو",
+          "type": "primary",
+          "note_en": "",
+          "note_ar": "",
+          "resources": [
+            {
+              "url": "https://docs.expo.dev/",
+              "title": "Expo Docs"
+            }
+          ]
         },
         {
-         "id": "b",
-         "en": "To increase database indexes",
-         "ar": "لزيادة فهارس قاعدة البيانات"
+          "id": "nav",
+          "en": "Navigation",
+          "ar": "التنقل",
+          "type": "primary",
+          "note_en": "",
+          "note_ar": "",
+          "resources": []
         },
         {
-         "id": "c",
-         "en": "To remove all navigation",
-         "ar": "لإزالة التنقل بالكامل"
+          "id": "state-mob",
+          "en": "State & data fetching",
+          "ar": "الحالة وجلب البيانات",
+          "type": "primary",
+          "note_en": "",
+          "note_ar": "",
+          "resources": []
+        },
+        {
+          "id": "flutter",
+          "en": "Flutter",
+          "ar": "فلاتر",
+          "type": "optional",
+          "note_en": "",
+          "note_ar": "",
+          "resources": []
         }
-       ],
-       "answer": [
-        "a"
-       ],
-       "explanation_en": "Responsive layouts reduce friction across devices.",
-       "explanation_ar": "تقلل الواجهات المتجاوبة الصعوبة بين الأجهزة المختلفة."
-      }
-     ]
+      ]
     },
     {
-     "id": "nav",
-     "en": "Navigation",
-     "ar": "التنقل",
-     "type": "primary",
-     "note_en": "",
-     "note_ar": "",
-     "resources": []
+      "en": "Device Capabilities",
+      "ar": "قدرات الجهاز",
+      "nodes": [
+        {
+          "id": "storage-mob",
+          "en": "Local storage & offline",
+          "ar": "التخزين والعمل دون اتصال",
+          "type": "primary",
+          "note_en": "",
+          "note_ar": "",
+          "resources": []
+        },
+        {
+          "id": "push",
+          "en": "Push notifications",
+          "ar": "الإشعارات",
+          "type": "primary",
+          "note_en": "",
+          "note_ar": "",
+          "resources": []
+        },
+        {
+          "id": "camera",
+          "en": "Camera, files, location",
+          "ar": "الكاميرا والملفات والموقع",
+          "type": "secondary",
+          "note_en": "",
+          "note_ar": "",
+          "resources": []
+        },
+        {
+          "id": "biometric",
+          "en": "Biometric auth",
+          "ar": "المصادقة الحيوية",
+          "type": "optional",
+          "note_en": "",
+          "note_ar": "",
+          "resources": []
+        }
+      ]
     },
     {
-     "id": "state-mob",
-     "en": "State & data fetching",
-     "ar": "الحالة وجلب البيانات",
-     "type": "primary",
-     "note_en": "",
-     "note_ar": "",
-     "resources": []
-    },
-    {
-     "id": "flutter",
-     "en": "Flutter",
-     "ar": "فلاتر",
-     "type": "optional",
-     "note_en": "",
-     "note_ar": "",
-     "resources": []
+      "en": "Release",
+      "ar": "الإصدار",
+      "nodes": [
+        {
+          "id": "build-mob",
+          "en": "EAS build & signing",
+          "ar": "البناء والتوقيع",
+          "type": "primary",
+          "note_en": "",
+          "note_ar": "",
+          "resources": []
+        },
+        {
+          "id": "store",
+          "en": "App Store & Play submission",
+          "ar": "النشر في المتاجر",
+          "type": "primary",
+          "note_en": "",
+          "note_ar": "",
+          "resources": []
+        },
+        {
+          "id": "ota",
+          "en": "OTA updates",
+          "ar": "التحديثات الفورية",
+          "type": "secondary",
+          "note_en": "",
+          "note_ar": "",
+          "resources": []
+        },
+        {
+          "id": "crash",
+          "en": "Crash & performance monitoring",
+          "ar": "مراقبة الأعطال",
+          "type": "primary",
+          "note_en": "",
+          "note_ar": "",
+          "resources": []
+        }
+      ]
     }
-   ]
-  },
-  {
-   "en": "Device Capabilities",
-   "ar": "قدرات الجهاز",
-   "nodes": [
-    {
-     "id": "storage-mob",
-     "en": "Local storage & offline",
-     "ar": "التخزين والعمل دون اتصال",
-     "type": "primary",
-     "note_en": "",
-     "note_ar": "",
-     "resources": []
-    },
-    {
-     "id": "push",
-     "en": "Push notifications",
-     "ar": "الإشعارات",
-     "type": "primary",
-     "note_en": "",
-     "note_ar": "",
-     "resources": []
-    },
-    {
-     "id": "camera",
-     "en": "Camera, files, location",
-     "ar": "الكاميرا والملفات والموقع",
-     "type": "secondary",
-     "note_en": "",
-     "note_ar": "",
-     "resources": []
-    },
-    {
-     "id": "biometric",
-     "en": "Biometric auth",
-     "ar": "المصادقة الحيوية",
-     "type": "optional",
-     "note_en": "",
-     "note_ar": "",
-     "resources": []
-    }
-   ]
-  },
-  {
-   "en": "Release",
-   "ar": "الإصدار",
-   "nodes": [
-    {
-     "id": "build-mob",
-     "en": "EAS build & signing",
-     "ar": "البناء والتوقيع",
-     "type": "primary",
-     "note_en": "",
-     "note_ar": "",
-     "resources": []
-    },
-    {
-     "id": "store",
-     "en": "App Store & Play submission",
-     "ar": "النشر في المتاجر",
-     "type": "primary",
-     "note_en": "",
-     "note_ar": "",
-     "resources": []
-    },
-    {
-     "id": "ota",
-     "en": "OTA updates",
-     "ar": "التحديثات الفورية",
-     "type": "secondary",
-     "note_en": "",
-     "note_ar": "",
-     "resources": []
-    },
-    {
-     "id": "crash",
-     "en": "Crash & performance monitoring",
-     "ar": "مراقبة الأعطال",
-     "type": "primary",
-     "note_en": "",
-     "note_ar": "",
-     "resources": []
-    }
-   ]
-  }
- ],
- "total": 15
+  ],
+  "total": 15
 }

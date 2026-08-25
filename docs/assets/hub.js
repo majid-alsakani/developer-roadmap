@@ -50,7 +50,7 @@ function progressFor(slug){
   const done = Object.values(state).filter(v => v === "done").length;
   const learning = Object.values(state).filter(v => v === "learning").length;
   const item = items.find(i => i.slug === slug);
-  const total = item?.total || item?.nodes || 0;
+  const total = item?.topic_count || item?.total || item?.nodes || 0;
   return { done, learning, total, pct: total ? Math.round(done / total * 100) : 0 };
 }
 function shell(){
@@ -87,7 +87,7 @@ function shell(){
   document.getElementById("search").placeholder = copy.search;
   const labels = {"":"all", beginner:"beginner", frontend:"frontend", backend:"backend", ai:"ai", devops:"devops", data:"data"};
   document.querySelectorAll("#filters .filter").forEach(btn => { btn.textContent = copy[labels[btn.dataset.filter]]; btn.classList.toggle("active", btn.dataset.filter === activeCategory); });
-  const total = items.reduce((sum, i) => sum + (i.total || i.nodes || 0), 0);
+  const total = items.reduce((sum, i) => sum + (i.topic_count || i.total || i.nodes || 0), 0);
   document.getElementById("statRoadmaps").textContent = items.length || 10;
   document.getElementById("statTopics").textContent = total ? `${total}+` : "400+";
   renderContinue();
@@ -108,7 +108,7 @@ function renderContinue(){
   const heroProgress = progressFor(heroItem.slug);
   document.getElementById("routePanelLabel").textContent = L[lang].routeLabel;
   document.getElementById("routePanelTitle").textContent = lang === "ar" ? heroItem.ar : heroItem.en;
-  document.getElementById("routePanelMeta").textContent = `${heroItem.nodes} ${L[lang].topics} · ${heroItem.groups} ${L[lang].stages}`;
+  document.getElementById("routePanelMeta").textContent = `${heroItem.topic_count || heroItem.nodes} ${L[lang].topics} · ${heroItem.stage_count || heroItem.groups} ${L[lang].stages}`;
   document.getElementById("routePanelPct").textContent = heroProgress.pct + "%";
 }
 function draw(filter = ""){
@@ -120,11 +120,11 @@ function draw(filter = ""){
   }).map((i, index) => {
     const difficulty = difficultyFor(i.slug);
     const feature = i.slug === "professional" ? `<span class="featured">★ ${copy.featured}</span>` : "";
-    return `<a class="card ${i.slug === "professional" ? "featured-card" : ""}" href="./roadmap.html?r=${encodeURIComponent(i.slug)}"><div class="card-art art-${esc(i.slug)}">${art(i.slug)}${feature}</div><div class="card-body"><h3>${esc(lang === "ar" ? i.ar : i.en)}<span class="en-name">${esc(lang === "ar" ? i.en : i.ar)}</span></h3><p>${esc(lang === "ar" ? i.desc_ar : i.desc_en)}</p><div class="meta"><span>${i.nodes} ${copy.topics} · ${i.groups} ${copy.stages}</span><span class="difficulty">${copy[difficulty]}</span></div><div class="card-link">${copy.start} <span>→</span></div></div></a>`;
+    return `<a class="card ${i.slug === "professional" ? "featured-card" : ""}" href="./roadmap.html?r=${encodeURIComponent(i.slug)}"><div class="card-art art-${esc(i.slug)}">${art(i.slug)}${feature}</div><div class="card-body"><h3>${esc(lang === "ar" ? i.ar : i.en)}<span class="en-name">${esc(lang === "ar" ? i.en : i.ar)}</span></h3><p>${esc(lang === "ar" ? i.desc_ar : i.desc_en)}</p><div class="meta"><span>${i.topic_count || i.nodes} ${copy.topics} · ${i.stage_count || i.groups} ${copy.stages}</span><span class="difficulty">${copy[difficulty]}</span></div><div class="card-link">${copy.start} <span>→</span></div></div></a>`;
   }).join("") || `<p class="empty-state">${lang === "ar" ? "لا توجد مسارات مطابقة لبحثك." : "No roadmaps match your search."}</p>`;
 }
 document.getElementById("langBtn").addEventListener("click", () => { lang = lang === "ar" ? "en" : "ar"; localStorage.setItem("rm_lang", lang); shell(); draw(document.getElementById("search").value); });
 document.getElementById("themeBtn").addEventListener("click", () => { theme = theme === "dark" ? "light" : "dark"; localStorage.setItem("rm_theme", theme); shell(); });
 document.getElementById("search").addEventListener("input", e => draw(e.target.value));
 document.querySelectorAll("#filters .filter").forEach(btn => btn.addEventListener("click", () => { activeCategory = btn.dataset.filter; shell(); draw(document.getElementById("search").value); }));
-fetch("./data/index.json").then(r => r.json()).then(d => { items = d.roadmaps; shell(); draw(); }).catch(() => { document.getElementById("grid").innerHTML = `<p class="empty-state">Unable to load roadmaps.</p>`; });
+fetch("./data/roadmaps.json").then(r => r.ok ? r.json() : Promise.reject()).catch(() => fetch("./data/index.json").then(r => r.json())).then(d => { items = d.roadmaps; shell(); draw(); }).catch(() => { document.getElementById("grid").innerHTML = `<p class="empty-state">Unable to load roadmaps.</p>`; });
