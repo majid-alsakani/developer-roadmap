@@ -41,10 +41,15 @@ function art(slug){
     backend: '<ellipse cx="88" cy="51" rx="42" ry="15"/><path d="M46 51v67c0 9 19 16 42 16s42-7 42-16V51M46 84c0 9 19 16 42 16s42-7 42-16"/><rect x="242" y="50" width="105" height="62" rx="8"/><path d="M176 84h66M206 69l24 15-24 15"/>',
     "ai-engineer": '<g><circle cx="216" cy="82" r="20"/><circle cx="86" cy="33" r="13"/><circle cx="86" cy="132" r="13"/><circle cx="350" cy="33" r="13"/><circle cx="350" cy="132" r="13"/></g><path d="M98 39 198 73M98 126l100-34M234 73l104-34M234 91l104 34"/>',
     python: '<path d="M91 115c-35 0-35-44 0-44h83c28 0 28-42 0-42H91c-26 0-26 42 0 42h65c34 0 34 44 0 44H91Z"/><path d="M122 29v86M87 53h90"/><circle cx="112" cy="48" r="4"/><circle cx="140" cy="91" r="4"/>',
-    devops: '<path d="M48 118c0-56 35-88 86-88h70M392 32c51 0 86 32 86 88M48 118h430"/><circle cx="48" cy="118" r="15"/><circle cx="220" cy="30" r="15"/><circle cx="478" cy="118" r="15"/><path d="m214 24 12 6-12 6M472 112l12 6-12 6"/>'
+    devops: '<path d="M48 118c0-56 35-88 86-88h70M392 32c51 0 86 32 86 88M48 118h430"/><circle cx="48" cy="118" r="15"/><circle cx="220" cy="30" r="15"/><circle cx="478" cy="118" r="15"/><path d="m214 24 12 6-12 6M472 112l12 6-12 6"/>',
+    fullstack: '<rect x="42" y="28" width="118" height="76" rx="9"/><rect x="360" y="28" width="118" height="76" rx="9"/><path d="M160 66h200M208 66l18-12m-18 12 18 12M312 66l-18-12m18 12-18 12"/><ellipse cx="260" cy="128" rx="82" ry="24"/><path d="M212 128v22c0 14 96 14 96 0v-22M212 140c0 14 96 14 96 0"/>',
+    mobile: '<rect x="202" y="12" width="116" height="136" rx="18"/><rect x="218" y="34" width="84" height="69" rx="7"/><path d="M232 52h56M232 70h43M232 88h50M236 124h48M112 80h58m140 0h58"/><circle cx="260" cy="124" r="5"/><path d="m112 80 14-10m-14 10 14 10m296-10-14-10m14 10-14 10"/>',
+    data: '<path d="M42 136h436M66 118V46M66 118l84-48 78 26 94-62 96 40"/><circle cx="66" cy="118" r="9"/><circle cx="150" cy="70" r="9"/><circle cx="228" cy="96" r="9"/><circle cx="322" cy="34" r="9"/><circle cx="418" cy="74" r="9"/><path d="M98 48h72M98 64h42"/>',
+    android: '<path d="M208 55c0-22 23-40 52-40s52 18 52 40v68c0 19-23 34-52 34s-52-15-52-34V55Z"/><path d="m224 30-16-18m88 18 16-18M194 82h-32m166 0h32M222 157v20m76-20v20"/><circle cx="240" cy="74" r="6"/><circle cx="280" cy="74" r="6"/><path d="M238 104h44"/>'
   };
   return `<svg viewBox="0 0 520 160" fill="none" aria-hidden="true"><g stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity=".92">${paths[slug] || paths.professional}</g></svg>`;
 }
+function safeColor(value){ return /^#[0-9a-f]{6}$/i.test(String(value || "")) ? value : "#2d8cff"; }
 function progressFor(slug){
   const state = JSON.parse(localStorage.getItem("rm_progress_" + slug) || "{}");
   const done = Object.values(state).filter(v => v === "done").length;
@@ -120,7 +125,7 @@ function draw(filter = ""){
   }).map((i, index) => {
     const difficulty = difficultyFor(i.slug);
     const feature = i.slug === "professional" ? `<span class="featured">★ ${copy.featured}</span>` : "";
-    return `<a class="card ${i.slug === "professional" ? "featured-card" : ""}" href="./roadmap.html?r=${encodeURIComponent(i.slug)}"><div class="card-art art-${esc(i.slug)}">${art(i.slug)}${feature}</div><div class="card-body"><h3>${esc(lang === "ar" ? i.ar : i.en)}<span class="en-name">${esc(lang === "ar" ? i.en : i.ar)}</span></h3><p>${esc(lang === "ar" ? i.desc_ar : i.desc_en)}</p><div class="meta"><span>${i.topic_count || i.nodes} ${copy.topics} · ${i.stage_count || i.groups} ${copy.stages}</span><span class="difficulty">${copy[difficulty]}</span></div><div class="card-link">${copy.start} <span>→</span></div></div></a>`;
+    return `<a class="card ${i.slug === "professional" ? "featured-card" : ""}" href="./roadmap.html?r=${encodeURIComponent(i.slug)}"><div class="card-art art-${esc(i.slug)}" style="--card-accent:${safeColor(i.color)}">${art(i.slug)}${feature}</div><div class="card-body"><h3>${esc(lang === "ar" ? i.ar : i.en)}<span class="en-name">${esc(lang === "ar" ? i.en : i.ar)}</span></h3><p>${esc(lang === "ar" ? i.desc_ar : i.desc_en)}</p><div class="meta"><span>${i.topic_count || i.nodes} ${copy.topics} · ${i.stage_count || i.groups} ${copy.stages}</span><span class="difficulty">${copy[difficulty]}</span></div><div class="card-link">${copy.start} <span>→</span></div></div></a>`;
   }).join("") || `<p class="empty-state">${lang === "ar" ? "لا توجد مسارات مطابقة لبحثك." : "No roadmaps match your search."}</p>`;
 }
 document.getElementById("langBtn").addEventListener("click", () => { lang = lang === "ar" ? "en" : "ar"; localStorage.setItem("rm_lang", lang); window.dispatchEvent(new CustomEvent("rm:language-changed", { detail: { lang } })); shell(); draw(document.getElementById("search").value); });

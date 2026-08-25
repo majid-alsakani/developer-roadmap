@@ -227,3 +227,37 @@ footer { background:rgba(4,13,25,.5); }
 .account-close{margin-top:4px;width:100%;justify-content:center}
 @media (min-width:860px){.sync-status{display:inline-block}}
 @media (max-width:700px){.account-root{margin-inline:6px 0}.account-button{font-size:11px;padding:7px 9px}.account-popover{position:fixed;top:70px;inset-inline:16px;width:auto}}
+
+
+/* Track-specific visual signatures */
+.card .card-art { color:var(--card-accent,var(--accent)); background:radial-gradient(circle at 76% 25%,color-mix(in srgb,var(--card-accent,var(--accent)) 30%,transparent),transparent 34%),linear-gradient(135deg,color-mix(in srgb,var(--card-accent,var(--accent)) 20%,#0b2039),rgba(7,20,37,.96)); }
+[data-theme="light"] .card .card-art { background:radial-gradient(circle at 76% 25%,color-mix(in srgb,var(--card-accent,var(--accent)) 18%,transparent),transparent 34%),linear-gradient(135deg,color-mix(in srgb,var(--card-accent,var(--accent)) 12%,#fff),#eaf2fa); }
+.card-art.art-professional { --card-accent:#f4b640; }
+.card-art.art-frontend { --card-accent:#2d8cff; }
+.card-art.art-backend { --card-accent:#2ed6c4; }
+.card-art.art-ai-engineer { --card-accent:#a78bfa; }
+.card-art.art-python { --card-accent:#f4b640; }
+.card-art.art-devops { --card-accent:#ff8b71; }
+.card-art.art-fullstack { --card-accent:#22c7e9; }
+.card-art.art-mobile { --card-accent:#f472b6; }
+.card-art.art-data { --card-accent:#2ed6c4; }
+.card-art.art-android { --card-accent:#55d98a; }
+.card-art.art-fullstack::before,.card-art.art-mobile::before,.card-art.art-data::before,.card-art.art-android::before { content:""; position:absolute; width:120px; height:120px; inset-inline-end:-30px; bottom:-54px; border:1px solid color-mix(in srgb,var(--card-accent) 45%,transparent); border-radius:50%; box-shadow:0 0 0 18px color-mix(in srgb,var(--card-accent) 7%,transparent),0 0 0 36px color-mix(in srgb,var(--card-accent) 5%,transparent); }
+.card-art.art-ai-engineer::before { content:""; position:absolute; inset:22px; border:1px dashed color-mix(in srgb,var(--card-accent) 35%,transparent); border-radius:50%; transform:rotate(18deg); }
+.card-art.art-professional::before { content:""; position:absolute; inset-inline-start:-30px; top:-50px; width:170px; height:170px; border:1px solid color-mix(in srgb,var(--card-accent) 35%,transparent); border-radius:50%; box-shadow:0 0 0 24px color-mix(in srgb,var(--card-accent) 7%,transparent); }
+.roadmap-hero[data-track="professional"] { --hero-glow:#f4b640; }
+.roadmap-hero[data-track="frontend"] { --hero-glow:#2d8cff; }
+.roadmap-hero[data-track="backend"] { --hero-glow:#2ed6c4; }
+.roadmap-hero[data-track="ai-engineer"] { --hero-glow:#a78bfa; }
+.roadmap-hero[data-track="python"] { --hero-glow:#f4b640; }
+.roadmap-hero[data-track="devops"] { --hero-glow:#ff8b71; }
+.roadmap-hero[data-track="fullstack"] { --hero-glow:#22c7e9; }
+.roadmap-hero[data-track="mobile"] { --hero-glow:#f472b6; }
+.roadmap-hero[data-track="data"] { --hero-glow:#2ed6c4; }
+.roadmap-hero[data-track="android"] { --hero-glow:#55d98a; }
+.roadmap-hero[data-track]::after { background:radial-gradient(ellipse at 76% 42%,color-mix(in srgb,var(--hero-glow) 25%,transparent),transparent 68%); }
+.roadmap-hero[data-track="professional"] .roadmap-hero-copy { border-inline-start:3px solid color-mix(in srgb,var(--hero-glow) 70%,transparent); padding-inline-start:22px; }
+.roadmap-hero[data-track="ai-engineer"] .roadmap-hero-visual { border-radius:34px; }
+.roadmap-hero[data-track="mobile"] .roadmap-hero-visual,.roadmap-hero[data-track="android"] .roadmap-hero-visual { border-radius:32px; }
+.roadmap-hero[data-track="data"] .roadmap-hero-visual,.roadmap-hero[data-track="devops"] .roadmap-hero-visual { border-style:dashed; }
+@media(max-width:840px) { .roadmap-hero[data-track="professional"] .roadmap-hero-copy { border-inline-start:0; border-top:3px solid color-mix(in srgb,var(--hero-glow) 70%,transparent); padding-inline-start:0; padding-top:18px; } }
