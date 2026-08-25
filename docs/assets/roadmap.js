@@ -16,7 +16,13 @@ let theme = localStorage.getItem("rm_theme") || "dark";
 const KEY = "rm_progress_" + slug;
 let progress = JSON.parse(localStorage.getItem(KEY) || "{}");
 const QUIZ_KEY = "rm_quiz_" + slug;
+const ACTIVITY_KEY = "rm_activity";
 let quizResults = JSON.parse(localStorage.getItem(QUIZ_KEY) || "{}");
+function recordActivity(type, nodeId, metadata = {}) {
+  const items = JSON.parse(localStorage.getItem(ACTIVITY_KEY) || "[]");
+  items.push({ slug, type, nodeId: nodeId || null, metadata, at: new Date().toISOString() });
+  localStorage.setItem(ACTIVITY_KEY, JSON.stringify(items.slice(-160)));
+}
 let quizSession = null;
 let pathQuizSession = null;
 let data = null, current = null;
@@ -109,7 +115,7 @@ function renderHeroTrack(){
   document.getElementById("heroMeta").innerHTML = `<span>${topicTotal(data)} ${lang === "ar" ? "موضوعًا" : "topics"}</span><span>${stageTotal(data)} ${lang === "ar" ? "مراحل" : "stages"}</span><span>${lang === "ar" ? "تقدم محفوظ" : "Progress saved"}</span>`;
   visual.innerHTML = heroArt(data.slug);
 }
-function save(){ localStorage.setItem(KEY, JSON.stringify(progress)); window.dispatchEvent(new CustomEvent("rm:progress-changed", { detail: { slug, progress } })); }
+function save(){ localStorage.setItem(KEY, JSON.stringify(progress)); recordActivity("progress", current?.id || null, { status: current ? progress[current.id] || "pending" : null }); window.dispatchEvent(new CustomEvent("rm:progress-changed", { detail: { slug, progress } })); }
 
 function stats(){
   const total = topicTotal(data);
@@ -185,7 +191,7 @@ function quizFor(node){
 function saveQuizResult(node, score){
   const old = quizResults[node.id] || { bestScore: 0, attempts: 0, passed: false };
   quizResults[node.id] = { bestScore: Math.max(old.bestScore || 0, score), attempts: (old.attempts || 0) + 1, passed: Boolean(old.passed || score >= 70), updatedAt: new Date().toISOString() };
-  localStorage.setItem(QUIZ_KEY, JSON.stringify(quizResults)); window.dispatchEvent(new CustomEvent("rm:quiz-changed", { detail: { slug, results: quizResults } }));
+  localStorage.setItem(QUIZ_KEY, JSON.stringify(quizResults)); recordActivity("quiz", node.id === "__path_quiz__" ? null : node.id, { score, passed: score >= 70 }); window.dispatchEvent(new CustomEvent("rm:quiz-changed", { detail: { slug, results: quizResults } }));
 }
 function renderQuiz(node){
   const panel = document.getElementById("quizPanel");
