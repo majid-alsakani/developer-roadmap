@@ -267,3 +267,6 @@ Written and maintained by **[Majid Al-Sakani · ماجد السكني](https://g
 © 2026 Majid Al-Sakani · ماجد السكني — CC BY-SA 4.0
 
 </div>
+
+## ✅ Checklist / قائمة التحقق
+- [ ] راجع الموضوعات والمصادر المرتبطة بهذا المسار

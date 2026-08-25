@@ -181,3 +181,6 @@ graph TD
 [![GitHub](https://img.shields.io/badge/GitHub-majid--alsakani-181717?style=for-the-badge&logo=github)](https://github.com/majid-alsakani)
 
 </div>
+
+## ✅ Checklist / قائمة التحقق
+- [ ] راجع الموضوعات والمصادر المرتبطة بهذا المسار
