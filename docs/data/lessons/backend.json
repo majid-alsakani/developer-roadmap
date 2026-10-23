@@ -1,0 +1,216 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "roadmap_lessons",
+  "roadmap_slug": "backend",
+  "updated_at": "2026-09-11",
+  "lessons": [
+    {
+      "id": "be-indexes",
+      "topic_id": "backend-indexes",
+      "level": "intermediate",
+      "minutes": 22,
+      "title_ar": "الفهارس في قواعد البيانات: لماذا يتحول استعلامك من ثوانٍ إلى ملي ثانية",
+      "title_en": "Database indexes: why a query drops from seconds to milliseconds",
+      "summary_ar": "شرح بنية B-Tree، وترتيب الأعمدة في الفهرس المركب، والانتقائية، ومتى يضر الفهرس بدل أن ينفع.",
+      "summary_en": "How B-Tree indexes work, column order in composite indexes, selectivity, and when an index hurts instead of helps.",
+      "why_ar": "أكثر مشكلة أداء شائعة في الأنظمة الحقيقية هي استعلام يمسح الجدول كاملًا. فهم الفهارس هو أرخص تحسين أداء موجود.",
+      "why_en": "The most common production performance problem is a query scanning a whole table. Indexes are the cheapest performance win available.",
+      "sections": [
+        {
+          "heading_ar": "ما هو الفهرس فعليًا",
+          "heading_en": "What an index really is",
+          "body_ar": "الفهرس بنية إضافية مرتبة، غالبًا شجرة B-Tree، تخزن قيم عمود مع مؤشرات إلى صفوفها. بدلًا من قراءة ملايين الصفوف تنزل قاعدة البيانات في الشجرة بعدد قليل من القفزات. الثمن أن كل إدخال أو تحديث يجب أن يحدّث الفهرس أيضًا، وأن الفهرس يشغل مساحة على القرص وفي الذاكرة، لذا الفهرس قرار موازنة بين سرعة القراءة وتكلفة الكتابة.",
+          "body_en": "An index is an extra ordered structure, usually a B-Tree, holding column values with pointers to their rows. Instead of reading millions of rows the database descends the tree in a few hops. The price is that every insert or update must also maintain the index, and the index consumes disk and memory, so indexing is a trade between read speed and write cost."
+        },
+        {
+          "heading_ar": "الانتقائية وترتيب الأعمدة",
+          "heading_en": "Selectivity and column order",
+          "body_ar": "الفهرس مفيد عندما يستبعد نسبة كبيرة من الصفوف. فهرس على عمود بقيمتين فقط نادرًا ما يستخدم. في الفهرس المركب يهم الترتيب: فهرس على (user_id, created_at) يخدم البحث بـ user_id وحده وبالاثنين معًا، لكنه لا يخدم البحث بـ created_at وحده. القاعدة: ضع أعمدة المساواة أولًا ثم عمود النطاق أو الترتيب أخيرًا.",
+          "body_en": "An index helps when it eliminates most rows. An index on a two-value column is rarely used. In a composite index order matters: an index on (user_id, created_at) serves filters on user_id alone and on both together, but not on created_at alone. Rule: equality columns first, the range or sort column last."
+        },
+        {
+          "heading_ar": "اقرأ خطة التنفيذ",
+          "heading_en": "Read the execution plan",
+          "body_ar": "لا تخمّن، اقرأ الخطة. في PostgreSQL يكشف EXPLAIN ANALYZE عن Seq Scan مقابل Index Scan، وعن الفرق بين التقدير والواقع، وعن عدد الصفوف المزالة بالفلتر. فرق كبير بين المقدر والفعلي يعني إحصاءات قديمة تحتاج ANALYZE. وجود Seq Scan على جدول كبير مع فلتر انتقائي هو أوضح إشارة إلى فهرس مفقود.",
+          "body_en": "Do not guess, read the plan. In PostgreSQL, EXPLAIN ANALYZE reveals Seq Scan versus Index Scan, the gap between estimated and actual rows, and how many rows the filter removed. A wide estimate gap means stale statistics that need ANALYZE. A Seq Scan on a large table with a selective filter is the clearest sign of a missing index."
+        },
+        {
+          "heading_ar": "متى يضر الفهرس",
+          "heading_en": "When an index hurts",
+          "body_ar": "الإفراط في الفهارس يبطئ الكتابة ويستهلك الذاكرة ويربك المخطط. كذلك تعطّل الدوال المطبقة على العمود استخدام الفهرس، فمثلًا WHERE lower(email) = ... لن يستفيد من فهرس عادي على email بل يحتاج فهرسًا تعبيريًا. وفي الجداول الصغيرة يكون المسح الكامل أسرع أصلًا، لذلك لا تضف فهرسًا بلا قياس قبل وبعد.",
+          "body_en": "Too many indexes slow writes, eat memory and confuse the planner. Functions applied to a column also disable index use: WHERE lower(email) = ... cannot use a plain index on email and needs an expression index. On small tables a full scan is faster anyway, so never add an index without measuring before and after."
+        }
+      ],
+      "code": {
+        "language": "sql",
+        "caption_ar": "من مسح كامل إلى فهرس مركب مع قياس الخطة",
+        "caption_en": "From a full scan to a composite index, verified with the plan",
+        "snippet": "-- Slow: filters by user and sorts by date on a large table\nEXPLAIN ANALYZE\nSELECT id, total FROM orders\nWHERE user_id = 42 AND created_at >= now() - interval '30 days'\nORDER BY created_at DESC\nLIMIT 20;\n-- Seq Scan on orders  (actual rows=3_000_000)\n\n-- Equality column first, range/sort column last\nCREATE INDEX CONCURRENTLY idx_orders_user_created\n  ON orders (user_id, created_at DESC);\n\nANALYZE orders;   -- refresh planner statistics, then EXPLAIN again"
+      },
+      "pitfalls_ar": [
+        "إضافة فهرس لكل عمود فتصبح الكتابة بطيئة بلا فائدة قراءة.",
+        "تطبيق دالة على العمود في شرط WHERE فيُعطَّل الفهرس.",
+        "بناء فهرس على جدول إنتاجي بدون CONCURRENTLY فيُقفل الجدول."
+      ],
+      "pitfalls_en": [
+        "Indexing every column, making writes slow with no read benefit.",
+        "Wrapping the column in a function inside WHERE, disabling the index.",
+        "Building an index on a production table without CONCURRENTLY and locking it."
+      ],
+      "exercise": {
+        "brief_ar": "حسّن استعلام تقارير بطيء على جدول فيه ملايين الصفوف.",
+        "brief_en": "Optimise a slow reporting query on a multi-million row table.",
+        "steps_ar": [
+          "شغّل EXPLAIN ANALYZE وسجّل نوع المسح والزمن الفعلي.",
+          "أضف فهرسًا مركبًا يبدأ بأعمدة المساواة وينتهي بعمود الترتيب.",
+          "أعد القياس وقارن، ثم احذف أي فهرس لم يُستخدم فعلًا."
+        ],
+        "steps_en": [
+          "Run EXPLAIN ANALYZE and record the scan type and real timing.",
+          "Add a composite index starting with equality columns and ending with the sort column.",
+          "Measure again, compare, then drop any index that is never used."
+        ],
+        "success_ar": "تحول الخطة إلى Index Scan وانخفاض الزمن بمقدار مرتبة أو أكثر.",
+        "success_en": "The plan switches to an Index Scan and the time drops by an order of magnitude."
+      },
+      "keywords_ar": ["فهارس قواعد البيانات", "تحسين استعلامات SQL", "PostgreSQL", "EXPLAIN ANALYZE", "فهرس مركب", "أداء الباك إند"],
+      "keywords_en": ["database indexes", "sql query optimization", "PostgreSQL", "EXPLAIN ANALYZE", "composite index", "backend performance"],
+      "quiz": [
+        {
+          "id": "be-indexes-l1",
+          "difficulty": "medium",
+          "question_ar": "فهرس على (user_id, created_at) يخدم أي استعلام؟",
+          "question_en": "An index on (user_id, created_at) serves which query?",
+          "options": [
+            {"id": "a", "ar": "فلترة بـ user_id ثم ترتيب بـ created_at", "en": "Filter by user_id then sort by created_at"},
+            {"id": "b", "ar": "فلترة بـ created_at وحده", "en": "Filter by created_at alone"},
+            {"id": "c", "ar": "فلترة بعمود غير مفهرس", "en": "Filter by an unindexed column"},
+            {"id": "d", "ar": "لا يخدم أي استعلام", "en": "No query at all"}
+          ],
+          "answer": ["a"],
+          "explanation_ar": "الفهرس المركب يُقرأ من اليسار، فيخدم العمود الأول ثم ما يليه.",
+          "explanation_en": "A composite index is read left to right, serving the leading column first."
+        },
+        {
+          "id": "be-indexes-l2",
+          "difficulty": "hard",
+          "question_ar": "لماذا لا يستفيد WHERE lower(email) = 'a@b.com' من فهرس عادي على email؟",
+          "question_en": "Why does WHERE lower(email) = 'a@b.com' not use a plain index on email?",
+          "options": [
+            {"id": "a", "ar": "لأن الدالة تغيّر القيمة المخزّنة في الفهرس", "en": "The function changes the value stored in the index"},
+            {"id": "b", "ar": "لأن النص طويل", "en": "Because the string is long"},
+            {"id": "c", "ar": "لأن الفهرس معطّل تلقائيًا", "en": "Because indexes disable themselves"},
+            {"id": "d", "ar": "لأن المساواة غير مدعومة", "en": "Because equality is unsupported"}
+          ],
+          "answer": ["a"],
+          "explanation_ar": "يحتاج الأمر فهرسًا تعبيريًا على lower(email).",
+          "explanation_en": "You need an expression index on lower(email)."
+        }
+      ]
+    },
+    {
+      "id": "be-jwt",
+      "topic_id": "backend-jwt",
+      "level": "advanced",
+      "minutes": 20,
+      "title_ar": "الجلسات والتوكن: تصميم مصادقة آمنة بلا أوهام",
+      "title_en": "Sessions and tokens: designing authentication without illusions",
+      "summary_ar": "الفرق بين الجلسة والتوكن، لماذا لا يمكن إبطال JWT بسهولة، وأين تُخزّن التوكنات بأمان.",
+      "summary_en": "Sessions versus tokens, why a JWT cannot be easily revoked, and where to store tokens safely.",
+      "why_ar": "أخطاء المصادقة لا تظهر في الاختبارات بل في الاختراقات. التصميم الصحيح من البداية أرخص بكثير من الترقيع لاحقًا.",
+      "why_en": "Authentication mistakes do not show up in tests, they show up in breaches. Designing it right is far cheaper than patching later.",
+      "sections": [
+        {
+          "heading_ar": "الجلسة مقابل التوكن",
+          "heading_en": "Session versus token",
+          "body_ar": "في نموذج الجلسة يحتفظ الخادم بسجل الجلسة ويعطي المتصفح معرفًا داخل كوكي. في نموذج JWT يحمل التوكن نفسه البيانات موقّعة، فلا يحتاج الخادم إلى بحث. الفرق الجوهري في الإبطال: حذف صف الجلسة ينهي الوصول فورًا، بينما يبقى JWT صالحًا حتى انتهاء صلاحيته ما لم تبنِ قائمة إبطال، وهي عمليًا عودة إلى حالة على الخادم.",
+          "body_en": "With sessions the server keeps a session record and hands the browser an id in a cookie. With JWT the token itself carries signed claims, so no lookup is needed. The crucial difference is revocation: deleting a session row ends access instantly, while a JWT stays valid until it expires unless you maintain a denylist, which is effectively server state again."
+        },
+        {
+          "heading_ar": "توكن وصول قصير وتوكن تجديد",
+          "heading_en": "Short access token plus refresh token",
+          "body_ar": "التصميم العملي: توكن وصول قصير العمر من خمس إلى خمس عشرة دقيقة، وتوكن تجديد طويل مخزّن على الخادم وقابل للإبطال، مع تدوير التوكن عند كل تجديد. إذا استُخدم توكن تجديد قديم مرتين فهذه إشارة سرقة تستوجب إنهاء كل جلسات المستخدم. هذا يوازن بين قابلية التوسع وبين القدرة الحقيقية على قطع الوصول.",
+          "body_en": "The practical design: a short-lived access token of five to fifteen minutes, plus a long-lived refresh token stored server-side and revocable, rotated on every refresh. If an old refresh token is replayed, treat it as theft and invalidate all of that user's sessions. This balances scalability with a real ability to cut access off."
+        },
+        {
+          "heading_ar": "أين تُخزَّن التوكنات",
+          "heading_en": "Where tokens are stored",
+          "body_ar": "تخزين التوكن في localStorage يعرّضه لأي ثغرة XSS لأن أي سكربت يستطيع قراءته. الأفضل كوكي بخصائص HttpOnly و Secure و SameSite، فلا يصل إليه جافاسكربت، مع حماية من CSRF عبر SameSite أو توكن مضاد. وتذكّر أن محتوى JWT مقروء للجميع لأنه مشفّر بالترميز لا بالتعمية، فلا تضع فيه أسرارًا.",
+          "body_en": "Storing a token in localStorage exposes it to any XSS flaw, because any script can read it. Prefer a cookie with HttpOnly, Secure and SameSite so JavaScript cannot touch it, combined with CSRF protection via SameSite or an anti-forgery token. Remember a JWT payload is merely encoded, not encrypted, so never put secrets in it."
+        },
+        {
+          "heading_ar": "التحقق الصارم من التوقيع",
+          "heading_en": "Strict signature verification",
+          "body_ar": "ثبّت الخوارزمية على الخادم ولا تثق بحقل alg القادم من التوكن، فهجوم alg=none أو تبديل RS256 بـ HS256 هجوم كلاسيكي. تحقق أيضًا من المُصدر والجمهور وزمن الانتهاء، واستخدم مقارنة ثابتة الزمن. أخيرًا ضع خطة تدوير للمفاتيح مع معرف مفتاح kid حتى تستطيع تغيير المفتاح دون إخراج كل المستخدمين.",
+          "body_en": "Pin the algorithm on the server and never trust the token's own alg field; alg=none and RS256-to-HS256 confusion are classic attacks. Also verify issuer, audience and expiry, and use constant-time comparison. Finally plan key rotation with a kid header so you can change keys without logging everyone out."
+        }
+      ],
+      "code": {
+        "language": "python",
+        "caption_ar": "تحقق صارم من JWT مع خوارزمية مثبّتة",
+        "caption_en": "Strict JWT verification with a pinned algorithm",
+        "snippet": "import jwt  # PyJWT\n\ndef verify(token: str) -> dict:\n    return jwt.decode(\n        token,\n        key=PUBLIC_KEY,\n        algorithms=[\"RS256\"],      # pinned; never read alg from the token\n        audience=\"api.example.com\",\n        issuer=\"https://auth.example.com\",\n        options={\"require\": [\"exp\", \"iat\", \"sub\"]},\n    )\n\n# Cookie flags that keep the token away from JavaScript\nresponse.set_cookie(\n    \"access_token\", token,\n    httponly=True, secure=True, samesite=\"lax\", max_age=900,\n)"
+      },
+      "pitfalls_ar": [
+        "تخزين التوكن في localStorage فيسرق بأي ثغرة XSS.",
+        "توكن وصول طويل العمر بلا آلية إبطال حقيقية.",
+        "قبول الخوارزمية المذكورة داخل التوكن نفسه."
+      ],
+      "pitfalls_en": [
+        "Storing tokens in localStorage where any XSS can steal them.",
+        "Long-lived access tokens with no real revocation path.",
+        "Trusting the algorithm declared inside the token itself."
+      ],
+      "exercise": {
+        "brief_ar": "صمّم مصادقة لتطبيق ويب مع تسجيل خروج فوري من كل الأجهزة.",
+        "brief_en": "Design authentication for a web app with instant logout from all devices.",
+        "steps_ar": [
+          "اجعل توكن الوصول قصيرًا وخزّن توكن التجديد في جدول قابل للإبطال.",
+          "دوّر توكن التجديد عند كل استخدام واكتشف إعادة الاستخدام.",
+          "انقل التوكنات إلى كوكي HttpOnly وأضف حماية CSRF."
+        ],
+        "steps_en": [
+          "Keep the access token short and store refresh tokens in a revocable table.",
+          "Rotate the refresh token on every use and detect replay.",
+          "Move tokens into HttpOnly cookies and add CSRF protection."
+        ],
+        "success_ar": "الضغط على تسجيل الخروج من كل الأجهزة يقطع الوصول خلال دقائق معدودة على الأكثر.",
+        "success_en": "Logging out of all devices cuts access within minutes at most."
+      },
+      "keywords_ar": ["مصادقة", "JWT", "توكن تجديد", "أمان الويب", "كوكي HttpOnly", "إبطال الجلسات"],
+      "keywords_en": ["authentication", "JWT", "refresh token", "web security", "HttpOnly cookie", "session revocation"],
+      "quiz": [
+        {
+          "id": "be-jwt-l1",
+          "difficulty": "medium",
+          "question_ar": "لماذا يصعب إبطال JWT قبل انتهاء صلاحيته؟",
+          "question_en": "Why is a JWT hard to revoke before it expires?",
+          "options": [
+            {"id": "a", "ar": "لأن التحقق لا يرجع إلى مخزن على الخادم", "en": "Verification does not consult server-side storage"},
+            {"id": "b", "ar": "لأنه مشفّر بالكامل", "en": "Because it is fully encrypted"},
+            {"id": "c", "ar": "لأنه يُخزَّن في المتصفح", "en": "Because it lives in the browser"},
+            {"id": "d", "ar": "لأنه طويل جدًا", "en": "Because it is very long"}
+          ],
+          "answer": ["a"],
+          "explanation_ar": "التوكن مكتفٍ ذاتيًا، فالإبطال يحتاج قائمة منع أي حالة على الخادم.",
+          "explanation_en": "It is self-contained, so revocation needs a denylist, i.e. server state."
+        },
+        {
+          "id": "be-jwt-l2",
+          "difficulty": "easy",
+          "question_ar": "ما أفضل مكان لتخزين توكن الجلسة في تطبيق ويب؟",
+          "question_en": "Where is the best place to store a session token in a web app?",
+          "options": [
+            {"id": "a", "ar": "كوكي HttpOnly و Secure و SameSite", "en": "An HttpOnly, Secure, SameSite cookie"},
+            {"id": "b", "ar": "localStorage", "en": "localStorage"},
+            {"id": "c", "ar": "متغير عام في الصفحة", "en": "A global page variable"},
+            {"id": "d", "ar": "داخل عنوان الرابط", "en": "Inside the URL"}
+          ],
+          "answer": ["a"],
+          "explanation_ar": "الكوكي HttpOnly غير مقروء لجافاسكربت فيقاوم سرقة XSS.",
+          "explanation_en": "An HttpOnly cookie is unreadable to JavaScript and resists XSS theft."
+        }
+      ]
+    }
+  ]
+}
